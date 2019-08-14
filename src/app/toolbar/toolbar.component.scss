@@ -1,0 +1,15 @@
+.menu-spacer {
+    flex: 1 1 auto;
+  }
+
+.toolbar {
+  height: 80vh;
+}
+
+.nav-items {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  width: auto;
+  padding: 5px;
+}
