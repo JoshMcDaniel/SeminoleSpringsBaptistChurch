@@ -1,3 +1,11 @@
+
+.nav-content {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 0 auto;
+  grid-gap:  repeat(3 10px) 0;
+}
+
 .menu-spacer {
     flex: 1 1 auto;
   }
@@ -12,4 +20,16 @@
   align-items: center;
   width: auto;
   padding: 5px;
+}
+
+.side-nav-items {
+  text-align: left;
+  width: 100%;
+  margin: 0px;
+  padding: 0px 5px;
+}
+
+.active {
+  background-color: lightcoral;
+  color: white;
 }

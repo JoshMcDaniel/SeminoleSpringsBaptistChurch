@@ -8,11 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class ToolbarComponent implements OnInit {
 
   navItems: Object[] = [
-    {title: 'Home', icon: 'home', link: '#'},
-    {title: 'Sermons', icon: 'book', link: '#'},
-    {title: 'About Us', icon: 'help', link: '#'},
-    {title: 'Contact Us', icon: 'question_answer', link: '#'},
-    {title: 'Directions', icon: 'my_location', link: '#'}
+    {title: 'Home', icon: 'home', link: '/home'},
+    {title: 'Sermons', icon: 'book', link: '/sermons'},
+    {title: 'About Us', icon: 'help', link: '/about'},
+    {title: 'Contact Us', icon: 'question_answer', link: 'contact'}
   ]
 
   constructor() { }

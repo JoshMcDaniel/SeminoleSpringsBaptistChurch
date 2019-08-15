@@ -11,6 +11,11 @@ import { MaterialModule } from './shared/material.module';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ContactComponent } from './contact/contact.component';
+import { SermonsComponent } from './sermons/sermons.component';
+import { AboutComponent } from './about/about.component';
+import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -18,7 +23,11 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ContactComponent,
+    SermonsComponent,
+    AboutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,27 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MaterialModule,
     HomeModule,
     SharedModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterModule.forRoot([
+      {
+        path: '', component: HomeComponent
+      },
+      {
+        path: 'home', component: HomeComponent
+      },
+      {
+        path: 'sermons', component: SermonsComponent
+      },
+      {
+        path: 'about', component: AboutComponent
+      },
+      {
+        path: 'contact', component: ContactComponent
+      },
+      {
+        path: '**', component: NotFoundComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
