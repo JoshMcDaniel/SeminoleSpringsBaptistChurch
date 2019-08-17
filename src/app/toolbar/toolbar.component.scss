@@ -11,7 +11,22 @@
   }
 
 .toolbar {
-  height: 80vh;
+  // Side-nav not displaying. Won't overlap.
+  height: 100%;
+}
+
+.mat-toolbar-row {
+  height: auto;
+}
+
+.title-image-container {
+  width: 200px;
+  height: 100px;
+  margin: 5px 0px;
+  background-image: url("src/assets/images/title.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .nav-items {

@@ -16,6 +16,8 @@ import { SermonsComponent } from './sermons/sermons.component';
 import { AboutComponent } from './about/about.component';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AboutSummaryComponent } from './about-summary/about-summary.component';
+import { IntroductionComponent } from './introduction/introduction.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ContactComponent,
     SermonsComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AboutSummaryComponent,
+    IntroductionComponent,
   ],
   imports: [
     BrowserModule,

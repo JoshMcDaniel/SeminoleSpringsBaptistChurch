@@ -1,24 +1,10 @@
-
-.title-section {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-image: url("src/assets/images/crosses.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0px;
+.home-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-gap: 10px;
 }
 
-.title {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    text-align: center;
-    color: white;
-    font-size: 4em;
-    padding: 0px;
-    margin: 0px;
+mat-card {
+    height: 80vh;
 }
