@@ -1,0 +1,10 @@
+    
+{
+    "sliderArray":[
+     {"img": "./assets/images/crosses.jpg", "alt": "", "text": "365 Days Of weddings a year"},
+     {"img": "./assets/images/study.jpg", "alt": "",  "text": "Join us as we study the word of God together"},
+     {"img": "http://bloquo.cc/img/works/3.jpg", "alt": "", "text": "365 Days Of weddings a year"},
+     {"img": "http://bloquo.cc/img/works/4.jpg", "alt": "",  "text": "365 Days Of weddings a year"},
+     {"img": "http://bloquo.cc/img/works/5.jpg", "alt": "", "text": "365 Days Of weddings a year"}
+    ]
+  }

@@ -18,6 +18,8 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutSummaryComponent } from './about-summary/about-summary.component';
 import { IntroductionComponent } from './introduction/introduction.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -32,9 +34,11 @@ import { IntroductionComponent } from './introduction/introduction.component';
     NotFoundComponent,
     AboutSummaryComponent,
     IntroductionComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -61,6 +65,9 @@ import { IntroductionComponent } from './introduction/introduction.component';
         path: '**', component: NotFoundComponent
       }
     ])
+  ],
+  exports: [
+    CarouselComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
