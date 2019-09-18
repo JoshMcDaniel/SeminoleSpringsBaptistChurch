@@ -3,15 +3,14 @@
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 0 auto;
-  grid-gap:  repeat(3 10px) 0;
+  grid-gap: repeat(3 10px) 0;
 }
 
 .menu-spacer {
-    flex: 1 1 auto;
-  }
+  flex: 1 1 auto;
+}
 
 .toolbar {
-  // Side-nav not displaying. Won't overlap.
   height: 100%;
 }
 
@@ -47,4 +46,11 @@
 .active {
   background-color: lightcoral;
   color: white;
+}
+
+@media (max-width: 960px) {
+  .title-image-container {
+    width: 100px;
+    height: 50px;
+  }
 }

@@ -1,10 +1,10 @@
     
 {
     "sliderArray":[
-     {"img": "./assets/images/crosses.jpg", "alt": "", "text": "365 Days Of weddings a year"},
-     {"img": "./assets/images/study.jpg", "alt": "",  "text": "Join us as we study the word of God together"},
-     {"img": "http://bloquo.cc/img/works/3.jpg", "alt": "", "text": "365 Days Of weddings a year"},
-     {"img": "http://bloquo.cc/img/works/4.jpg", "alt": "",  "text": "365 Days Of weddings a year"},
-     {"img": "http://bloquo.cc/img/works/5.jpg", "alt": "", "text": "365 Days Of weddings a year"}
+     {"img": "./assets/images/carousel/church.jpg", "alt": "", "text": "Seminole Springs Baptist Church"},
+     {"img": "./assets/images/carousel/study.jpg", "alt": "",  "text": "Join us as we study the word of God together"},
+     {"img": "./assets/images/carousel/choir.jpg", "alt": "", "text": "Real worship"},
+     {"img": "./assets/images/carousel/friends.jpg", "alt": "",  "text": "Be a part of a loving community"},
+     {"img": "./assets/images/carousel/holdingBible.jpg", "alt": "", "text": "Let's do something bigger than ourselves"}
     ]
   }
