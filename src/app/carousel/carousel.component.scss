@@ -16,25 +16,24 @@ img {
   background-size: cover;
   background-position: center;
   will-change: opacity;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   cursor: pointer;
 }
 
-.slide-button:hover, .slide-button-select {
+.slide-button:hover,
+.slide-button-select {
   width: 64px !important;
-  background-color: rgba(255,255,255,1) !important;
+  background-color: rgba(255, 255, 255, 1) !important;
   pointer-events: none;
-  transition: background-color .4s, width 4s cubic-bezier(0.190, 1.000, 0.220, 1.000) !important;
+  transition: background-color 0.4s, width 4s cubic-bezier(0.19, 1, 0.22, 1) !important;
 }
-
 
 .slide-button {
   width: 30px;
   height: 4px;
-  background-color: rgba(255,255,255,.5);
+  background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
   position: absolute;
-
 }
 
 .slider {
@@ -75,7 +74,7 @@ img {
 }
 
 #text {
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 .selected {

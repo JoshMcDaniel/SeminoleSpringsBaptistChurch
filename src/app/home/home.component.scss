@@ -1,11 +1,17 @@
 .home-container {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-gap: 10px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-gap: 20em;
+  background-image: url("src/assets/images/background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 mat-card {
-    height: 87vh;
-    padding: 0px;
+  // Full screen minus the toolbar.
+  height: calc(100vh - 64px);
+  padding: 0px;
 }
