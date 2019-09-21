@@ -15,3 +15,10 @@ mat-card {
   height: calc(100vh - 64px);
   padding: 0px;
 }
+
+@media (max-width: 960px) {
+  mat-card {
+    // Full screen minus the toolbar.
+    height: calc(100vh - 56px);
+  }
+}

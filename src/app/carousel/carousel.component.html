@@ -4,15 +4,14 @@
     <img src="{{i.img}}" alt="{{i.alt}}">
   </div>
 
-  <div [ngStyle]="{'transform': 'translateY('+ transform + '%' +')', 'transition': '.8s'}">
-    <div class="text-container">
-      <div class="page-text" *ngFor="let i of sliderArray;let select = index;"
-        [ngClass]="{'selected': select == selectedIndex}">
-        <h3 id="text">{{i.text}}</h3>
-      </div>
-    </div>
+  <div *ngIf="sliderArray" class="text-area">
+    <h1 class="title">
+      Seminole Springs Baptist Church
+    </h1>
+    <p class="sub-text">
+      {{sliderArray[selectedIndex].text}}
+    </p>
   </div>
-
 </div>
 
 <div class="slider">
