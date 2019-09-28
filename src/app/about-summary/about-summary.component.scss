@@ -1,0 +1,58 @@
+.container {
+  height: 100%;
+  background-image: url("src/assets/images/about/friends.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text-area {
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  // transform: translateY(50%);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  color: white;
+}
+
+.title {
+  vertical-align: middle;
+  font-size: 5vw;
+  line-height: 90px;
+  margin: 0;
+}
+
+.sub-text {
+  font-size: 2.5vw;
+  line-height: 40px;
+  color: white;
+}
+
+.list {
+  font-size: 3.5vw;
+  line-height: 40px;
+  font-weight: bolder;
+  width: fit-content;
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+@media (max-width: 960px) {
+  .text-area {
+    padding: .5em;
+  }
+
+  .title {
+    font-size: 12vw;
+    line-height: 50px; 
+  }
+  
+  .sub-text {
+    font-size: 6vw;
+    line-height: 30px; 
+  }
+}

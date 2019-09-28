@@ -2,23 +2,20 @@
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
-  grid-gap: 20em;
-  background-image: url("src/assets/images/background.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  grid-gap: 4em;
 }
 
 mat-card {
-  // Full screen minus the toolbar.
+  // Full screen minus the toolbar
   height: calc(100vh - 64px);
   padding: 0px;
+  position: sticky;
+  top: 0;
 }
 
 @media (max-width: 960px) {
   mat-card {
-    // Full screen minus the toolbar.
+    // Full screen minus the toolbar
     height: calc(100vh - 56px);
   }
 }

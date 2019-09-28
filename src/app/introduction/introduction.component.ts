@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Result } from '../carousel/result';
+
 
 @Component({
   selector: 'app-introduction',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IntroductionComponent implements OnInit {
 
-  constructor() { }
+  images: object[];
+  title = 'Seminole Springs Baptist Church';
+
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.getData().subscribe((result: Result) => {
+      this.images = result.sliderArray;
+    });
   }
 
 }

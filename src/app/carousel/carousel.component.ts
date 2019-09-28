@@ -1,6 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataService } from '../data.service';
-import { Result } from './result';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { timer } from 'rxjs';
 
@@ -12,50 +10,52 @@ import { timer } from 'rxjs';
 })
 export class CarouselComponent implements OnInit, OnDestroy {
 
+  @Input()
   sliderArray: object[];
+  @Input()
+  transitionTime = 5;
+  @Input()
+  title: string;
   transform: number;
   selectedIndex = 0;
   timer$: Observable<number>;
   subscription: Subscription;
 
-  constructor(private data: DataService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.data.getData().subscribe((result: Result) => {
-      this.sliderArray = result.sliderArray;
-    });
     this.setTimer();
   }
 
-  setTimer() {
-    // Set slideshow timer
-    this.timer$ = timer(5_000, 5_000);
+  setTimer(): void {
+    const time = this.transitionTime * 1000;
+    this.timer$ = timer(time, time);
     this.subscription = this.timer$.subscribe(() => {
       const i = this.selectedIndex;
       i < (this.sliderArray.length - 1) ? this.selected(i + 1) : this.selectedIndex = 0;
     });
   }
 
-  selected(x) {
-    this.downSelected(x);
-    this.selectedIndex = x;
-   }
-
-   keySelected(x) {
+  selected(x: number): void {
     this.downSelected(x);
     this.selectedIndex = x;
   }
 
-   downSelected(i) {
-   this.transform =  100 - (i) * 50;
-     this.selectedIndex = this.selectedIndex + 1;
-     if (this.selectedIndex > 4) {
-       this.selectedIndex = 0;
-     }
-   }
+  keySelected(x: number): void {
+    this.downSelected(x);
+    this.selectedIndex = x;
+  }
 
-   ngOnDestroy() {
-     this.subscription.unsubscribe();
-   }
+  downSelected(i: number): void {
+    this.transform = 100 - (i) * 50;
+    this.selectedIndex = this.selectedIndex + 1;
+    if (this.selectedIndex > 4) {
+      this.selectedIndex = 0;
+    }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 }
