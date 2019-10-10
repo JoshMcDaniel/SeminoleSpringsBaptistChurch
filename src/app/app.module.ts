@@ -19,6 +19,7 @@ import { AboutSummaryComponent } from './about-summary/about-summary.component';
 import { IntroductionComponent } from './introduction/introduction.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SermonsSummaryComponent } from './sermons-summary/sermons-summary.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     AboutSummaryComponent,
     IntroductionComponent,
     CarouselComponent,
+    SermonsSummaryComponent,
   ],
   imports: [
     BrowserModule,
