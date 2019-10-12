@@ -1,0 +1,8 @@
+<div class="social">
+  <button
+    mat-fab
+    *ngFor="let icon of socialIcons"
+    [ngStyle]="{ 'background-image': 'url(' + icon.imageLink + ')' }"
+    class="icon"
+  ></button>
+</div>

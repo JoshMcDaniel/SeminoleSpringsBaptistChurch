@@ -13,6 +13,10 @@ mat-card {
   top: 0;
 }
 
+.footer {
+  height: fit-content !important;
+}
+
 @media (max-width: 960px) {
   mat-card {
     // Full screen minus the toolbar

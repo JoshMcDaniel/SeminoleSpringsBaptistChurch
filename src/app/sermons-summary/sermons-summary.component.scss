@@ -1,5 +1,21 @@
 .container {
   text-align: center;
+  height: 100%;
+  background-image: url("src/assets/images/sermons/bibleAlter.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text-area {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  padding: 2em;
+  color: white;
+  text-align: center;
+  background: rgba(000, 000, 000, 0.5);
 }
 
 .title {
@@ -13,4 +29,20 @@
   line-height: 40px;
   margin: auto;
   text-align: center;
+}
+
+@media (max-width: 960px) {
+  .text-area {
+    padding: 1em;
+  }
+
+  .title {
+    font-size: 12vw;
+    line-height: 50px;
+  }
+
+  .sub-text {
+    font-size: 6vw;
+    line-height: 30px;
+  }
 }

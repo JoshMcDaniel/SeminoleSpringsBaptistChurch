@@ -20,6 +20,9 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SermonsSummaryComponent } from './sermons-summary/sermons-summary.component';
+import { FooterComponent } from './footer/footer.component';
+import { SocialIconsComponent } from './social-icons/social-icons.component';
+import { ContactSummaryComponent } from './contact-summary/contact-summary.component';
 
 
 @NgModule({
@@ -35,6 +38,9 @@ import { SermonsSummaryComponent } from './sermons-summary/sermons-summary.compo
     IntroductionComponent,
     CarouselComponent,
     SermonsSummaryComponent,
+    FooterComponent,
+    SocialIconsComponent,
+    ContactSummaryComponent,
   ],
   imports: [
     BrowserModule,
