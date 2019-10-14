@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  readonly copywrite = '2019 Seminole Springs Baptist Church'
-  readonly developedBy = 'Website developed by Josh McDaniel';
+  readonly COPYWRITE = '2019 Seminole Springs Baptist Church'
+  readonly DEVELOPER = 'Website developed by Josh McDaniel';
 
   constructor() { }
 
