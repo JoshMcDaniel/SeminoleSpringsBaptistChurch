@@ -23,6 +23,7 @@ import { SermonsSummaryComponent } from './sermons-summary/sermons-summary.compo
 import { FooterComponent } from './footer/footer.component';
 import { SocialIconsComponent } from './social-icons/social-icons.component';
 import { ContactSummaryComponent } from './contact-summary/contact-summary.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { ContactSummaryComponent } from './contact-summary/contact-summary.compo
     HomeModule,
     SharedModule,
     FlexLayoutModule,
+    FormsModule,
     RouterModule.forRoot([
       {
         path: '', component: HomeComponent

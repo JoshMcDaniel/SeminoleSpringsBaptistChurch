@@ -2,25 +2,25 @@
   <h2 class="title">
     Want to learn more about SSBC?
   </h2>
-  <form action="/action_page.php" class="form-container">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-container">
     <h2 class="form-header">Enter your information</h2>
     <div>
       <label for="firstName"><b>First Name</b></label>
-      <input type="text" placeholder="Enter First Name" name="firstName" required />
+      <input type="text" placeholder="Enter First Name" ngModel name="firstName" #firstName required />
     </div>
     <div>
       <label for="lastName"><b>Last Name</b></label>
-      <input type="text" placeholder="Enter Last Name" name="lastName" required />
+      <input type="text" placeholder="Enter Last Name" ngModel name="lastName" #lastName required />
     </div>
     <div>
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required />
+      <input type="text" placeholder="Enter Email" ngModel name="email" #email required />
     </div>
     <div>
       <label for="phoneNumber"><b>Phone Number</b></label>
-      <input type="text" placeholder="Enter Phone Number" name="phoneNumber" />
+      <input type="text" placeholder="Enter Phone Number" ngModel name="phoneNumber" #phoneNumber />
     </div>
-    <button mat-raised-button color="accent" type="submit" class="btn">
+    <button mat-raised-button color="accent" type="submit" [disabled]="!f.form.valid" class="btn">
       Submit
     </button>
   </form>

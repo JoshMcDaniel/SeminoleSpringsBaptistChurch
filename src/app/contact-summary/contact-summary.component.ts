@@ -12,4 +12,8 @@ export class ContactSummaryComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(form): void {
+    console.log(form.value);
+  }
+
 }
