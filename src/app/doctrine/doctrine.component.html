@@ -1,0 +1,9 @@
+<mat-card *ngIf="doctrine">
+    <h1>{{doctrine.title}}</h1>
+    <mat-divider></mat-divider>
+    <div *ngFor="let doc of doctrine.content">
+        <h2>{{doc.title}}</h2>
+        <p>{{doc.text}}</p>
+        <span>{{doc.verses}}</span>
+    </div>
+</mat-card>

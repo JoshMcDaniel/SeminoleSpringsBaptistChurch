@@ -10,13 +10,14 @@ import { Result } from '../carousel/result';
 })
 export class IntroductionComponent implements OnInit {
 
+  readonly carouselImagesURL = '../assets/data.json';
   images: object[];
   title = 'Seminole Springs Baptist Church';
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    this.data.getData().subscribe((result: Result) => {
+    this.data.getData(this.carouselImagesURL).subscribe((result: Result) => {
       this.images = result.sliderArray;
     });
   }

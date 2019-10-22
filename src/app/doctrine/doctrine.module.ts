@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DoctrineModule } from '../doctrine/doctrine.module';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    DoctrineModule
+    CommonModule
   ]
 })
-export class AboutModule { }
+export class DoctrineModule { }
