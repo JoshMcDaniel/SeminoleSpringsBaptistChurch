@@ -62,6 +62,16 @@ input[type="password"]:focus {
   opacity: 1;
 }
 
+.submtted-title {
+  font-size: 4vw;
+  line-height: 50px;
+}
+
+.submitted-message {
+  font-size: 2vw;
+  line-height: 30px;
+}
+
 @media (max-width: 960px) {
   .container {
     grid-template-columns: 1fr;
@@ -83,6 +93,15 @@ input[type="password"]:focus {
   .form-header {
     font-size: 8vw;
     line-height: 40px;
+  }
+
+  .submtted-title {
+    font-size: 10vw;
+    text-align: center;
+  }
+
+  .submitted-message {
+    font-size: 7vw;
   }
 
   input[type="text"],
