@@ -1,0 +1,46 @@
+.doctrine-container {
+  margin: 2em;
+}
+
+.mat-expansion-panel-header-title {
+  display: block !important;
+  margin: 0;
+}
+
+.doctrine-title {
+  text-align: center;
+  font-size: x-large;
+  margin: 0.5em 0;
+}
+
+.content {
+  padding: 0 2em;
+}
+
+.title {
+  font-size: x-large;
+  margin-bottom: 8px;
+}
+
+.para {
+  font-size: large;
+}
+
+.verses {
+  font-size: 80%;
+}
+
+@media (max-width: 960px) {
+  .doctrine-container {
+    margin: 0;
+  }
+
+  .doctrine-title {
+    font-size: medium;
+    margin-right: 8px;
+  }
+
+  .content {
+    padding: 0 0.5em;
+  }
+}

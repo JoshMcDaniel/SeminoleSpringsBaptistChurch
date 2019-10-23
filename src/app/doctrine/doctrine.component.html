@@ -1,9 +1,14 @@
-<mat-card *ngIf="doctrine">
-    <h1>{{doctrine.title}}</h1>
+<mat-expansion-panel *ngIf="doctrine" [expanded]="panelOpenState" (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false" class="mat-elevation-z5 doctrine-container">
+    <mat-expansion-panel-header>
+        <mat-panel-title class="doctrine-title">
+            {{doctrine.title}}
+        </mat-panel-title>
+    </mat-expansion-panel-header>
     <mat-divider></mat-divider>
-    <div *ngFor="let doc of doctrine.content">
-        <h2>{{doc.title}}</h2>
-        <p>{{doc.text}}</p>
-        <span>{{doc.verses}}</span>
+    <div *ngFor="let doc of doctrine.content; let i = index" class="content"
+        [ngStyle]="{'margin': (i === 0) ? '2em 0' : '0 0 2em 0'}">
+        <h2 class="title">{{doc.title}}</h2>
+        <p class="para">{{doc.text}} <span class="verses">( {{doc.verses}} )</span></p>
     </div>
-</mat-card>
+</mat-expansion-panel>

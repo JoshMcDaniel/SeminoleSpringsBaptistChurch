@@ -11,6 +11,7 @@ export class DoctrineComponent implements OnInit {
 
   readonly doctrineURL = '../assets/doctrine.json'
   doctrine: Doctrine;
+  panelOpenState = true;
 
   constructor(private data: DataService) { }
 
