@@ -1,10 +1,18 @@
 .doctrine-container {
-  margin: 2em;
+  width: 90%;
+  margin: auto;
 }
 
 .mat-expansion-panel-header-title {
   display: block !important;
   margin: 0;
+}
+
+.header-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  cursor: pointer;
 }
 
 .doctrine-title {
@@ -14,7 +22,7 @@
 }
 
 .content {
-  padding: 0 2em;
+  padding: 16px;
 }
 
 .title {
@@ -24,16 +32,22 @@
 
 .para {
   font-size: large;
+  margin: 0;
 }
 
 .verses {
   font-size: 80%;
 }
 
+.arrow-up {
+  transform: rotate(270deg);
+}
+
+.arrow-down {
+  transform: rotate(90deg);
+}
+
 @media (max-width: 960px) {
-  .doctrine-container {
-    margin: 0;
-  }
 
   .doctrine-title {
     font-size: medium;
@@ -41,6 +55,6 @@
   }
 
   .content {
-    padding: 0 0.5em;
+    padding: 0.5em;
   }
 }

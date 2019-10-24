@@ -1,11 +1,9 @@
 .home-container {
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
   grid-gap: 4em;
 }
 
-mat-card {
+.full-screen {
   // Full screen minus the toolbar
   height: calc(100vh - 64px);
   padding: 0px;
@@ -18,7 +16,7 @@ mat-card {
 }
 
 @media (max-width: 960px) {
-  mat-card {
+  .full-screen {
     // Full screen minus the toolbar
     height: calc(100vh - 56px);
   }

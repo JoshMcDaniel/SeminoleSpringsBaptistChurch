@@ -1,14 +1,23 @@
-<mat-expansion-panel *ngIf="doctrine" [expanded]="panelOpenState" (opened)="panelOpenState = true"
-    (closed)="panelOpenState = false" class="mat-elevation-z5 doctrine-container">
-    <mat-expansion-panel-header>
-        <mat-panel-title class="doctrine-title">
-            {{doctrine.title}}
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-divider></mat-divider>
-    <div *ngFor="let doc of doctrine.content; let i = index" class="content"
-        [ngStyle]="{'margin': (i === 0) ? '2em 0' : '0 0 2em 0'}">
-        <h2 class="title">{{doc.title}}</h2>
-        <p class="para">{{doc.text}} <span class="verses">( {{doc.verses}} )</span></p>
-    </div>
-</mat-expansion-panel>
+<mat-card class="doctrine-container mat-elevation-z5">
+    <mat-accordion *ngIf="doctrine" [multi]="true" displayMode="flat">
+        <div class="header-container">
+            <h2 class="doctrine-title" (click)="masterToggle()"> {{doctrine.title}} </h2>
+            <mat-icon matTooltip="{{isAllExpanded ? 'Collapse' : 'Expand'}} all" (click)="masterToggle()"
+                class="material-icons" [ngClass]="isAllExpanded ? 'arrow-up' : 'arrow-down'">
+                double_arrow
+            </mat-icon>
+        </div>
+        <mat-expansion-panel *ngFor="let doc of doctrine.content; let i = index" [expanded]="isAllExpanded"
+            class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="doctrine-title">
+                    <h2 class="title">{{doc.title}}</h2>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-divider></mat-divider>
+            <div class="content">
+                <p class="para">{{doc.text}} <span class="verses">( {{doc.verses}} )</span></p>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-card>

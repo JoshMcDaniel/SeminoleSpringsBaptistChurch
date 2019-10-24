@@ -11,14 +11,21 @@ export class DoctrineComponent implements OnInit {
 
   readonly doctrineURL = '../assets/doctrine.json'
   doctrine: Doctrine;
-  panelOpenState = true;
-
+  isAllExpanded = true;
+  
   constructor(private data: DataService) { }
 
   ngOnInit() {
     this.data.getData(this.doctrineURL).subscribe((result: Doctrine) => {
       this.doctrine = result;
     });
+  }
+
+  /**
+   * Toggles the expanded state of all the expansion panels in the template.
+   */
+  masterToggle(): void {
+    this.isAllExpanded = !this.isAllExpanded;
   }
 
 }

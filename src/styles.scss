@@ -12,3 +12,7 @@ p {
   font-family: "Open Sans", sans-serif;
   line-height: 24px;
 }
+
+.mat-expansion-panel-content > .mat-expansion-panel-body {
+  padding: 0 !important;
+}
