@@ -1,5 +1,5 @@
 export interface Result {
-    sliderArray: [
-      {'img': string, 'alt': string, 'text': string }
-    ];
-  }
+  sliderArray: [
+    { 'img': string, 'alt': string, 'text': string }
+  ];
+}

@@ -1,0 +1,18 @@
+{
+  "staffArray": [
+    {
+      "img": "./assets/images/about/pastor.jpg",
+      "alt": "Pastor John McDaniel",
+      "name": "John McDaniel",
+      "position": "Senior Pastor",
+      "description": "Pastor John McDaniel is the senior pastor of our church. With many years of preaching experience and a deep love for the Lord, John consistently teaches the word of God with a passion."
+    },
+    {
+      "img": "./assets/images/about/lewis_martin.jpg",
+      "alt": "Lewis Martin",
+      "name": "Lewis Martin",
+      "position": "Deacon",
+      "description": "One of our LifeGroup teachers, Lewis is always helping us learn more about God."
+    }
+  ]
+}

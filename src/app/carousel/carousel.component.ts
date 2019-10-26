@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { timer } from 'rxjs';
 
@@ -16,8 +16,16 @@ export class CarouselComponent implements OnInit, OnDestroy {
   transitionTime = 5;
   @Input()
   title: string;
-  transform: number;
+  @Input()
+  showText = true;
+  @Input()
+  stickRight = false;
+  @Input()
+  grayScale = false;
+  @Output()
+  currentIndex: EventEmitter<number> = new EventEmitter();
   selectedIndex = 0;
+  transform: number;
   timer$: Observable<number>;
   subscription: Subscription;
 
@@ -25,6 +33,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.setTimer();
+    this.emitCurrentIndex();
   }
 
   setTimer(): void {
@@ -33,12 +42,18 @@ export class CarouselComponent implements OnInit, OnDestroy {
     this.subscription = this.timer$.subscribe(() => {
       const i = this.selectedIndex;
       i < (this.sliderArray.length - 1) ? this.selected(i + 1) : this.selectedIndex = 0;
+      this.emitCurrentIndex();
     });
+  }
+
+  emitCurrentIndex() {
+    this.currentIndex.emit(this.selectedIndex);
   }
 
   selected(x: number): void {
     this.downSelected(x);
     this.selectedIndex = x;
+    this.emitCurrentIndex();
   }
 
   keySelected(x: number): void {

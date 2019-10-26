@@ -1,3 +1,4 @@
+import { take } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Result } from '../carousel/result';
@@ -10,14 +11,15 @@ import { Result } from '../carousel/result';
 })
 export class IntroductionComponent implements OnInit {
 
-  readonly carouselImagesURL = '../assets/data.json';
+  readonly carouselImagesURL = '../assets/carousel-json/carousel-images.json';
   images: object[];
   title = 'Seminole Springs Baptist Church';
 
   constructor(private data: DataService) { }
 
   ngOnInit() {
-    this.data.getData(this.carouselImagesURL).subscribe((result: Result) => {
+    this.data.getData(this.carouselImagesURL).pipe(take(1))
+    .subscribe((result: Result) => {
       this.images = result.sliderArray;
     });
   }

@@ -10,15 +10,18 @@
 
 .header-container {
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
+  justify-items: center;
+  padding: 0.5em 0;
   cursor: pointer;
 }
 
 .doctrine-title {
-  text-align: center;
   font-size: x-large;
-  margin: 0.5em 0;
+  margin: 0;
+}
+
+.expand-collapse-text {
+  margin: 0;
 }
 
 .content {
@@ -27,7 +30,8 @@
 
 .title {
   font-size: x-large;
-  margin-bottom: 8px;
+  text-align: center;
+  margin: 0;
 }
 
 .para {
@@ -39,19 +43,15 @@
   font-size: 80%;
 }
 
-.arrow-up {
-  transform: rotate(270deg);
-}
-
-.arrow-down {
-  transform: rotate(90deg);
-}
-
 @media (max-width: 960px) {
-
   .doctrine-title {
     font-size: medium;
     margin-right: 8px;
+  }
+
+  .title {
+    font-size: large;
+    text-align: left;
   }
 
   .content {

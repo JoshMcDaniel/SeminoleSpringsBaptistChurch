@@ -1,4 +1,7 @@
+import { take } from 'rxjs/operators';
+import { SocialIcon, SocialIconArray } from './social-icons.model';
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-social-icons',
@@ -7,20 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SocialIconsComponent implements OnInit {
 
-  socialIcons = [
-    {
-      socialLinks: '',
-      imageLink: './assets/images/social/facebook_icon.png'
-    },
-    {
-      socialLinks: '',
-      imageLink: './assets/images/social/twitter_icon.png'
-    }
-  ]
+  readonly iconsURL = '../assets/images/social/icons.json'
+  socialIcons: SocialIcon[];
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.getData(this.iconsURL).pipe(take(1))
+      .subscribe((icons: SocialIconArray) => {
+        this.socialIcons = icons.socialIcons;
+      })
   }
 
 }

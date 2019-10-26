@@ -1,12 +1,12 @@
 <mat-card class="doctrine-container mat-elevation-z5">
     <mat-accordion *ngIf="doctrine" [multi]="true" displayMode="flat">
-        <div class="header-container">
-            <h2 class="doctrine-title" (click)="masterToggle()"> {{doctrine.title}} </h2>
-            <mat-icon matTooltip="{{isAllExpanded ? 'Collapse' : 'Expand'}} all" (click)="masterToggle()"
-                class="material-icons" [ngClass]="isAllExpanded ? 'arrow-up' : 'arrow-down'">
-                double_arrow
-            </mat-icon>
+        <div class="header-container" (click)="masterToggle()">
+            <h2 class="doctrine-title"> {{doctrine.title}} </h2>
+            <mat-panel-description class="expand-collapse-text">
+                Click to {{isAllExpanded ? 'Collapse' : 'Expand'}}
+            </mat-panel-description>
         </div>
+        <mat-divider *ngIf="!isAllExpanded"></mat-divider>
         <mat-expansion-panel *ngFor="let doc of doctrine.content; let i = index" [expanded]="isAllExpanded"
             class="mat-elevation-z0">
             <mat-expansion-panel-header>

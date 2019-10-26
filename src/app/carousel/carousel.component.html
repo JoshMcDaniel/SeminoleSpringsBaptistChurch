@@ -1,20 +1,18 @@
-<div class="container">
-  <div class="img-container" *ngFor="let i of sliderArray; let select = index;"
-    [ngClass]="{'selected': select == selectedIndex}">
-    <img src="{{i.img}}" alt="{{i.alt}}">
-  </div>
-
-  <div *ngIf="sliderArray" class="text-area">
-    <h1 class="title">
-      {{title}}
-    </h1>
-    <p class="sub-text">
-      {{sliderArray[selectedIndex].text}}
-    </p>
-  </div>
+<div class="img-container" *ngFor="let i of sliderArray; let select = index;"
+  [ngClass]="{'selected' : select == selectedIndex}">
+  <img src="{{i.img}}" alt="{{i.alt}}" [ngClass]="{'gray-scale' : grayScale}">
 </div>
 
-<div class="slider">
+<div *ngIf="sliderArray && title" class="text-area">
+  <h1 *ngIf="title" class="title">
+    {{title}}
+  </h1>
+  <p *ngIf="showText" class="sub-text">
+    {{sliderArray[selectedIndex].text}}
+  </p>
+</div>
+
+<div class="slider" [ngClass]="{'stick-right' : stickRight}">
   <div class="slide-button-parent-container" *ngFor="let i of sliderArray; let x = index" (click)="selected(x)"
     (keypress)="keySelected(x)">
     <div class="select-box">

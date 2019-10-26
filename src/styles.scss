@@ -8,6 +8,18 @@ body {
   margin: 0px;
 }
 
+.full-screen {
+  // Full screen minus the toolbar
+  height: calc(100vh - 64px);
+  padding: 0px;
+  position: sticky;
+  top: 0;
+}
+
+.footer {
+  height: fit-content !important;
+}
+
 p {
   font-family: "Open Sans", sans-serif;
   line-height: 24px;
@@ -15,4 +27,11 @@ p {
 
 .mat-expansion-panel-content > .mat-expansion-panel-body {
   padding: 0 !important;
+}
+
+@media (max-width: 960px) {
+  .full-screen {
+    // Full screen minus the toolbar
+    height: calc(100vh - 56px);
+  }
 }
