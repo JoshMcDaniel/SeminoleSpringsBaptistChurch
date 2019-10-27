@@ -1,17 +1,20 @@
-<mat-card *ngIf="staffImages && staffImages.length > 0" class="staff-container full-screen">
-    <div class="title-container">
-        <h2 class="title">Meet the Staff</h2>
-        <mat-divider></mat-divider>
-    </div>
-    <mat-card-header>
-        <mat-card-title>{{ staffImages[staffIndex].name }}</mat-card-title>
-        <mat-card-subtitle>{{ staffImages[staffIndex].position }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content class="staff-photo-container">
-        <div class="image-container">
-            <app-carousel [sliderArray]="staffImages" [transitionTime]="10" [showText]="false" [stickRight]="true"
-                (currentIndex)="setIndex($event)"></app-carousel>
+<div *ngIf="staffImages && staffImages.length > 0" class="staff-container full-screen">
+    <!-- <div class="title-container"> -->
+    <h2 class="title">Meet the Staff</h2>
+    <!-- </div> -->
+    <div class="staff-photo-container">
+        <mat-card class="card-container">
+            <div class="image-container">
+                <app-carousel [sliderArray]="staffImages" [transitionTime]="10" [showText]="false" [stickRight]="true"
+                    (currentIndex)="setIndex($event)"></app-carousel>
+            </div>
+            <mat-card-header class="header-container">
+                <mat-card-title>{{ staffImages[staffIndex].name }}</mat-card-title>
+                <mat-card-subtitle>{{ staffImages[staffIndex].position }}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+        <div class="descroption-container">
+            <p class="description">{{ staffImages[staffIndex].description }}</p>
         </div>
-        <p class="description">{{ staffImages[staffIndex].description }}</p>
-    </mat-card-content>
-</mat-card>
+    </div>
+</div>
