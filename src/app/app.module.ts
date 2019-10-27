@@ -24,6 +24,7 @@ import { SocialIconsComponent } from './social-icons/social-icons.component';
 import { ContactSummaryComponent } from './contact-summary/contact-summary.component';
 import { FormsModule } from '@angular/forms';
 import { DoctrineComponent } from './doctrine/doctrine.component';
+import { StaffComponent } from './about/staff/staff.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { DoctrineComponent } from './doctrine/doctrine.component';
     SocialIconsComponent,
     ContactSummaryComponent,
     DoctrineComponent,
+    StaffComponent,
   ],
   imports: [
     BrowserModule,

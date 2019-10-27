@@ -1,0 +1,42 @@
+.staff-container {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+.staff-photo-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.image-container {
+  position: relative;
+}
+
+.title-container {
+  margin: 0 auto 1em auto;
+}
+
+.title {
+  font-size: 5vw;
+  line-height: 90px;
+}
+
+.description {
+  padding: 1em;
+}
+
+@media (max-width: 960px) {
+  .staff-photo-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .title {
+    font-size: 7vw;
+    line-height: 50px;
+  }
+
+  .description {
+    padding: 1em 0;
+  }
+}

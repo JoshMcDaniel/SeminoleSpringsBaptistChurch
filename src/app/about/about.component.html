@@ -1,36 +1,25 @@
 <div class="container">
-  <div class="about-container">
+  <div class="about-container full-screen">
     <div class="text-area">
       <h1 class="title">Who We Are</h1>
       <p class="description">
-        We are a local church with a global vision. Our desire is to make a positive impact on this world with the love
-        and good news of our Lord and Savior Jesus Christ. Are you looking for a church where you'll be loved,
-        encouraged,
-        and challenged? Do you want to hear preaching that teaches you about God's Word in a way that is easy to
-        understand?
-        Do you want to live a meaningful life that is pleasing to God and leaves a positive mark on society? Then look
-        no
-        further! Let us invite you to join us this Sunday. After all, "We're Saving A Place Just For YOU!!!"
+        We are a local church with a global vision.
+        Our desire is to make a positive impact on this world with
+        the love and good news of our Lord and Savior Jesus Christ.
+        Are you looking for a church where you'll be loved, encouraged,
+        and challenged? Do you want to hear preaching that teaches you
+        about God's Word in a way that is easy to understand? Do you want
+        to live a meaningful life that is pleasing to God and leaves a
+        positive mark on society? Then look no further! Let us invite you
+        to join us this Sunday. After all, "We're Saving A Place Just For YOU!!!"
       </p>
     </div>
   </div>
-  <mat-card *ngIf="staffImages && staffImages.length > 0" class="staff-card mat-elevation-z8">
-    <mat-card-header>
-      <mat-card-title>{{ staffImages[staffIndex].name }}</mat-card-title>
-      <mat-card-subtitle>{{ staffImages[staffIndex].position }}</mat-card-subtitle>
-    </mat-card-header>
-    <div class="image-container">
-      <app-carousel [sliderArray]="staffImages" [transitionTime]="10" [showText]="false" [stickRight]="true"
-        (currentIndex)="setIndex($event)"></app-carousel>
-    </div>
-    <mat-card-content>
-      <p>
-        {{ staffImages[staffIndex].description }}
-      </p>
-    </mat-card-content>
-  </mat-card>
+  <!-- Staff Component -->
+  <app-staff></app-staff>
   <div class="spacing-container">
+    <!-- Doctrine Component -->
     <app-doctrine></app-doctrine>
   </div>
-  <app-footer class="footer full-screen"></app-footer>
+  <app-footer class="footer"></app-footer>
 </div>

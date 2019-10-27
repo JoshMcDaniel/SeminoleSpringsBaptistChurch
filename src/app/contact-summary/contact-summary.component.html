@@ -6,6 +6,7 @@
     <form *ngIf="!isFormSubmitted" #f="ngForm" name="contact-form" (ngSubmit)="onSubmit(f)"
       action="https://formspree.io/xleregqr" method="POST">
       <h2 class="form-header">Enter your information</h2>
+      <p class="form-subtext">And one of our staff will contact you</p>
       <div>
         <label for="firstName"><b>First Name</b></label>
         <input type="text" placeholder="Enter First Name" ngModel name="firstName" required />

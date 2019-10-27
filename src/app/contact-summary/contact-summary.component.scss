@@ -33,7 +33,12 @@
 
 .form-header {
   font-size: 4vw;
-  line-height: 90px;
+  line-height: 60px;
+  margin: 0;
+}
+
+.form-subtext {
+  margin-bottom: 1.5em;
 }
 
 input[type="text"],

@@ -11,7 +11,11 @@ body {
 .full-screen {
   // Full screen minus the toolbar
   height: calc(100vh - 64px);
+  min-height: 650px;
   padding: 0px;
+}
+
+.sticky-section {
   position: sticky;
   top: 0;
 }
@@ -22,7 +26,8 @@ body {
 
 p {
   font-family: "Open Sans", sans-serif;
-  line-height: 24px;
+  font-size: 24px;
+  line-height: 30px;
 }
 
 .mat-expansion-panel-content > .mat-expansion-panel-body {
@@ -33,5 +38,16 @@ p {
   .full-screen {
     // Full screen minus the toolbar
     height: calc(100vh - 56px);
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (max-height: 650px) {
+  .sticky-section {
+    position: initial;
   }
 }
