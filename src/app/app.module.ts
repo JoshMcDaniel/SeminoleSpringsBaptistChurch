@@ -25,6 +25,7 @@ import { ContactSummaryComponent } from './contact-summary/contact-summary.compo
 import { FormsModule } from '@angular/forms';
 import { DoctrineComponent } from './doctrine/doctrine.component';
 import { StaffComponent } from './about/staff/staff.component';
+import { SafePipe } from './safe.pipe';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { StaffComponent } from './about/staff/staff.component';
     ContactSummaryComponent,
     DoctrineComponent,
     StaffComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,

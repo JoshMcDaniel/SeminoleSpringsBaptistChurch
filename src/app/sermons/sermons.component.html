@@ -1,26 +1,15 @@
-<!-- <div *ngFor="let video of videos">
-  <div>
-    <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
-      <img [src]="video.snippet.thumbnails.medium.url" alt="..."></a>
-    <div>
-      <h5>
-        <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}
-        </a></h5>
-      <div>{{video.snippet.description.slice(0, 100)}}</div>
-      <p>{{video.snippet.description}}</p>
-    </div>
-  </div>
-</div> -->
-
-<mat-card *ngFor="let video of videos">
+<h1 class="header">Watch the latest Sermon</h1>
+<!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
+<mat-card *ngFor="let video of videos" class="sermons-container">
   <mat-card-header>
     <mat-card-title>
-      {{video.snippet.description.slice(0, 100)}}
+      {{video.snippet.title}}
     </mat-card-title>
+    <mat-card-subtitle>
+      {{video.snippet.description.slice(0, 100)}}
+    </mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
-      <img [src]="video.snippet.thumbnails.medium.url" alt="..."></a>
-    <a href="https://www.youtube.com/watch?v={{video.id.videoId}}">{{video.snippet.title}}</a>
+  <mat-card-content class="content-container">
+    <iframe class="sermon-video" [src]="createURL(video.id.videoId) | safe" frameborder="0" allowFullScreen></iframe>
   </mat-card-content>
 </mat-card>
