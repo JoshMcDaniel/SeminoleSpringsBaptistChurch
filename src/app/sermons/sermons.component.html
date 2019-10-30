@@ -1,15 +1,42 @@
-<h1 class="header">Watch the latest Sermon</h1>
-<!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
-<mat-card *ngFor="let video of videos" class="sermons-container">
-  <mat-card-header>
-    <mat-card-title>
-      {{video.snippet.title}}
-    </mat-card-title>
-    <mat-card-subtitle>
-      {{video.snippet.description.slice(0, 100)}}
-    </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content class="content-container">
-    <iframe class="sermon-video" [src]="createURL(video.id.videoId) | safe" frameborder="0" allowFullScreen></iframe>
-  </mat-card-content>
-</mat-card>
+<div class="sermons-container">
+  <div class="full-screen">
+    <h1 class="header">Watch the latest Sermon</h1>
+    <!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
+    <mat-card *ngFor="let video of videos" class="latest-container">
+      <mat-card-header>
+        <mat-card-title>
+          {{video.snippet.title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{video.snippet.description.slice(0, 100)}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="content-container">
+        <iframe class="sermon-video" [src]="createURL(video.id.videoId) | safe" frameborder="0"
+          allowFullScreen></iframe>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div>
+    <h1 class="header">Watch our most popular Sermons</h1>
+    <div class="most-popular-container">
+      <mat-card *ngFor="let video of mostPopular">
+        <mat-card-header>
+          <mat-card-title>
+            {{video.snippet.title}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{video.snippet.description.slice(0, 100)}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="content-container">
+          <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
+            <img [src]="video.snippet.thumbnails.medium.url" class="sermon-video" alt="{{video.snippet.title}}"></a>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

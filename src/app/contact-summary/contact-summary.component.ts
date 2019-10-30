@@ -1,4 +1,4 @@
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, Validators } from '@angular/forms';
 import { ContactService } from './../contact/contact.service';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
@@ -12,12 +12,18 @@ export class ContactSummaryComponent implements OnInit {
 
   isFormSubmitted = false;
   submittedFirstName: string;
+  email = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(
     private contactService: ContactService
   ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+        this.email.hasError('email') ? 'Not a valid email' :
+            '';
   }
 
   onSubmit(form: NgForm): void {

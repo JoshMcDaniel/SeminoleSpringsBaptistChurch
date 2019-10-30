@@ -1,4 +1,4 @@
-import { Config } from './../../assets/config.model';
+import { apiKeys } from './../../../apiKeys';
 import { take, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -16,17 +16,13 @@ import { DataService } from '../data.service';
 export class YouTubeService {
 
   private readonly BASE_URL = 'https://www.googleapis.com/youtube/v3/search?key=';
-  private readonly configURL = '../assets/config.json';
-  // TODO: Get key from config file instead of embedding it here.
-  private apiKey = 'AIzaSyCT0zgDGm_Q7PtFvUnhTTOi1p57zIWujQk';
+  // TODO: Apply API key restrictions to only the specified domains
+  // https://console.developers.google.com/apis/credentials?project=seminolespringsbaptist
 
-  constructor(
-    private http: HttpClient,
-    private data: DataService
-  ) { }
+  constructor(private http: HttpClient) { }
 
   getVideosForChannel(channel: string, maxResults: number): Observable<Object> {
-    let url = this.BASE_URL + this.apiKey + '&channelId=' +
+    let url = this.BASE_URL + apiKeys.youTubeAPI + '&channelId=' +
       channel + '&order=date&part=snippet &type=video,id&maxResults=' + maxResults
     return this.http.get(url).pipe(
       map((res: Object) => {
@@ -34,16 +30,12 @@ export class YouTubeService {
       }))
   }
 
-  /**
-   * Gets the required API key for the YouTube service.
-   */
-  getApiKey(): string {
-    let apiKey: string;
-    this.data.getData(this.configURL).pipe(take(1))
-      .subscribe((conf: Config) => {
-        console.log('KEY is: ', conf.API_KEY);
-        apiKey = conf.API_KEY;
-      });
-    return apiKey;
+  getMostPopular(channel: string, maxResults: number): Observable<Object> {
+    let url = this.BASE_URL + apiKeys.youTubeAPI + '&channelId=' +
+      channel + '&order=viewCount&part=snippet &type=video,id&maxResults=' + maxResults
+    return this.http.get(url).pipe(
+      map((res: Object) => {
+        return res;
+      }))
   }
 }
