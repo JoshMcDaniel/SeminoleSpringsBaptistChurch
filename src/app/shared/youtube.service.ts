@@ -1,9 +1,8 @@
 import { apiKeys } from './../../../apiKeys';
-import { take, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { DataService } from '../data.service';
 
 /**
  * The YouTubeService retrieves videos from the
