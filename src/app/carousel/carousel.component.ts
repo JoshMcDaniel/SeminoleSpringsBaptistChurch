@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { timer } from 'rxjs';
+import { Result } from './result';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { timer } from 'rxjs';
 export class CarouselComponent implements OnInit, OnDestroy {
 
   @Input()
-  sliderArray: object[];
+  sliderArray: Result[];
   @Input()
   transitionTime = 5;
   @Input()
