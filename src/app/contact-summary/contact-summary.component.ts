@@ -14,9 +14,7 @@ export class ContactSummaryComponent implements OnInit {
   submittedFirstName: string;
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(
-    private contactService: ContactService
-  ) { }
+  constructor(private contactService: ContactService) { }
 
   ngOnInit() { }
 
