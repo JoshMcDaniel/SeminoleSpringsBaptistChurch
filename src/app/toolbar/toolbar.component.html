@@ -3,11 +3,10 @@
     <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
       <mat-icon>menu</mat-icon>
     </button>
-    <!-- <div class="title-image-container"></div> -->
     <span class="menu-spacer"></span>
     <div fxShow="true" fxHide.lt-md>
       <span *ngFor="let item of navItems">
-        <a routerLinkActive="mat-accent" routerLink="{{ item.link }}" mat-button>
+        <a mat-button routerLinkActive="mat-accent" routerLink="{{ item.link }}">
           <span class="nav-items">
             {{ item.title }}
           </span>
@@ -18,9 +17,9 @@
 
   <mat-sidenav-container fxFlexFill>
     <mat-sidenav #sidenav class="sidenav">
-      <mat-nav-list>
+      <mat-nav-list (click)="sidenav.toggle()">
         <div *ngFor="let item of navItems">
-          <a routerLinkActive="active" class="side-nav" routerLink="{{ item.link }}" mat-button>
+          <a mat-button routerLinkActive="active" routerLink="{{ item.link }}" class="side-nav">
             <div class="side-nav-items">
               <mat-icon>{{ item.icon }}</mat-icon>
               <span class="side-nav-title">{{ item.title }}</span>
