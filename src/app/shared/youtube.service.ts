@@ -20,21 +20,21 @@ export class YouTubeService {
 
   constructor(private http: HttpClient) { }
 
-  getVideosForChannel(channel: string, maxResults: number): Observable<Object> {
-    let url = this.BASE_URL + apiKeys.youTubeAPI + '&channelId=' +
-      channel + '&order=date&part=snippet &type=video,id&maxResults=' + maxResults
+  getVideosForChannel(channel: string, maxResults: number): Observable<object> {
+    const url = this.BASE_URL + apiKeys.youTubeAPI + '&channelId=' +
+      channel + '&order=date&part=snippet &type=video,id&maxResults=' + maxResults;
     return this.http.get(url).pipe(
-      map((res: Object) => {
+      map((res: object) => {
         return res;
-      }))
+      }));
   }
 
-  getMostPopular(channel: string, maxResults: number): Observable<Object> {
-    let url = this.BASE_URL + apiKeys.youTubeAPI + '&channelId=' +
-      channel + '&order=viewCount&part=snippet &type=video,id&maxResults=' + maxResults
+  getMostPopular(channel: string, maxResults: number): Observable<object> {
+    const url = this.BASE_URL + apiKeys.youTubeAPI + '&channelId=' +
+      channel + '&order=viewCount&part=snippet &type=video,id&maxResults=' + maxResults;
     return this.http.get(url).pipe(
-      map((res: Object) => {
+      map((res: object) => {
         return res;
-      }))
+      }));
   }
 }

@@ -19,7 +19,7 @@ export class SocialIconsComponent implements OnInit {
     this.data.getData(this.iconsURL).pipe(take(1))
       .subscribe((icons: SocialIconArray) => {
         this.socialIcons = icons.socialIcons;
-      })
+      });
   }
 
 }

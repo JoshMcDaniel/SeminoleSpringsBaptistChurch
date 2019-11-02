@@ -1,9 +1,9 @@
 export interface Doctrine {
-    title: string,
-    content: Content[]
+    title: string;
+    content: Content[];
 }
 
 export interface Content {
-    text: string,
-    verses: string
+    text: string;
+    verses: string;
 }
