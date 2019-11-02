@@ -1,11 +1,15 @@
 .container {
   display: grid;
   grid-gap: 4em;
+  height: 100%;
   width: 100%;
   background-image: url("src/assets/images/about/sanctuary.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-attachment: fixed;
   overflow: auto;
 }
