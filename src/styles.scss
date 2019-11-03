@@ -2,17 +2,88 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,600&display=swap";
 
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+$min_width: 320px;
+$max_width: 1200px;
+$min_font: 16px;
+$max_font: 24px;
+$mod_1: 1.25; // mobile
+$mod_2: 1.55; // desktop
+
+html {
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
+}
+
 html,
 body {
   padding: 0px;
   margin: 0px;
 }
 
+h1 {
+  font-size: $mod_1 * $mod_1 * $mod_1 * $mod_1 * 1rem !important;
+  @include fluid-type(
+    $min_width,
+    $max_width,
+    $mod_1 * $mod_1 * $mod_1 * $min_font,
+    $mod_2 * $mod_2 * $mod_2 * $min_font
+  );
+  line-height: 1em !important;
+}
+
+h2 {
+  font-size: $mod_1 * $mod_1 * $mod_1 * 0.8rem !important;
+  @include fluid-type(
+    $min_width,
+    $max_width,
+    $mod_1 * $mod_1 * $mod_1 * $min_font,
+    $mod_2 * $mod_2 * $mod_2 * $min_font
+  );
+}
+
+h3 {
+  font-size: $mod_1 * $mod_1 * 0.6rem !important;
+  @include fluid-type(
+    $min_width,
+    $max_width,
+    $mod_1 * $mod_1 * $min_font,
+    $mod_2 * $mod_2 * $min_font
+  );
+}
+
 .full-screen {
   // Full screen minus the toolbar
   height: calc(100vh - 64px);
-  min-height: 650px;
   padding: 0px;
+}
+
+.min-view {
+  min-height: 600px;
 }
 
 .sticky-section {
@@ -24,30 +95,59 @@ body {
   height: fit-content !important;
 }
 
+.sidenav {
+  min-width: fit-content !important;
+}
+
 p {
   font-family: "Open Sans", sans-serif;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 2em;
+  line-height: 1.3em;
 }
 
 .mat-expansion-panel-content > .mat-expansion-panel-body {
   padding: 0 !important;
 }
 
-@media (max-width: 960px) {
+@media (max-height: 600px) {
+  .sticky-section {
+    position: relative;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
   .full-screen {
     // Full screen minus the toolbar
     height: calc(100vh - 56px);
   }
 
   p {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1.2em;
+    line-height: 1.5em;
   }
 }
 
-@media (max-height: 650px) {
-  .sticky-section {
-    position: initial;
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  p {
+    font-size: 1.3em;
+    line-height: 1.6em;
   }
+
+  .sidenav {
+    width: 30% !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }

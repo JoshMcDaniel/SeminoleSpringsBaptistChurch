@@ -1,7 +1,7 @@
 <mat-card class="doctrine-container mat-elevation-z5">
     <mat-accordion *ngIf="doctrine" [multi]="true" displayMode="flat">
         <div class="header-container" (click)="masterToggle()">
-            <h2 class="doctrine-title"> {{doctrine.title}} </h2>
+            <h3 class="doctrine-title"> {{doctrine.title}} </h3>
             <mat-panel-description class="expand-collapse-text">
                 Click to {{isAllExpanded ? 'Collapse' : 'Expand'}}
             </mat-panel-description>
@@ -11,7 +11,7 @@
             class="mat-elevation-z0">
             <mat-expansion-panel-header>
                 <mat-panel-title class="doctrine-title">
-                    <h2 class="title">{{doc.title}}</h2>
+                    <h3 class="title">{{doc.title}}</h3>
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-divider></mat-divider>

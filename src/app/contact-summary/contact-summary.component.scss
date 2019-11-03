@@ -77,7 +77,7 @@ input[type="password"]:focus {
   line-height: 30px;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;

@@ -28,8 +28,6 @@
 
 .title {
   text-align: center;
-  font-size: 7vw;
-  line-height: 90px;
   margin: auto;
 }
 
@@ -40,23 +38,17 @@
   padding: 2em;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .text-area {
     padding: 0 1em;
   }
 
   .title {
-    font-size: 9vw;
-    line-height: 50px;
     margin-top: 18px;
   }
 
   .description {
     font-size: medium;
-    padding: 1em;
-  }
-
-  .description {
     padding: 1em;
   }
 }

@@ -4,10 +4,10 @@
 </div>
 
 <div *ngIf="sliderArray && title" class="text-area">
-  <h1 *ngIf="title" class="title">
+  <h1 *ngIf="title">
     {{title}}
   </h1>
-  <p *ngIf="showText" class="sub-text">
+  <p *ngIf="showText">
     {{sliderArray[selectedIndex]['text']}}
   </p>
 </div>

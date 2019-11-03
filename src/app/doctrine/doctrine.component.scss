@@ -29,32 +29,40 @@
 }
 
 .title {
-  font-size: x-large;
   text-align: center;
   margin: 0;
+}
+
+.mat-expansion-panel-header {
+  padding: 0 1em;
 }
 
 .para {
   font-size: large;
   margin: 0;
+  padding: 1em;
 }
 
 .verses {
   font-size: 80%;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .doctrine-title {
     font-size: medium;
     margin-right: 8px;
   }
 
   .title {
-    font-size: large;
     text-align: left;
   }
 
   .content {
-    padding: 0.5em;
+    padding: 0;
+  }
+
+  .para {
+    font-size: medium;
+    padding: 10.5m 0;
   }
 }

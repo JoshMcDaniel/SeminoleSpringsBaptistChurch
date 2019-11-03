@@ -11,7 +11,7 @@
 .header {
   text-align: center;
   font-size: 32px;
-  padding: 2em;
+  padding: 1em;
   color: white;
   background-color: rgba(000, 000, 000, 0.5);
 }
@@ -37,7 +37,7 @@
   grid-gap: 1em;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .most-popular-container {
     display: grid;
     grid-template-columns: 1fr;

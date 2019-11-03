@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SermonsSummaryComponent implements OnInit {
 
+  sermonsLink = '/sermons';
+
   constructor() { }
 
   ngOnInit() {

@@ -18,31 +18,21 @@
   background: rgba(000, 000, 000, 0.5);
 }
 
+.text-area:hover {
+  cursor: pointer;
+}
+
 .title {
-  font-size: 5vw;
-  line-height: 90px;
   margin: auto;
 }
 
 .sub-text {
-  font-size: 2.5vw;
-  line-height: 40px;
   margin: auto;
   text-align: center;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .text-area {
     padding: 1em;
-  }
-
-  .title {
-    font-size: 12vw;
-    line-height: 50px;
-  }
-
-  .sub-text {
-    font-size: 6vw;
-    line-height: 30px;
   }
 }

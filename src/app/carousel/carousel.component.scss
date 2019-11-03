@@ -80,31 +80,9 @@ img {
   transform: rotate(180deg);
 }
 
-.title {
-  vertical-align: middle;
-  font-size: 5.5vw;
-  line-height: 90px;
-  margin: 0;
-}
-
-.sub-text {
-  font-size: 2.5vw;
-  line-height: 50px;
-}
-
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .text-area {
     padding: 0.5em;
-  }
-
-  .title {
-    font-size: 10vw;
-    line-height: 50px;
-  }
-
-  .sub-text {
-    font-size: 5vw;
-    line-height: 30px;
   }
 
   .slider {
