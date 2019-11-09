@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { SocialIconsModule } from '../social-icons/social-icons.module';
 
 
-
 @NgModule({
   declarations: [],
   imports: [

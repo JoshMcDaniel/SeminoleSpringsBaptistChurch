@@ -1,3 +1,4 @@
+import { VideoViewComponent } from './shared/video-view/video-view.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './home/home.module';
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { DoctrineComponent } from './doctrine/doctrine.component';
 import { StaffComponent } from './about/staff/staff.component';
 import { SafePipe } from './safe.pipe';
+import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
 
 
 @NgModule({
@@ -47,7 +49,10 @@ import { SafePipe } from './safe.pipe';
     DoctrineComponent,
     StaffComponent,
     SafePipe,
+    StickyHeaderComponent,
+    VideoViewComponent
   ],
+  entryComponents: [VideoViewComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

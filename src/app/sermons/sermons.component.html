@@ -1,42 +1,43 @@
-<div class="sermons-container">
-  <div>
-    <h1 class="header">Watch the latest Sermon</h1>
-    <!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
-    <mat-card *ngFor="let video of videos" class="latest-container">
-      <mat-card-header>
-        <mat-card-title>
-          {{video.snippet.title}}
-        </mat-card-title>
-        <mat-card-subtitle>
-          {{video.snippet.description.slice(0, 100)}}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content class="content-container">
-        <iframe class="sermon-video" [src]="createURL(video.id.videoId) | safe" frameborder="0"
-          allowFullScreen></iframe>
-      </mat-card-content>
-    </mat-card>
+<mat-accordion [multi]="true" displayMode="flat" *ngIf="quotaReached === false; else error">
+  <div class="header-container" (click)="masterToggle()">
+    <h2 class="title"> Sermons </h2>
+    <mat-panel-description class="expand-collapse-text">
+      Click to {{isAllExpanded ? 'Collapse' : 'Expand'}}
+    </mat-panel-description>
   </div>
-
-  <div>
-    <h1 class="header">Watch our most popular Sermons</h1>
-    <div class="most-popular-container">
-      <mat-card *ngFor="let video of mostPopular">
-        <mat-card-header>
-          <mat-card-title>
-            {{video.snippet.title}}
-          </mat-card-title>
-          <mat-card-subtitle>
-            {{video.snippet.description.slice(0, 100)}}
-          </mat-card-subtitle>
-        </mat-card-header>
+  <mat-expansion-panel *ngIf="mostRecent.length > 0" [expanded]="isAllExpanded" class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="title">
+        <h3 class="title">Most Recent</h3>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngFor="let recent of mostRecent" class="most-recent-container">
+      <img [src]="recent.snippet.thumbnails.medium.url" (click)="viewVideo(recent.id.videoId)" class="sermon-video"
+        alt="{{recent.snippet.title}}">
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel *ngIf="mostPopular.length > 0" [expanded]="isAllExpanded" class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="title">
+        <h3 class="title">Most Viewed</h3>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="popular-container">
+      <mat-card *ngFor="let popular of mostPopular" class="video-thumbnail">
         <mat-card-content class="content-container">
-          <a href="https://www.youtube.com/watch?v={{video.id.videoId}}" target="_blank">
-            <img [src]="video.snippet.thumbnails.medium.url" class="sermon-video" alt="{{video.snippet.title}}"></a>
+          <a href="https://www.youtube.com/watch?v={{popular.id.videoId}}" target="_blank">
+            <img [src]="popular.snippet.thumbnails.medium.url" class="sermon-video" alt="{{popular.snippet.title}}"></a>
         </mat-card-content>
+        <mat-card-header>
+          <mat-card-title>{{popular.snippet.title}}</mat-card-title>
+        </mat-card-header>
       </mat-card>
     </div>
-  </div>
+  </mat-expansion-panel>
+</mat-accordion>
 
-  <app-footer></app-footer>
-</div>
+<ng-template #error>
+  <p>
+    There was an issue getting the sermons :(
+  </p>
+</ng-template>

@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { YouTubeService } from '../shared/youtube.service';
-import { Subscription } from 'rxjs';
+import { Subscription, EMPTY, of } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { VideoViewComponent } from '../shared/video-view/video-view.component';
 
 @Component({
   selector: 'app-sermons',
@@ -10,33 +12,43 @@ import { Subscription } from 'rxjs';
 
 export class SermonsComponent implements OnInit, OnDestroy {
 
-  private readonly channelID: string = 'UC-2UUaVukuu7FgXmOH-jdmg';
-  numberOfVideos = 1;
-  numberOfMostPopular = 3;
-  videos: any[] = [];
+  quotaReached = false;
+  mostRecent: any[] = [];
   mostPopular: any[] = [];
   subscriptions: Subscription[] = [];
+  isAllExpanded = true;
 
-  constructor(private youTubeService: YouTubeService) { }
+  constructor(
+    private youTubeService: YouTubeService,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.subscriptions.push(
-      this.youTubeService.getVideosForChannel(this.channelID, this.numberOfVideos)
+      this.youTubeService.getVideosForChannel()
         .subscribe((list: object) => {
-          for (const element of list['items']) {
-            this.videos.push(element);
+          if (list['error'] === true) {
+            this.quotaReached = true;
+          } else {
+            for (const element of list['items']) {
+              this.mostRecent.push(element);
+            }
           }
         })
-    )
+    );
 
     this.subscriptions.push(
-      this.youTubeService.getMostPopular(this.channelID, this.numberOfMostPopular)
+      this.youTubeService.getMostPopular()
         .subscribe((list: object) => {
-          for (const element of list['items']) {
-            this.mostPopular.push(element);
+          if (list['error'] === true) {
+            this.quotaReached = true;
+          } else {
+            for (const element of list['items']) {
+              this.mostRecent.push(element);
+            }
           }
         })
-    )
+    );
   }
 
   ngOnDestroy() {
@@ -52,6 +64,23 @@ export class SermonsComponent implements OnInit, OnDestroy {
    */
   createURL(link: string): string {
     return `https://www.youtube.com/embed/${link}`;
+  }
+
+  /**
+   * Toggles the expanded state of all the expansion panels in the template.
+   */
+  masterToggle(): void {
+    this.isAllExpanded = !this.isAllExpanded;
+  }
+
+  /**
+   * Opens a Material Dialog with the video spified by the ID in the parameter.
+   * @param videoID The ID of the video to be displayed.
+   */
+  viewVideo(videoID: string): void {
+    this.dialog.open(VideoViewComponent, {
+      data: { id: videoID }
+    });
   }
 
 }
