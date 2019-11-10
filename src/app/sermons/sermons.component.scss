@@ -1,51 +1,52 @@
-.mat-expansion-panel-header {
-  padding: 0 1em;
-}
-
-.mat-expansion-panel-header-title {
-  display: block !important;
-  margin: 0;
-}
-
-.header-container {
+.sermons-container {
   display: grid;
-  justify-items: center;
-  padding: 0.5em 0;
-  cursor: pointer;
+  grid-gap: 4em;
+  background-image: url("src/assets/images/about/sanctuary.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.expand-collapse-text {
-  margin: 0;
+.section-container {
+  background-color: rgba(000, 000, 000, 0.5);
 }
 
-.title {
-  font-size: 2em;
+.header {
   text-align: center;
   margin: 0;
+  padding: 1em;
+  color: white;
+}
+
+.latest-container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 1em auto;
 }
 
 .sermon-video {
   height: 100%;
+  min-height: 300px;
   width: 100%;
-  max-width: 600px;
 }
 
-.most-recent-container {
-  text-align: center;
-  width: 100%;
+.sermon-video:hover {
+  cursor: pointer;
 }
 
 .popular-container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-gap: 1em;
+  padding: 0 1em;
 }
 
-.video-thumbnail {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 1em;
-  height: 6em;
+.popular-card {
+  margin: 1em auto;
 }
 
 .error-container {
@@ -56,7 +57,11 @@
   justify-items: center;
   text-align: center;
   color: #fff;
-  background: rgba(000, 000, 000, 0.4);
+  background-image: url("src/assets/images/about/sanctuary.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .link-button {
@@ -64,23 +69,34 @@
   width: 8em;
 }
 
-@media (max-width: 768px) {
-  .most-popular-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
-  }
+.error-content {
+  background: rgba(000, 000, 000, 0.4);
+  width: calc(100% - 4em);
+  padding: 2em;
 }
 
-@media (min-width: 768px) {
-  .popular-container {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
-    grid-gap: 2em;
+@media (max-width: 768px) {
+  .header {
+    padding: 0.5em;
   }
-  .video-thumbnail {
+
+  .latest-container {
+    margin: 1em;
+  }
+
+  .popular-card {
+    margin: 0;
+  }
+
+  .popular-container {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
-    height: auto;
+    grid-template-rows: repeat(3, 1fr);
+    padding: 1em;
+  }
+
+  .error-content {
+    background: rgba(000, 000, 000, 0.4);
+    width: calc(100% - 2em);
+    padding: 1em;
   }
 }

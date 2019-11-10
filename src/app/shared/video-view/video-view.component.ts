@@ -17,14 +17,13 @@ export class VideoViewComponent implements OnInit {
   ngOnInit() { }
 
   /**
-   * Returns the YouTube embed link with the dynamic link
-   * that is passed in the parameter appended to the end.
+   * Returns the YouTube embed link with the ID that
+   * is passed in the parameter appended to the end.
    * @param id The dynamic ID to be appended to the standard YouTube embed link.
    */
   createURL(id: string): string {
     return `https://www.youtube.com/embed/${id}?autoplay=1`;
   }
-
 
   onNoClick(): void {
     this.dialogRef.close();

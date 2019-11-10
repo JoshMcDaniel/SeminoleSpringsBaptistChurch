@@ -1,8 +1,8 @@
 import { apiKeys } from './../../../apiKeys';
 import { map, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of, EMPTY } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 /**
  * The YouTubeService retrieves videos from the
@@ -51,6 +51,6 @@ export class YouTubeService {
       // The backend returned an unsuccessful response code.
       console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
     }
-    return of({ error: true });
+    return of({});
   }
 }

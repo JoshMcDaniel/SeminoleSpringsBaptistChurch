@@ -13,7 +13,7 @@ import { VideoViewComponent } from '../shared/video-view/video-view.component';
 export class SermonsComponent implements OnInit, OnDestroy {
 
   readonly youTubeChannelLink = 'https://www.youtube.com/channel/UC-2UUaVukuu7FgXmOH-jdmg';
-  quotaReached = false;
+  errorCondition = false;
   mostRecent: any[] = [];
   mostPopular: any[] = [];
   subscriptions: Subscription[] = [];
@@ -28,12 +28,8 @@ export class SermonsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.youTubeService.getVideosForChannel()
         .subscribe((list: object) => {
-          if (list['error'] === true) {
-            this.quotaReached = true;
-          } else {
-            for (const element of list['items']) {
-              this.mostRecent.push(element);
-            }
+          for (const element of list['items']) {
+            this.mostRecent.push(element);
           }
         })
     );
@@ -41,12 +37,8 @@ export class SermonsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.youTubeService.getMostPopular()
         .subscribe((list: object) => {
-          if (list['error'] === true) {
-            this.quotaReached = true;
-          } else {
-            for (const element of list['items']) {
-              this.mostRecent.push(element);
-            }
+          for (const element of list['items']) {
+            this.mostPopular.push(element);
           }
         })
     );
@@ -56,15 +48,6 @@ export class SermonsComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((sub: Subscription) => {
       sub.unsubscribe();
     });
-  }
-
-  /**
-   * Returns the YouTube embed link with the dynamic link
-   * that is passed in the parameter appended to the end.
-   * @param link The dynamic link to be appended to the standard YouTube embed link.
-   */
-  createURL(link: string): string {
-    return `https://www.youtube.com/embed/${link}`;
   }
 
   /**

@@ -1,50 +1,57 @@
-<mat-accordion [multi]="true" displayMode="flat" *ngIf="quotaReached === false; else error">
-  <div class="header-container" (click)="masterToggle()">
-    <h2 class="title"> Sermons </h2>
-    <mat-panel-description class="expand-collapse-text">
-      Click to {{isAllExpanded ? 'Collapse' : 'Expand'}}
-    </mat-panel-description>
+<div class="sermons-container" *ngIf="(mostRecent.length > 0) && (mostPopular.length > 0); else error">
+  <div class="section-container">
+    <h1 class="header">Watch the latest Sermon</h1>
+    <!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
+    <mat-card *ngFor="let recent of mostRecent" class="latest-container">
+      <mat-card-header>
+        <mat-card-title>
+          {{recent.snippet.title}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{recent.snippet.description.slice(0, 100)}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <img [src]="recent.snippet.thumbnails.medium.url" (click)="viewVideo(recent.id.videoId)" class="sermon-video"
+          alt="{{recent.snippet.title}}">
+      </mat-card-content>
+    </mat-card>
   </div>
-  <mat-expansion-panel *ngIf="mostRecent.length > 0" [expanded]="isAllExpanded" class="mat-elevation-z0">
-    <mat-expansion-panel-header>
-      <mat-panel-title class="title">
-        <h3 class="title">Most Recent</h3>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div *ngFor="let recent of mostRecent" class="most-recent-container">
-      <img [src]="recent.snippet.thumbnails.medium.url" (click)="viewVideo(recent.id.videoId)" class="sermon-video"
-        alt="{{recent.snippet.title}}">
-    </div>
-  </mat-expansion-panel>
-  <mat-expansion-panel *ngIf="mostPopular.length > 0" [expanded]="isAllExpanded" class="mat-elevation-z0">
-    <mat-expansion-panel-header>
-      <mat-panel-title class="title">
-        <h3 class="title">Most Viewed</h3>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
+
+  <div class="section-container">
+    <h1 class="header">Watch our most popular Sermons</h1>
     <div class="popular-container">
-      <mat-card *ngFor="let popular of mostPopular" class="video-thumbnail">
-        <mat-card-content class="content-container">
-          <a href="https://www.youtube.com/watch?v={{popular.id.videoId}}" target="_blank">
-            <img [src]="popular.snippet.thumbnails.medium.url" class="sermon-video" alt="{{popular.snippet.title}}"></a>
-        </mat-card-content>
+      <mat-card *ngFor="let popular of mostPopular" class="popular-card">
         <mat-card-header>
-          <mat-card-title>{{popular.snippet.title}}</mat-card-title>
+          <mat-card-title>
+            {{popular.snippet.title}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{popular.snippet.description.slice(0, 100)}}
+          </mat-card-subtitle>
         </mat-card-header>
+        <mat-card-content>
+          <img [src]="popular.snippet.thumbnails.medium.url" (click)="viewVideo(popular.id.videoId)"
+            class="sermon-video" alt="{{popular.snippet.title}}">
+        </mat-card-content>
       </mat-card>
     </div>
-  </mat-expansion-panel>
-</mat-accordion>
+  </div>
+
+</div>
 
 <ng-template #error>
   <div class="error-container">
-    <h1>There was an issue getting the sermons</h1>
-    <p>
-      No worries, you can always find all of our sermons on our YouTube channel by clicking the button below.
-    </p>
-    <a href="{{youTubeChannelLink}}" target="_blank"><button mat-raised-button class="link-button"
-        color="accent">Go</button></a>
+    <div class="error-content">
+      <h1>There was an issue getting the sermons</h1>
+      <p>
+        No worries, you can always find all of our sermons on our YouTube channel by clicking the button below.
+      </p>
+      <a href="{{youTubeChannelLink}}" target="_blank">
+        <button mat-raised-button class="link-button" color="accent">Go</button>
+      </a>
+    </div>
   </div>
 </ng-template>
 
-<app-footer class="footer sticky-section"></app-footer>
+<app-footer></app-footer>
