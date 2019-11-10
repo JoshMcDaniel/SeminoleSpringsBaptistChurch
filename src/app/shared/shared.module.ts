@@ -1,7 +1,6 @@
 import { MaterialModule } from './material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SocialIconsModule } from '../social-icons/social-icons.module';
 
 
 @NgModule({
@@ -10,8 +9,7 @@ import { SocialIconsModule } from '../social-icons/social-icons.module';
     CommonModule
   ],
   exports: [
-    MaterialModule,
-    SocialIconsModule,
+    MaterialModule
   ]
 })
 export class SharedModule { }

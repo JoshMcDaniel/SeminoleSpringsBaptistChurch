@@ -12,6 +12,7 @@ import { VideoViewComponent } from '../shared/video-view/video-view.component';
 
 export class SermonsComponent implements OnInit, OnDestroy {
 
+  readonly youTubeChannelLink = 'https://www.youtube.com/channel/UC-2UUaVukuu7FgXmOH-jdmg';
   quotaReached = false;
   mostRecent: any[] = [];
   mostPopular: any[] = [];

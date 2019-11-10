@@ -48,6 +48,22 @@
   height: 6em;
 }
 
+.error-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  color: #fff;
+  background: rgba(000, 000, 000, 0.4);
+}
+
+.link-button {
+  color: #fff;
+  width: 8em;
+}
+
 @media (max-width: 768px) {
   .most-popular-container {
     display: grid;

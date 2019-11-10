@@ -37,7 +37,14 @@
 </mat-accordion>
 
 <ng-template #error>
-  <p>
-    There was an issue getting the sermons :(
-  </p>
+  <div class="error-container">
+    <h1>There was an issue getting the sermons</h1>
+    <p>
+      No worries, you can always find all of our sermons on our YouTube channel by clicking the button below.
+    </p>
+    <a href="{{youTubeChannelLink}}" target="_blank"><button mat-raised-button class="link-button"
+        color="accent">Go</button></a>
+  </div>
 </ng-template>
+
+<app-footer class="footer sticky-section"></app-footer>

@@ -11,7 +11,6 @@ import { MaterialModule } from './shared/material.module';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ContactComponent } from './contact/contact.component';
-import { SermonsComponent } from './sermons/sermons.component';
 import { AboutComponent } from './about/about.component';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -20,14 +19,14 @@ import { IntroductionComponent } from './introduction/introduction.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SermonsSummaryComponent } from './sermons-summary/sermons-summary.component';
-import { FooterComponent } from './footer/footer.component';
-import { SocialIconsComponent } from './social-icons/social-icons.component';
 import { ContactSummaryComponent } from './contact-summary/contact-summary.component';
 import { FormsModule } from '@angular/forms';
 import { DoctrineComponent } from './doctrine/doctrine.component';
 import { StaffComponent } from './about/staff/staff.component';
 import { SafePipe } from './safe.pipe';
 import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
+import { FooterModule } from './footer/footer.module';
+import { SocialIconsModule } from './social-icons/social-icons.module';
 
 
 @NgModule({
@@ -36,15 +35,12 @@ import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
     HomeComponent,
     ToolbarComponent,
     ContactComponent,
-    SermonsComponent,
     AboutComponent,
     NotFoundComponent,
     AboutSummaryComponent,
     IntroductionComponent,
     CarouselComponent,
     SermonsSummaryComponent,
-    FooterComponent,
-    SocialIconsComponent,
     ContactSummaryComponent,
     DoctrineComponent,
     StaffComponent,
@@ -63,6 +59,8 @@ import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
     SharedModule,
     FlexLayoutModule,
     FormsModule,
+    FooterModule,
+    SocialIconsModule,
     RouterModule.forRoot([
       {
         path: '', component: HomeComponent
@@ -71,7 +69,9 @@ import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
         path: 'home', component: HomeComponent
       },
       {
-        path: 'sermons', component: SermonsComponent
+        // Lazily loaded to help limit the number of calls to the YouTube API.
+        path: 'sermons',
+        loadChildren: () => import('./sermons/sermons.module').then(m => m.SermonsModule)
       },
       {
         path: 'about', component: AboutComponent
