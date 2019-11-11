@@ -1,6 +1,7 @@
 <div class="video-container">
   <div class="content-container">
-    <iframe class="video" [src]="createURL(data.id) | safe" frameborder="0" allow='autoplay' allowFullScreen></iframe>
+    <iframe class="video" [src]="createURL(data['id']) | safe" frameborder="0" allow='autoplay'
+      allowFullScreen></iframe>
     <div class="close-button-container">
       <button mat-button mat-dialog-close="closed" class="close-button" color="accent">
         close

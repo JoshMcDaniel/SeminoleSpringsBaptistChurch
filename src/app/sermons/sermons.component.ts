@@ -52,13 +52,6 @@ export class SermonsComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Toggles the expanded state of all the expansion panels in the template.
-   */
-  masterToggle(): void {
-    this.isAllExpanded = !this.isAllExpanded;
-  }
-
-  /**
    * Opens a Material Dialog with the video spified by the ID in the parameter.
    * @param videoID The ID of the video to be displayed.
    */
