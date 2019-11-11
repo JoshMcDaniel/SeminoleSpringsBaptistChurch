@@ -25,7 +25,6 @@ import { DoctrineComponent } from './doctrine/doctrine.component';
 import { StaffComponent } from './about/staff/staff.component';
 import { SafePipe } from './safe.pipe';
 import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
-import { FooterModule } from './footer/footer.module';
 import { SocialIconsModule } from './social-icons/social-icons.module';
 
 
@@ -59,7 +58,6 @@ import { SocialIconsModule } from './social-icons/social-icons.module';
     SharedModule,
     FlexLayoutModule,
     FormsModule,
-    FooterModule,
     SocialIconsModule,
     RouterModule.forRoot([
       {

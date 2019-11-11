@@ -1,10 +1,4 @@
 <div class="social">
-  <a
-    mat-fab
-    *ngFor="let icon of socialIcons"
-    [ngStyle]="{ 'background-image': 'url(' + icon.imageLink + ')' }"
-    class="icon"
-    href="{{ icon.socialLink }}"
-    target="_blank"
-  ></a>
+  <a mat-fab *ngFor="let icon of socialIcons" [ngStyle]="{ 'background-image': 'url(' + icon.imageLink + ')' }"
+    class="icon" href="{{ icon.socialLink }}" target="_blank"></a>
 </div>
