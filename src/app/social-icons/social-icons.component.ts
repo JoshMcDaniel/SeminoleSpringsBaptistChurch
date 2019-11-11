@@ -10,7 +10,7 @@ import { DataService } from '../data.service';
 })
 export class SocialIconsComponent implements OnInit {
 
-  readonly iconsURL = '../assets/images/social/icons.json'
+  readonly iconsURL = '../assets/images/social/icons.json';
   socialIcons: SocialIcon[];
 
   constructor(private data: DataService) { }

@@ -1,6 +1,7 @@
+import { YouTubeResponse } from './../shared/video-view/video-view.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { YouTubeService } from '../shared/youtube.service';
-import { Subscription, EMPTY, of } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { VideoViewComponent } from '../shared/video-view/video-view.component';
 
@@ -27,8 +28,8 @@ export class SermonsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions.push(
       this.youTubeService.getVideosForChannel()
-        .subscribe((list: object) => {
-          for (const element of list['items']) {
+        .subscribe((list: YouTubeResponse) => {
+          for (const element of list.items) {
             this.mostRecent.push(element);
           }
         })
@@ -36,8 +37,8 @@ export class SermonsComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(
       this.youTubeService.getMostPopular()
-        .subscribe((list: object) => {
-          for (const element of list['items']) {
+        .subscribe((list: YouTubeResponse) => {
+          for (const element of list.items) {
             this.mostPopular.push(element);
           }
         })

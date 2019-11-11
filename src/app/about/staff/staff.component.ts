@@ -20,7 +20,7 @@ export class StaffComponent implements OnInit {
     this.data.getData(this.staffURL).pipe(take(1))
       .subscribe((results: StaffArray) => {
         this.staffImages = results.staffArray;
-      })
+      });
   }
 
   /**

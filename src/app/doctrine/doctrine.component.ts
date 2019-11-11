@@ -9,7 +9,7 @@ import { DataService } from '../data.service';
 })
 export class DoctrineComponent implements OnInit {
 
-  readonly doctrineURL = '../assets/doctrine.json'
+  readonly doctrineURL = '../assets/doctrine.json';
   doctrine: Doctrine;
   isAllExpanded = true;
 
