@@ -2,27 +2,27 @@
   "sliderArray": [
     {
       "img": "./assets/images/carousel/church.jpg",
-      "alt": "",
+      "alt": "Church image",
       "text": "We're saving a place just for you!"
     },
     {
       "img": "./assets/images/carousel/study.jpg",
-      "alt": "",
+      "alt": "Study the Bible image",
       "text": "Join us as we study the word of God together"
     },
     {
       "img": "./assets/images/carousel/choir.jpg",
-      "alt": "",
-      "text": "Real worship"
+      "alt": "Praise team image",
+      "text": "Praise God in song with our praise team"
     },
     {
       "img": "./assets/images/carousel/friends.jpg",
-      "alt": "",
+      "alt": "Community image",
       "text": "Be a part of a loving community"
     },
     {
       "img": "./assets/images/carousel/holdingBible.jpg",
-      "alt": "",
+      "alt": "holding the Bible image",
       "text": "Let's do something bigger than ourselves"
     }
   ]
