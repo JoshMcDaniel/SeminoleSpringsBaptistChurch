@@ -1,37 +1,6 @@
 <div class="container">
-  <h2 class="title">
-    Want to learn more about SSBC?
-  </h2>
-  <div class="form-container">
-    <form *ngIf="!isFormSubmitted" #f="ngForm" name="contact-form" (ngSubmit)="onSubmit(f)"
-      action="https://formspree.io/xleregqr" method="POST">
-      <h2 class="form-header">Enter your information</h2>
-      <p class="form-subtext">And one of our staff will contact you</p>
-      <div>
-        <label for="firstName"><b>First Name</b></label>
-        <input type="text" placeholder="Enter First Name" ngModel name="firstName" required />
-      </div>
-      <div>
-        <label for="lastName"><b>Last Name</b></label>
-        <input type="text" placeholder="Enter Last Name" ngModel name="lastName" required />
-      </div>
-      <div>
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" ngModel name="_replyto" required />
-      </div>
-      <div>
-        <label for="phoneNumber"><b>Phone Number</b></label>
-        <input type="text" placeholder="Enter Phone Number" ngModel name="phoneNumber" />
-      </div>
-      <button mat-raised-button color="accent" type="submit" value="Submit" [disabled]="!f.form.valid" class="btn">
-        Submit
-      </button>
-    </form>
-    <div *ngIf="isFormSubmitted">
-      <h2 class="submtted-title">Thanks for reaching out{{(submittedFirstName) ? submittedFirstName : null}}!</h2>
-      <p class="submitted-message">
-        One of our staff members will contact you very soon with more information.
-      </p>
-    </div>
+  <div class="text-area" routerLink="{{ contactLink }}">
+    <h1 class="title">Want to learn more about SSBC?</h1>
+    <p class="sub-text">Contact Us</p>
   </div>
 </div>

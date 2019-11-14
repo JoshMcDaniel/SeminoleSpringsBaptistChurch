@@ -20,12 +20,13 @@ export class ContactService {
 
   submitForm(formData: NgForm): Observable<any> {
     const v = formData.value;
-    const data = `firstName=${v.firstName}&lastName=${v.lastName}&email=${v.email}&phoneNumber=${v.phoneNumber}`;
+    const data = `firstName=${v.firstName}&lastName=${v.lastName}&email=${v._replyto}&phoneNumber=${v.phoneNumber}`;
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
+    console.log('SUBMITTING: ', data);
     return this.http.post<any>(this.endPointURL, data, httpOptions)
       .pipe(
         map(response => {
@@ -45,7 +46,7 @@ export class ContactService {
       // The response body may contain clues as to what went wrong,
       console.error(
         `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
+        `body was:` + JSON.stringify(error));
     }
     // return an observable with a user-facing error message
     return throwError(

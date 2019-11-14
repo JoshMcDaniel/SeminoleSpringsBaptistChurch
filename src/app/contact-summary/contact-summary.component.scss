@@ -8,74 +8,26 @@
   background-size: cover;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 .title {
-  font-size: 8vw;
-  line-height: 120px;
   margin: auto;
   padding: 0.5em;
   text-align: center;
   color: white;
 }
 
-.form-container {
-  display: grid;
-  align-content: space-around;
-  margin: 2em;
-  max-width: 500px;
+.text-area {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
   padding: 2em;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  background: rgba(000, 000, 000, 0.5);
 }
 
-.form-header {
-  font-size: 4vw;
-  line-height: 60px;
-  margin: 0;
-}
-
-.form-subtext {
-  margin-bottom: 1.5em;
-}
-
-input[type="text"],
-input[type="password"] {
-  font-size: 1em;
-  width: 100%;
-  padding: 1em;
-  margin: 0.5em 0 1em 0;
-  border: none;
-  background: white;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-  background-color: lightgray;
-  outline: none;
-}
-
-.btn {
-  padding: 0.5em;
+.text-area:hover {
   cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.btn:hover {
-  opacity: 1;
-}
-
-.submtted-title {
-  font-size: 4vw;
-  line-height: 50px;
-}
-
-.submitted-message {
-  font-size: 2vw;
-  line-height: 30px;
 }
 
 @media (max-width: 768px) {
@@ -87,32 +39,5 @@ input[type="password"]:focus {
 
   .title {
     line-height: 40px;
-  }
-
-  .form-container {
-    margin: 0 auto;
-    height: 80%;
-    min-height: fit-content;
-    width: 100%;
-  }
-
-  .form-header {
-    font-size: 8vw;
-    line-height: 40px;
-  }
-
-  .submtted-title {
-    font-size: 10vw;
-    text-align: center;
-  }
-
-  .submitted-message {
-    font-size: 7vw;
-  }
-
-  input[type="text"],
-  input[type="password"] {
-    padding: 0.5em;
-    margin: 0.5em 0 1em 0;
   }
 }
