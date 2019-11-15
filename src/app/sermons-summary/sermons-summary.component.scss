@@ -22,17 +22,8 @@
   cursor: pointer;
 }
 
-.title {
-  margin: auto;
-}
-
-.sub-text {
-  margin: auto;
-  text-align: center;
-}
-
 @media (max-width: 768px) {
   .text-area {
-    padding: 1em;
+    padding: 26px 1em 1em 1em;
   }
 }

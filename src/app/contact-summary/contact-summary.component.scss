@@ -1,18 +1,10 @@
 .container {
+  text-align: center;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto;
   background-image: url("src/assets/images/contact/contactUs.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.title {
-  margin: auto;
-  padding: 0.5em;
-  text-align: center;
-  color: white;
 }
 
 .text-area {
@@ -20,7 +12,7 @@
   top: 40%;
   left: 0;
   right: 0;
-  padding: 2em;
+  padding: 26px 2em 2em 2em;
   color: white;
   text-align: center;
   background: rgba(000, 000, 000, 0.5);
@@ -31,13 +23,7 @@
 }
 
 @media (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    padding: 0;
-  }
-
-  .title {
-    line-height: 40px;
+  .text-area {
+    padding: 26px 1em 1em 1em;
   }
 }

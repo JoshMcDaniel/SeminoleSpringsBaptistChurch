@@ -5,7 +5,7 @@
         <h1>Want to learn more about SSBC?</h1>
         <p>
           We would love to hear from you!
-          Please fill out the form below and we will get back to you as soon as possible.
+          Please fill out the form below and one of our staff will contact you.
         </p>
       </div>
       <ng-template #submittedText class="message submitted-text">
@@ -19,7 +19,6 @@
       <!-- TODO: Remove action and method for FormSpree when a back end is created to handle contact requests -->
       <form #f="ngForm" name="contact_us" (ngSubmit)="onSubmit(f)" action="https://formspree.io/xleregqr" method="POST">
         <h2>Enter your information</h2>
-        <p class="form-subtext">And one of our staff will contact you</p>
         <div>
           <label for="firstName"><b>First Name</b></label>
           <input type="text" placeholder="Enter First Name" ngModel name="firstName" required />
