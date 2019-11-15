@@ -79,7 +79,8 @@ h3 {
 .full-screen {
   position: relative;
   // Full screen minus the toolbar
-  height: calc(100vh - 64px);
+  // height: calc(100vh - 64px);
+  height: 100vh;
   padding: 0px;
 }
 
@@ -114,6 +115,10 @@ p {
   padding: 0 !important;
 }
 
+.mat-menu-panel {
+ width: 50vw;
+}
+
 @media (max-height: 600px) {
   .sticky-section {
     position: relative;
@@ -122,10 +127,10 @@ p {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  .full-screen {
-    // Full screen minus the toolbar
-    height: calc(100vh - 56px);
-  }
+  // .full-screen {
+  //   // Full screen minus the toolbar
+  //   height: calc(100vh - 56px);
+  // }
 
   p {
     font-size: 1.2em;

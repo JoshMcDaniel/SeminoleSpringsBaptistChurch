@@ -45,7 +45,11 @@ enum Direction {
     ])
   ]
 })
+
+// For reference
+// https://stackblitz.com/github/zetsnotdead/ng-reactive-sticky-header?file=src%2Fapp%2Fapp.component.ts
 export class StickyHeaderComponent implements AfterViewInit {
+
   private isVisible = true;
   navItems: NavItems[] = [
     { title: 'Home', icon: 'home', link: '/home' },
