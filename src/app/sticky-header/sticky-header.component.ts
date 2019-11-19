@@ -1,4 +1,4 @@
-import { NavItems } from './../toolbar/toolbar.model';
+import { NavItems } from './sticky-header.model';
 import {
   animate,
   state,
@@ -6,8 +6,8 @@ import {
   transition,
   trigger
 } from '@angular/animations';
-import { AfterViewInit, Component, HostBinding } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { AfterViewInit, Component, HostBinding, OnDestroy } from '@angular/core';
+import { Subscription, fromEvent } from 'rxjs';
 import {
   distinctUntilChanged,
   filter,
@@ -48,14 +48,15 @@ enum Direction {
 
 // For reference
 // https://stackblitz.com/github/zetsnotdead/ng-reactive-sticky-header?file=src%2Fapp%2Fapp.component.ts
-export class StickyHeaderComponent implements AfterViewInit {
+export class StickyHeaderComponent implements AfterViewInit, OnDestroy {
 
-  private isVisible = true;
+  subscriptions: Subscription[] = [];
+  isVisible = true;
   navItems: NavItems[] = [
     { title: 'Home', icon: 'home', link: '/home' },
     { title: 'Sermons', icon: 'book', link: '/sermons' },
     { title: 'About Us', icon: 'help', link: '/about' },
-    { title: 'Contact Us', icon: 'question_answer', link: 'contact' }
+    { title: 'Contact Us', icon: 'question_answer', link: '/contact' }
   ];
 
   @HostBinding('@toggle')
@@ -81,7 +82,13 @@ export class StickyHeaderComponent implements AfterViewInit {
       filter(direction => direction === Direction.Down)
     );
 
-    goingUp$.subscribe(() => (this.isVisible = true));
-    goingDown$.subscribe(() => (this.isVisible = false));
+    this.subscriptions.push(goingUp$.subscribe(() => (this.isVisible = true)));
+    this.subscriptions.push(goingDown$.subscribe(() => (this.isVisible = false)));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => {
+      sub.unsubscribe();
+    });
   }
 }

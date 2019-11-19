@@ -1,7 +1,6 @@
 import { VideoViewComponent } from './shared/video-view/video-view.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
-import { HomeModule } from './home/home.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +24,6 @@ import { DoctrineComponent } from './doctrine/doctrine.component';
 import { StaffComponent } from './about/staff/staff.component';
 import { SafePipe } from './safe.pipe';
 import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
-import { SocialIconsModule } from './social-icons/social-icons.module';
 
 
 @NgModule({
@@ -54,11 +52,9 @@ import { SocialIconsModule } from './social-icons/social-icons.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HomeModule,
     SharedModule,
     FlexLayoutModule,
     FormsModule,
-    SocialIconsModule,
     RouterModule.forRoot([
       {
         path: '', component: HomeComponent

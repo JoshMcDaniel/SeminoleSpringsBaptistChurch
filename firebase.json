@@ -1,11 +1,6 @@
 {
   "hosting": {
     "public": "dist/SeminoleSpringsBaptistChurch",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
     "rewrites": [
       {
         "source": "**",

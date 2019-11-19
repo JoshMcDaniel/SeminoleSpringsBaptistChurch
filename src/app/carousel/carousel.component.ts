@@ -12,7 +12,7 @@ import { Result } from './result';
 export class CarouselComponent implements OnInit, OnDestroy {
 
   @Input()
-  sliderArray: Result[];
+  sliderArray: Result[] = [];
   @Input()
   transitionTime = 5;
   @Input()
