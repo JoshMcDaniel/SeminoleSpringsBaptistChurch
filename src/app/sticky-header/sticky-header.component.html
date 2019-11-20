@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="container">
+<mat-toolbar color="primary" class="container" *ngIf="navItems">
   <!-- Mobile view menu -->
   <button mat-icon-button [matMenuTriggerFor]="menu" fxShow="true" fxHide.gt-sm aria-label="Navigation button">
     <mat-icon>menu</mat-icon>
@@ -6,10 +6,10 @@
   <mat-menu #menu="matMenu">
     <mat-nav-list>
       <div *ngFor="let item of navItems">
-        <a mat-button routerLinkActive="mat-accent" routerLink="{{ item.link }}" class="sidenav-items">
+        <a mat-button routerLinkActive="mat-accent" routerLink="{{ item?.link }}" class="sidenav-items">
           <div class="nav-item-container">
-            <mat-icon>{{ item.icon }}</mat-icon>
-            <span class="side-nav-title">{{ item.title }}</span>
+            <mat-icon>{{ item?.icon }}</mat-icon>
+            <span class="side-nav-title">{{ item?.title }}</span>
           </div>
         </a>
       </div>
@@ -20,9 +20,9 @@
   <span class="menu-spacer"></span>
   <div fxShow="true" fxHide.lt-md>
     <span *ngFor="let item of navItems">
-      <a mat-button routerLinkActive="mat-accent" routerLink="{{ item.link }}">
+      <a mat-button routerLinkActive="mat-accent" routerLink="{{ item?.link }}">
         <span class="nav-items">
-          {{ item.title }}
+          {{ item?.title }}
         </span>
       </a>
     </span>

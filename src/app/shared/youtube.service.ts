@@ -37,8 +37,8 @@ export class YouTubeService {
     const url = this.BASE_URL + apiKeys.youTubeAPI + '&channelId=' +
       this.channelID + '&order=viewCount&part=snippet &type=video,id&maxResults=' + this.numberOfMostPopular;
     return this.http.get(url).pipe(
-      map((res: object) => {
-        return res;
+      map((response: object) => {
+        return response;
       }),
       catchError(error => this.errorHandler(error)));
   }
