@@ -19,6 +19,7 @@ export class SermonsComponent implements OnInit, OnDestroy {
   mostPopular: any[] = [];
   subscriptions: Subscription[] = [];
   isAllExpanded = true;
+  isFetchingVideos = true;
 
   constructor(
     private youTubeService: YouTubeService,
@@ -32,6 +33,7 @@ export class SermonsComponent implements OnInit, OnDestroy {
           for (const element of list.items) {
             this.mostRecent.push(element);
           }
+          this.isFetchingVideos = false;
         })
     );
 

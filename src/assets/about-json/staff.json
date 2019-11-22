@@ -13,6 +13,27 @@
       "name": "Lewis Martin",
       "position": "Deacon",
       "description": "One of our LifeGroup teachers, Lewis is always helping us learn more about God."
+    },
+    {
+      "img": "./assets/images/about/head_of_deacons.jpg",
+      "alt": "Head of Deacons",
+      "name": "Mike",
+      "position": "Head of Deacons",
+      "description": "Mike is the Head of Deacons. He is always looking to share God's love with those around him."
+    },
+    {
+      "img": "./assets/images/about/deacon_1.jpg",
+      "alt": "John",
+      "name": "John",
+      "position": "Deacon",
+      "description": "Deacon John sharing God's word with us."
+    },
+    {
+      "img": "./assets/images/about/worship_leader.jpg",
+      "alt": "Worship Leader",
+      "name": "Chad Fernandes",
+      "position": "Worship Leader",
+      "description": "Our Praise and Worship leader, Chad, leads the congregation in songs of praise to the Lord."
     }
   ]
 }

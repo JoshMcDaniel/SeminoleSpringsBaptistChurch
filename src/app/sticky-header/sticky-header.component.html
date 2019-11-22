@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="container" *ngIf="navItems">
+<mat-toolbar color="primary" class="container" *ngIf="navItems" [ngClass]="{'invisible' : !isVisible}">
   <!-- Mobile view menu -->
   <button mat-icon-button [matMenuTriggerFor]="menu" fxShow="true" fxHide.gt-sm aria-label="Navigation button">
     <mat-icon>menu</mat-icon>

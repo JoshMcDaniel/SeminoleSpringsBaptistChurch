@@ -1,42 +1,52 @@
-<div class="sermons-container" *ngIf="(mostRecent.length > 0) && (mostPopular.length > 0); else error">
-  <div class="section-container">
-    <h1 class="header">Watch the latest Sermon</h1>
-    <!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
-    <mat-card *ngFor="let recent of mostRecent" class="latest-container">
-      <mat-card-header>
-        <mat-card-title>
-          {{recent.snippet.title}}
-        </mat-card-title>
-        <mat-card-subtitle>
-          {{recent.snippet.description.slice(0, 100)}}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <img [src]="recent.snippet.thumbnails.medium.url" (click)="viewVideo(recent.id.videoId)" class="sermon-video"
-          alt="{{recent.snippet.title}}">
-      </mat-card-content>
-    </mat-card>
+<div class="sermons-container">
+
+  <div *ngIf="isFetchingVideos; else doneFetching" class="loading-indicator">
+    Retrieving sermons...
+    <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
   </div>
 
-  <div class="section-container">
-    <h1 class="header">Watch our most popular Sermons</h1>
-    <div class="popular-container">
-      <mat-card *ngFor="let popular of mostPopular" class="popular-card">
-        <mat-card-header>
-          <mat-card-title>
-            {{popular.snippet.title}}
-          </mat-card-title>
-          <mat-card-subtitle>
-            {{popular.snippet.description.slice(0, 100)}}
-          </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <img [src]="popular.snippet.thumbnails.medium.url" (click)="viewVideo(popular.id.videoId)"
-            class="sermon-video" alt="{{popular.snippet.title}}">
-        </mat-card-content>
-      </mat-card>
+  <ng-template #doneFetching>
+    <div *ngIf="(mostRecent.length > 0) && (mostPopular.length > 0); else error">
+      <div class="section-container">
+        <h1 class="header">Watch the latest Sermon</h1>
+        <!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
+        <mat-card *ngFor="let recent of mostRecent" class="latest-container">
+          <mat-card-header>
+            <mat-card-title>
+              {{recent.snippet.title}}
+            </mat-card-title>
+            <mat-card-subtitle>
+              {{recent.snippet.description.slice(0, 100)}}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <img [src]="recent.snippet.thumbnails.medium.url" (click)="viewVideo(recent.id.videoId)"
+              class="sermon-video" alt="{{recent.snippet.title}}">
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="section-container">
+        <h1 class="header">Watch our most popular Sermons</h1>
+        <div class="popular-container">
+          <mat-card *ngFor="let popular of mostPopular" class="popular-card">
+            <mat-card-header>
+              <mat-card-title>
+                {{popular.snippet.title}}
+              </mat-card-title>
+              <mat-card-subtitle>
+                {{popular.snippet.description.slice(0, 100)}}
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <img [src]="popular.snippet.thumbnails.medium.url" (click)="viewVideo(popular.id.videoId)"
+                class="sermon-video" alt="{{popular.snippet.title}}">
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
     </div>
-  </div>
+  </ng-template>
 </div>
 
 <!-- If no sermons were loaded -->
