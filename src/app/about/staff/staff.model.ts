@@ -2,6 +2,9 @@ export interface StaffArray {
   staffArray: [
     StaffImage
   ];
+  deaconArray: [
+    StaffImage
+  ];
 }
 
 export interface StaffImage {

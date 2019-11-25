@@ -1,7 +1,5 @@
-import { take } from 'rxjs/operators';
-import { StaffImage, StaffArray } from './staff.model';
-import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/data.service';
+import { StaffImage } from './staff.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-staff',
@@ -10,18 +8,15 @@ import { DataService } from 'src/app/data.service';
 })
 export class StaffComponent implements OnInit {
 
-  readonly staffURL = '../assets/about-json/staff.json';
-  staffImages: StaffImage[];
-  staffIndex: number;
+  @Input()
+  title = '';
+  @Input()
+  staffImages: StaffImage[] = [];
+  staffIndex = 0;
 
-  constructor(private data: DataService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.data.getData(this.staffURL).pipe(take(1))
-      .subscribe((results: StaffArray) => {
-        this.staffImages = results.staffArray;
-      });
-  }
+  ngOnInit() { }
 
   /**
    * Sets the staffIndex to keep it synchronized with

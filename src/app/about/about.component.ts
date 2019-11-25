@@ -1,4 +1,7 @@
+import { take } from 'rxjs/operators';
+import { StaffArray, StaffImage } from './staff/staff.model';
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-about',
@@ -7,8 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  readonly staffURL = '../assets/about-json/staff.json';
+  staffImages: StaffImage[];
+  deaconImages: StaffImage[];
+  staffTitle = 'Meet the Staff';
+  deaconTItle = 'Meet our Deacons';
 
-  ngOnInit() { }
+  constructor(private data: DataService) { }
+
+  ngOnInit() {
+    this.data.getData(this.staffURL).pipe(take(1))
+      .subscribe((results: StaffArray) => {
+        this.staffImages = results.staffArray;
+        this.deaconImages = results.deaconArray;
+      });
+  }
 
 }
