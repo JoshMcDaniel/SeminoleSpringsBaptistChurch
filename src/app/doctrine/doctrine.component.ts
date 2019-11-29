@@ -11,7 +11,7 @@ export class DoctrineComponent implements OnInit {
 
   readonly doctrineURL = '../assets/doctrine.json';
   doctrine: Doctrine;
-  isAllExpanded = true;
+  isAllExpanded = false;
 
   constructor(private data: DataService) { }
 
