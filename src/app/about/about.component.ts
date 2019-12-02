@@ -11,7 +11,7 @@ import { DataService } from '../data.service';
 export class AboutComponent implements OnInit {
 
   readonly staffURL = '../assets/about-json/staff.json';
-  staffImages: StaffImage[];
+  staffImages: StaffImage[] = [];
   staffTitle = 'Meet the Staff';
 
   constructor(private data: DataService) { }
@@ -22,5 +22,4 @@ export class AboutComponent implements OnInit {
         this.staffImages = results.staffArray;
       });
   }
-
 }

@@ -1,6 +1,6 @@
-import { DialogData } from './view-video.model';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { DialogData } from './video-view.model';
 
 @Component({
   selector: 'app-video-view',

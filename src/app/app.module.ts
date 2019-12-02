@@ -22,9 +22,7 @@ import { ContactSummaryComponent } from './contact-summary/contact-summary.compo
 import { FormsModule } from '@angular/forms';
 import { DoctrineComponent } from './doctrine/doctrine.component';
 import { StaffComponent } from './about/staff/staff.component';
-import { SafePipe } from './safe.pipe';
 import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
-
 
 @NgModule({
   declarations: [
@@ -41,9 +39,8 @@ import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
     ContactSummaryComponent,
     DoctrineComponent,
     StaffComponent,
-    SafePipe,
     StickyHeaderComponent,
-    VideoViewComponent
+    VideoViewComponent,
   ],
   entryComponents: [VideoViewComponent],
   imports: [

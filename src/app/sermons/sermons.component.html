@@ -1,6 +1,5 @@
 <!-- This approach allows a fixed background image on movile browsers -->
 <div class="background"></div>
-
 <div class="sermons-container">
 
   <div *ngIf="isFetchingVideos; else doneFetching" class="loading-indicator">
@@ -9,17 +8,17 @@
   </div>
 
   <ng-template #doneFetching>
-    <div *ngIf="(mostRecent.length > 0) && (mostPopular.length > 0); else error">
-      <div class="section-container">
+    <div *ngIf="(mostRecent.length > 0) || (mostPopular.length > 0); else error">
+      <div *ngIf="mostRecent.length > 0" class="section-container">
         <h1 class="header">Watch the latest Sermon</h1>
         <!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
         <mat-card *ngFor="let recent of mostRecent" class="latest-container">
           <mat-card-header>
             <mat-card-title>
-              {{recent.snippet.title}}
+              {{recent.snippet.title | decoder}}
             </mat-card-title>
             <mat-card-subtitle>
-              {{recent.snippet.description.slice(0, 100)}}
+              {{recent.snippet.description.slice(0, 100) | decoder}}
             </mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
@@ -29,16 +28,16 @@
         </mat-card>
       </div>
 
-      <div class="section-container">
+      <div *ngIf="mostPopular.length > 0" class="section-container">
         <h1 class="header">Watch our most popular Sermons</h1>
         <div class="popular-container">
           <mat-card *ngFor="let popular of mostPopular" class="popular-card">
             <mat-card-header>
               <mat-card-title>
-                {{popular.snippet.title}}
+                {{popular.snippet.title | decoder}}
               </mat-card-title>
               <mat-card-subtitle>
-                {{popular.snippet.description.slice(0, 100)}}
+                {{popular.snippet.description.slice(0, 100) | decoder}}
               </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
