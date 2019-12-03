@@ -30,6 +30,7 @@ export class StickyHeaderComponent implements AfterViewInit {
     { title: 'Home', icon: 'home', link: '/home' },
     { title: 'Sermons', icon: 'book', link: '/sermons' },
     { title: 'About Us', icon: 'help', link: '/about' },
+    { title: 'Events', icon: 'calendar_today', link: '/events' },
     { title: 'Contact Us', icon: 'question_answer', link: '/contact' }
   ];
 

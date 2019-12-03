@@ -6,7 +6,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material.module';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ContactComponent } from './contact/contact.component';
@@ -23,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { DoctrineComponent } from './doctrine/doctrine.component';
 import { StaffComponent } from './about/staff/staff.component';
 import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
+import { EventsComponent } from './events/events.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +41,7 @@ import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
     StaffComponent,
     StickyHeaderComponent,
     VideoViewComponent,
+    EventsComponent,
   ],
   entryComponents: [VideoViewComponent],
   imports: [
@@ -48,7 +49,6 @@ import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
     SharedModule,
     FlexLayoutModule,
     FormsModule,
@@ -66,6 +66,9 @@ import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
       },
       {
         path: 'about', component: AboutComponent
+      },
+      {
+        path: 'events', component: EventsComponent
       },
       {
         path: 'contact', component: ContactComponent

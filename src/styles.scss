@@ -105,6 +105,18 @@ p {
   line-height: 1.3em;
 }
 
+.background {
+  position: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -999;
+}
+
 .mat-expansion-panel-content > .mat-expansion-panel-body {
   padding: 0 !important;
 }

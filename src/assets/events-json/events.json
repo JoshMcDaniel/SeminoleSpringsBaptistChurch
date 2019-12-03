@@ -1,0 +1,20 @@
+{
+  "events": [
+    {
+      "event_title": "Christmas 2019",
+      "event_description": "Join us Sunday, December 22 at 10:30am as we celebrate the birth of the greatest gift the world has ever known. And don't forget to bring a friend!",
+      "event_date": "Sunday, 22 December, 2019",
+      "event_time": "10:30am",
+      "event_image": "christmas2019.png",
+      "image_description": "Christmas decorations"
+    },
+    {
+      "event_title": "Christmas 2019",
+      "event_description": "Join us Sunday, December 22 at 10:30am as we celebrate the birth of the greatest gift the world has ever known. And don't forget to bring a friend!",
+      "event_date": "Sunday, 22 December, 2019",
+      "event_time": "10:30am",
+      "event_image": "christmas2019.png",
+      "image_description": "Christmas decorations"
+    }
+  ]
+}

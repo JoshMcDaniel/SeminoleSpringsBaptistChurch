@@ -6,16 +6,7 @@
 }
 
 .background {
-  position: fixed;
   background-image: url("src/assets/images/about/sanctuary.jpeg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -999;
 }
 
 .loading-indicator {
