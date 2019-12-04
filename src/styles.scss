@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,600&display=swap";
+@import "theme.scss";
+@include mat-core();
+@include angular-material-theme($app-theme);
+$primary: map-get($app-theme, primary);
+$accent: map-get($app-theme, accent);
+$warn: map-get($app-theme, warn);
 
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
@@ -43,6 +49,7 @@ html,
 body {
   padding: 0px;
   margin: 0px;
+  background-color: mat-color($primary);
 }
 
 h1 {

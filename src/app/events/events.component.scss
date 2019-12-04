@@ -1,5 +1,18 @@
-.background {
-  background-image: url("src/assets/images/events/calendar.jpg");
+.intro {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 800px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 2em;
 }
 
 .events-container {
@@ -10,8 +23,11 @@
 }
 
 .title {
-  margin-top: 2em;
   text-align: center;
+}
+
+.sub-text {
+  padding: 2em;
 }
 
 .events-card {
@@ -22,6 +38,10 @@ mat-card img {
   height: 100%;
   width: 100%;
   margin: 0;
+}
+
+.description {
+  padding: 0.5em 0;
 }
 
 @media (max-width: 600px) {

@@ -1,5 +1,17 @@
 <!-- This approach allows a fixed background image on movile browsers -->
-<!-- <div class="background"></div> -->
+<div class="intro">
+  <span class="container">
+    <h1 class="title">
+      What's going on at SSBC
+    </h1>
+    <p>
+      We have some really exciting events planned here at SSBC!
+      One thing you will find about us is that we are a family here
+      and we love to get together and worship the Lord every chance we get.
+      Come join us for some fun and fellowship!
+    </p>
+  </span>
+</div>
 
 <h1 class="title">Upcoming Events</h1>
 
@@ -13,9 +25,11 @@
       <img mat-card-image src="{{imageURL + event.event_image}}" alt="{{event.image_description}}">
     </div>
     <mat-card-content>
-      <p>
+      <p class="description">
         {{event.event_description}}
       </p>
     </mat-card-content>
   </mat-card>
 </div>
+
+<app-footer></app-footer>
