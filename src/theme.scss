@@ -2,9 +2,9 @@
 
 // @include mat-core();
 
-$app-primary: mat-palette($mat-grey, 50);
-$app-accent: mat-palette($mat-light-blue, 400);
-$app-warn: mat-palette($mat-pink);
+$app-primary: mat-palette($mat-gray, 50);
+$app-accent: mat-palette($mat-cyan, 800);
+$app-warn: mat-palette($mat-cyan, 100);
 
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 

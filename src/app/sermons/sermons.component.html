@@ -1,55 +1,54 @@
 <!-- This approach allows a fixed background image on movile browsers -->
-<div class="background"></div>
-<div class="sermons-container">
+<!-- <div class="background"></div> -->
 
-  <div *ngIf="isFetchingVideos; else doneFetching" class="loading-indicator">
-    Retrieving sermons...
-    <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
-  </div>
+<div *ngIf="isFetchingVideos; else doneFetching" class="loading-indicator">
+  Retrieving sermons...
+  <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+</div>
 
-  <ng-template #doneFetching>
-    <div *ngIf="(mostRecent.length > 0) || (mostPopular.length > 0); else error">
-      <div *ngIf="mostRecent.length > 0" class="section-container">
+<ng-template #doneFetching>
+  <div *ngIf="(mostRecent.length > 0) || (mostPopular.length > 0); else error" class="sermons-container">
+    <div *ngIf="mostRecent.length > 0" class="section-container">
+      <!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
+      <mat-card *ngFor="let recent of mostRecent" class="latest-container">
         <h1 class="header">Watch the latest Sermon</h1>
-        <!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
-        <mat-card *ngFor="let recent of mostRecent" class="latest-container">
+        <mat-card-header>
+          <mat-card-title>
+            {{recent.snippet.title | decoder}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{recent.snippet.description.slice(0, 100) | decoder}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <img [src]="recent.snippet.thumbnails.medium.url" (click)="viewVideo(recent.id.videoId)" class="sermon-video"
+            alt="{{recent.snippet.title}}">
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div *ngIf="mostPopular.length > 0" class="section-container">
+      <mat-card class="popular-card">
+        <h1 class="header">Most Popular Sermons</h1>
+        <div [ngClass]="{'sermon-margin': !isLast}" *ngFor="let popular of mostPopular; last as isLast;">
           <mat-card-header>
             <mat-card-title>
-              {{recent.snippet.title | decoder}}
+              {{popular.snippet.title | decoder}}
             </mat-card-title>
             <mat-card-subtitle>
-              {{recent.snippet.description.slice(0, 100) | decoder}}
+              {{popular.snippet.description.slice(0, 100) | decoder}}
             </mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <img [src]="recent.snippet.thumbnails.medium.url" (click)="viewVideo(recent.id.videoId)"
-              class="sermon-video" alt="{{recent.snippet.title}}">
+            <img [src]="popular.snippet.thumbnails.medium.url" (click)="viewVideo(popular.id.videoId)"
+              class="sermon-video" alt="{{popular.snippet.title}}">
           </mat-card-content>
-        </mat-card>
-      </div>
-
-      <div *ngIf="mostPopular.length > 0" class="section-container">
-        <h1 class="header">Watch our most popular Sermons</h1>
-        <div class="popular-container">
-          <mat-card *ngFor="let popular of mostPopular" class="popular-card">
-            <mat-card-header>
-              <mat-card-title>
-                {{popular.snippet.title | decoder}}
-              </mat-card-title>
-              <mat-card-subtitle>
-                {{popular.snippet.description.slice(0, 100) | decoder}}
-              </mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <img [src]="popular.snippet.thumbnails.medium.url" (click)="viewVideo(popular.id.videoId)"
-                class="sermon-video" alt="{{popular.snippet.title}}">
-            </mat-card-content>
-          </mat-card>
+          <mat-divider *ngIf="!isLast"></mat-divider>
         </div>
-      </div>
+      </mat-card>
     </div>
-  </ng-template>
-</div>
+  </div>
+</ng-template>
 
 <!-- If no sermons were loaded -->
 <ng-template #error>

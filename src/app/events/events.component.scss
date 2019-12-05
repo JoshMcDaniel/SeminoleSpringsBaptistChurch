@@ -15,6 +15,18 @@
   gap: 2em;
 }
 
+.arrow {
+  font-size: 8em;
+  margin: 0.5em auto 0 auto;
+  height: auto;
+  width: auto;
+  line-height: inherit;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
 .events-container {
   display: grid;
   gap: 4em;
@@ -22,12 +34,16 @@
   padding: 2em;
 }
 
+.event-margin {
+  margin-bottom: 2em;
+}
+
 .title {
   text-align: center;
 }
 
 .sub-text {
-  padding: 2em;
+  text-align: center;
 }
 
 .events-card {
@@ -42,6 +58,14 @@ mat-card img {
 
 .description {
   padding: 0.5em 0;
+}
+
+.no-events {
+  display: flex;
+  height: 200px;
+  padding: 2em;
+  align-items: center;
+  text-align: center;
 }
 
 @media (max-width: 600px) {

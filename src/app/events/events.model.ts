@@ -1,7 +1,6 @@
 export interface Events {
-  events: [
-    Event
-  ];
+  events: Event[];
+  worshipService: Event;
 }
 
 export interface Event {

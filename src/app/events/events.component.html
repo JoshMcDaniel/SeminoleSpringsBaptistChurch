@@ -1,35 +1,65 @@
-<!-- This approach allows a fixed background image on movile browsers -->
 <div class="intro">
   <span class="container">
     <h1 class="title">
-      What's going on at SSBC
+      We're always planning exciting events at SSBC!
     </h1>
-    <p>
-      We have some really exciting events planned here at SSBC!
-      One thing you will find about us is that we are a family here
-      and we love to get together and worship the Lord every chance we get.
+    <p class="sub-text">
+      We're a family here and we love to get together and worship the Lord every chance we get.
       Come join us for some fun and fellowship!
     </p>
+    <mat-icon color="accent" class="material-icons arrow" (click)="scrollToEvents(target)">
+      keyboard_arrow_down
+    </mat-icon>
   </span>
 </div>
 
-<h1 class="title">Upcoming Events</h1>
+<div class="events-container" #target>
+  <mat-card class="events-card mat-elevation-z1">
+    <h1 class="title">Upcoming Events</h1>
+    <ng-container *ngIf="events.length > 0; else noEvents">
+      <div [ngClass]="{'event-margin': !isLast}" *ngFor="let event of events; last as isLast;">
+        <mat-card-header>
+          <mat-card-title>{{event.event_title}}</mat-card-title>
+          <mat-card-subtitle>{{event.event_date}} at {{event.event_time}}</mat-card-subtitle>
+        </mat-card-header>
+        <div class="image-container">
+          <img mat-card-image src="{{imageURL + event.event_image}}" alt="{{event.image_description}}">
+        </div>
+        <mat-card-content>
+          <p class="description">
+            {{event.event_description}}
+          </p>
+        </mat-card-content>
+        <mat-divider *ngIf="!isLast"></mat-divider>
+      </div>
+    </ng-container>
+  </mat-card>
+</div>
 
-<div class="events-container">
-  <mat-card *ngFor="let event of events" class="events-card mat-elevation-z5">
+<div *ngIf="worshipService" class="events-container">
+  <mat-card class="events-card mat-elevation-z1">
     <mat-card-header>
-      <mat-card-title>{{event.event_title}}</mat-card-title>
-      <mat-card-subtitle>{{event.event_date}} at {{event.event_time}}</mat-card-subtitle>
+      <mat-card-title>{{worshipService.event_title}}</mat-card-title>
+      <mat-card-subtitle>{{worshipService.event_date}} at {{worshipService.event_time}}</mat-card-subtitle>
     </mat-card-header>
     <div class="image-container">
-      <img mat-card-image src="{{imageURL + event.event_image}}" alt="{{event.image_description}}">
+      <img mat-card-image src="{{imageURL + worshipService.event_image}}" alt="{{worshipService.image_description}}">
     </div>
     <mat-card-content>
       <p class="description">
-        {{event.event_description}}
+        {{worshipService.event_description}}
       </p>
     </mat-card-content>
   </mat-card>
 </div>
+
+<ng-template #noEvents>
+  <div class="no-events">
+    <h3>
+      There are currently no featured events. <br>
+      But check again soon!
+    </h3>
+  </div>
+</ng-template>
 
 <app-footer></app-footer>

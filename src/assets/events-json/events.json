@@ -8,5 +8,13 @@
       "event_image": "christmas2019.png",
       "image_description": "Christmas decorations"
     }
-  ]
+  ],
+  "worshipService": {
+    "event_title": "Worship Service",
+    "event_description": "You can always look forward to our regular worship service! Join us every Sunday at 10:30am as we come together and worship the Lord!",
+    "event_date": "Every Sunday",
+    "event_time": "10:30am",
+    "event_image": "worship-service.jpg",
+    "image_description": "Worship Service"
+  }
 }

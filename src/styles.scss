@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "https://fonts.googleapis.com/css?family=Open+Sans:300,600&display=swap";
+@import "https://fonts.googleapis.com/css?family=Alegreya+Sans:300&display=swap";
 @import "theme.scss";
 @include mat-core();
 @include angular-material-theme($app-theme);
@@ -50,6 +50,8 @@ body {
   padding: 0px;
   margin: 0px;
   background-color: mat-color($primary);
+  font-family: "Alegreya Sans", sans-serif;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 h1 {
@@ -60,7 +62,7 @@ h1 {
     $mod_1 * $mod_1 * $mod_1 * $min_font,
     $mod_2 * $mod_2 * $mod_2 * $min_font
   );
-  line-height: 1em !important;
+  line-height: 1.1em !important;
 }
 
 h2 {
@@ -107,7 +109,6 @@ h3 {
 }
 
 p {
-  font-family: "Open Sans", sans-serif;
   font-size: 2em;
   line-height: 1.3em;
 }
