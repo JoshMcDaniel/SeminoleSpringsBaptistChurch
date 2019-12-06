@@ -1,48 +1,42 @@
+.about-container {
+  display: grid;
+  gap: 2em;
+  margin-bottom: 2em;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 800px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
 .container {
   display: grid;
-  grid-gap: 4em;
-  width: 100vw;
+  grid-template-rows: auto auto;
+  gap: 4em;
 }
 
-.about-container {
-  display: flex;
-  align-items: center;
+.arrow {
+  font-size: 8em;
+  margin: 0.5em auto 0 auto;
+  height: auto;
+  width: auto;
+  line-height: inherit;
 }
 
-.background {
-  background-image: url("src/assets/images/about/sanctuary.jpeg");
-}
-
-.text-area {
-  width: 100%;
-  padding: 2em;
-  color: white;
-  background-color: rgba(000, 000, 000, 0.5);
+.arrow:hover {
+  cursor: pointer;
 }
 
 .title {
   text-align: center;
-  margin: auto;
 }
 
-.description {
-  width: 90%;
-  max-width: 800px;
-  margin: auto;
-  padding: 2em;
-}
-
-@media (max-width: 768px) {
-  .text-area {
-    padding: 0 1em;
-  }
-
-  .title {
-    margin-top: 18px;
-  }
-
-  .description {
-    font-size: medium;
-    padding: 1em;
-  }
+.sub-text {
+  text-align: center;
 }

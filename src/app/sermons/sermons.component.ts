@@ -60,4 +60,12 @@ export class SermonsComponent implements OnInit, OnDestroy {
       data: { id: videoID }
     });
   }
+
+  /**
+   * Scrolls to the target element.
+   * @param element The element to scroll to.
+   */
+  scrollToSermon(element: HTMLElement) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
 }

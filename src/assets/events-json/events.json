@@ -9,12 +9,30 @@
       "image_description": "Christmas decorations"
     }
   ],
-  "worshipService": {
-    "event_title": "Worship Service",
-    "event_description": "You can always look forward to our regular worship service! Join us every Sunday at 10:30am as we come together and worship the Lord!",
-    "event_date": "Every Sunday",
-    "event_time": "10:30am",
-    "event_image": "worship-service.jpg",
-    "image_description": "Worship Service"
-  }
+  "services": [
+    {
+      "event_title": "Worship Service",
+      "event_description": "You can always look forward to our regular worship service! Join us every Sunday at 10:30am as we come together and worship the Lord!",
+      "event_date": "Every Sunday",
+      "event_time": "10:30am",
+      "event_image": "worship-service.jpg",
+      "image_description": "Worship Service"
+    },
+    {
+      "event_title": "Worship On Wednesday (W.O.W.)",
+      "event_description": "Our W.O.W. service is a mid-week worship service to help get us all through the week. It's a great time of fellowship and praise and we would love to see you there!",
+      "event_date": "Every Wednesday",
+      "event_time": "7:00pm",
+      "event_image": "wow.jpg",
+      "image_description": "Worship On Wednesday"
+    },
+    {
+      "event_title": "Small Group Studies",
+      "event_description": "Getting together in small groups and discussing the Word of God is a great way to learn and grow closer as a church community. Ask us about our small group studies.",
+      "event_date": "",
+      "event_time": "",
+      "event_image": "small-group.jpg",
+      "image_description": "Small Group Studies"
+    }
+  ]
 }

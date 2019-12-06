@@ -1,12 +1,45 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 800px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 2em;
+}
+
+.arrow {
+  font-size: 8em;
+  margin: 0.5em auto 0 auto;
+  height: auto;
+  width: auto;
+  line-height: inherit;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+.title {
+  text-align: center;
+}
+
+.sub-text {
+  text-align: center;
+}
+
 .sermons-container {
   display: grid;
   gap: 4em;
   height: 100%;
   padding-top: 4em;
-}
-
-.background {
-  background-image: url("src/assets/images/about/sanctuary.jpeg");
 }
 
 .loading-indicator {
@@ -46,18 +79,14 @@
   display: grid;
   align-items: center;
   justify-content: center;
-  width: fit-content;
   margin: 2em auto !important;
+  width: calc(100vw - 4em);
 }
 
 .sermon-video {
   height: 100%;
   min-height: 300px;
   width: 100%;
-}
-
-.sermon-margin {
-  margin-bottom: 2em;
 }
 
 .sermon-video:hover {
@@ -69,11 +98,20 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   grid-gap: 1em;
-  padding: 0 1em;
 }
 
 .popular-card {
   margin: 1em auto;
+}
+
+.popular-card .mat-card-header {
+  display: flex;
+  align-items: flex-end;
+  height: 100px;
+}
+
+.mat-card-header mat-card-title {
+  line-height: 1.3em;
 }
 
 .error-container {
@@ -101,13 +139,28 @@
   padding: 2em;
 }
 
+.divider {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  .sermon-margin {
+    margin-bottom: 2em;
+  }
+
   .latest-container {
-    margin: 1em;
+    margin: 1em auto;
+    width: auto;
   }
 
   .popular-card {
     margin: 0;
+  }
+
+  .popular-card .mat-card-header {
+    display: initial;
+    height: auto;
+    overflow: initial;
   }
 
   .popular-container {
@@ -120,5 +173,9 @@
     background: rgba(000, 000, 000, 0.4);
     width: calc(100% - 2em);
     padding: 1em;
+  }
+
+  .divider {
+    display: block;
   }
 }

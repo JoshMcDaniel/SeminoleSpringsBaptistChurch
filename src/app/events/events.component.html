@@ -36,20 +36,25 @@
   </mat-card>
 </div>
 
-<div *ngIf="worshipService" class="events-container">
+<div *ngIf="services.length > 0" class="events-container">
   <mat-card class="events-card mat-elevation-z1">
-    <mat-card-header>
-      <mat-card-title>{{worshipService.event_title}}</mat-card-title>
-      <mat-card-subtitle>{{worshipService.event_date}} at {{worshipService.event_time}}</mat-card-subtitle>
-    </mat-card-header>
-    <div class="image-container">
-      <img mat-card-image src="{{imageURL + worshipService.event_image}}" alt="{{worshipService.image_description}}">
+    <h1 class="title">Services</h1>
+    <div [ngClass]="{'event-margin': !isLast}" *ngFor="let service of services; last as isLast;">
+      <mat-card-header>
+        <mat-card-title>{{service.event_title}}</mat-card-title>
+        <mat-card-subtitle *ngIf="service.event_date.length > 0">{{service.event_date}} at {{service.event_time}}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <div class="image-container">
+        <img mat-card-image src="{{imageURL + service.event_image}}" alt="{{service.image_description}}">
+      </div>
+      <mat-card-content>
+        <p class="description">
+          {{service.event_description}}
+        </p>
+      </mat-card-content>
+      <mat-divider *ngIf="!isLast"></mat-divider>
     </div>
-    <mat-card-content>
-      <p class="description">
-        {{worshipService.event_description}}
-      </p>
-    </mat-card-content>
   </mat-card>
 </div>
 

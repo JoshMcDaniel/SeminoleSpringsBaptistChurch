@@ -1,24 +1,22 @@
 .staff-container {
   display: grid;
   grid-template-rows: auto 1fr;
-  color: white;
-  background-color: rgba(000, 000, 000, 0.5);
-}
+  min-height: 100vh;
+ }
 
 .title-container {
   margin: auto;
 }
 
 .staff-photo-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
   padding: 2em;
 }
 
 .card-container {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  height: 90%;
 }
 
 .mat-card-header,
@@ -56,9 +54,13 @@
   }
 
   .staff-photo-container {
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr;
     padding: 0.5em;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 
   .descroption-container {

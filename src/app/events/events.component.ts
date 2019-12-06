@@ -13,7 +13,7 @@ export class EventsComponent implements OnInit {
   readonly eventsURL = '../assets/events-json/events.json';
   readonly imageURL = './assets/images/events/';
   events: Event[] = [];
-  worshipService: Event;
+  services: Event[] = [];
 
   constructor(private data: DataService) { }
 
@@ -21,12 +21,16 @@ export class EventsComponent implements OnInit {
     this.data.getData(this.eventsURL).pipe(take(1))
       .subscribe((events: Events) => {
         this.events = events.events;
-        this.worshipService = events.worshipService;
+        this.services = events.services;
       });
   }
 
-  scrollToEvents(el: HTMLElement) {
-    el.scrollIntoView({ behavior: 'smooth' });
+  /**
+   * Scrolls to the target element.
+   * @param element The element to scroll to.
+   */
+  scrollToEvents(element: HTMLElement) {
+    element.scrollIntoView({ behavior: 'smooth' });
   }
 
 }

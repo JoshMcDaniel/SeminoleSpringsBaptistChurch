@@ -1,17 +1,29 @@
-<!-- This approach allows a fixed background image on movile browsers -->
-<!-- <div class="background"></div> -->
+<div class="intro">
+  <span class="container">
+    <h1 class="title">
+      Get the latest sermon every week right here!
+    </h1>
+    <p class="sub-text">
+      And remember, you are always welcome join us every Sunday to get both
+      a live message from the Word of God, and fellowship with a loving church family.
+    </p>
+    <mat-icon color="accent" class="material-icons arrow" (click)="scrollToSermon(target)">
+      keyboard_arrow_down
+    </mat-icon>
+  </span>
+</div>
 
-<div *ngIf="isFetchingVideos; else doneFetching" class="loading-indicator">
+<div *ngIf="isFetchingVideos" class="loading-indicator">
   Retrieving sermons...
   <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
 </div>
 
-<ng-template #doneFetching>
+<div #target>
   <div *ngIf="(mostRecent.length > 0) || (mostPopular.length > 0); else error" class="sermons-container">
     <div *ngIf="mostRecent.length > 0" class="section-container">
       <!-- Only 1 video will appear for now. This is designed to allow multiple videos later, if desired. -->
       <mat-card *ngFor="let recent of mostRecent" class="latest-container">
-        <h1 class="header">Watch the latest Sermon</h1>
+        <h1 class="header">Latest Sermon</h1>
         <mat-card-header>
           <mat-card-title>
             {{recent.snippet.title | decoder}}
@@ -30,25 +42,27 @@
     <div *ngIf="mostPopular.length > 0" class="section-container">
       <mat-card class="popular-card">
         <h1 class="header">Most Popular Sermons</h1>
-        <div [ngClass]="{'sermon-margin': !isLast}" *ngFor="let popular of mostPopular; last as isLast;">
-          <mat-card-header>
-            <mat-card-title>
-              {{popular.snippet.title | decoder}}
-            </mat-card-title>
-            <mat-card-subtitle>
-              {{popular.snippet.description.slice(0, 100) | decoder}}
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <img [src]="popular.snippet.thumbnails.medium.url" (click)="viewVideo(popular.id.videoId)"
-              class="sermon-video" alt="{{popular.snippet.title}}">
-          </mat-card-content>
-          <mat-divider *ngIf="!isLast"></mat-divider>
+        <div class="popular-container">
+          <div [ngClass]="{'sermon-margin': !isLast}" *ngFor="let popular of mostPopular; last as isLast;">
+            <mat-card-header>
+              <mat-card-title>
+                {{popular.snippet.title | decoder}}
+              </mat-card-title>
+              <mat-card-subtitle>
+                {{popular.snippet.description.slice(0, 100) | decoder}}
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <img [src]="popular.snippet.thumbnails.medium.url" (click)="viewVideo(popular.id.videoId)"
+                class="sermon-video" alt="{{popular.snippet.title}}">
+            </mat-card-content>
+            <mat-divider class="divider" *ngIf="!isLast"></mat-divider>
+          </div>
         </div>
       </mat-card>
     </div>
   </div>
-</ng-template>
+</div>
 
 <!-- If no sermons were loaded -->
 <ng-template #error>

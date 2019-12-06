@@ -101,7 +101,12 @@ h3 {
 }
 
 .footer {
+  background-color: mat-color($accent);
   height: fit-content !important;
+  color: white;
+  text-align: center;
+  align-content: center;
+  padding: 1em;
 }
 
 .sidenav {
