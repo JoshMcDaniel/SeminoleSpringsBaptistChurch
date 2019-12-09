@@ -1,6 +1,11 @@
 <mat-toolbar color="accent" class="container" *ngIf="navItems" [ngClass]="{'invisible' : !isVisible}">
+  <div class="logo" routerLink="/home">
+    <img src="../../assets/images/logo_no_bg.png" alt="Church logo">
+    SSBC
+  </div>
   <!-- Mobile view menu -->
-  <button mat-icon-button [matMenuTriggerFor]="menu" fxShow="true" fxHide.gt-sm aria-label="Navigation button">
+  <button mat-icon-button id="menuButton" [matMenuTriggerFor]="menu" fxShow="true" fxHide.gt-sm
+    aria-label="Navigation button">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">

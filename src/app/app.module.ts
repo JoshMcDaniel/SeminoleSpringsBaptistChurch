@@ -23,6 +23,7 @@ import { DoctrineComponent } from './doctrine/doctrine.component';
 import { StaffComponent } from './about/staff/staff.component';
 import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
 import { EventsComponent } from './events/events.component';
+import { EventsSummaryComponent } from './events-summary/events-summary.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EventsComponent } from './events/events.component';
     StickyHeaderComponent,
     VideoViewComponent,
     EventsComponent,
+    EventsSummaryComponent,
   ],
   entryComponents: [VideoViewComponent],
   imports: [
@@ -72,6 +74,9 @@ import { EventsComponent } from './events/events.component';
       },
       {
         path: 'contact', component: ContactComponent
+      },
+      {
+        path: 'events', component: EventsComponent
       },
       {
         path: '**', component: NotFoundComponent

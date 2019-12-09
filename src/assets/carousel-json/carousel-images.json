@@ -3,12 +3,12 @@
     {
       "img": "./assets/images/carousel/church.jpg",
       "alt": "Church image",
-      "text": "We're saving a place just for you!"
+      "text": "We're Saving A Place Just For YOU!"
     },
     {
       "img": "./assets/images/carousel/study.jpg",
       "alt": "Study the Bible image",
-      "text": "Join us as we study the word of God together"
+      "text": "Join us as we study the Word of God together"
     },
     {
       "img": "./assets/images/carousel/choir.jpg",
@@ -23,7 +23,7 @@
     {
       "img": "./assets/images/carousel/holdingBible.jpg",
       "alt": "holding the Bible image",
-      "text": "Let's do something bigger than ourselves"
+      "text": "Let’s be a part of something bigger than ourselves"
     }
   ]
 }
