@@ -35,7 +35,7 @@
 }
 
 .event-margin {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 }
 
 .title {
@@ -66,6 +66,10 @@ mat-card img {
   padding: 2em;
   align-items: center;
   text-align: center;
+}
+
+.mat-card .mat-divider-horizontal {
+  position: relative;
 }
 
 @media (max-width: 600px) {

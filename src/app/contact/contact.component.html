@@ -35,9 +35,13 @@
           <label for="phoneNumber"><b>Phone Number</b></label>
           <input type="number" placeholder="Enter Phone Number" ngModel name="phoneNumber" />
         </div>
-        <!-- <div>
+        <div>
+          <label for="message"><b>Message</b></label>
+          <textarea rows="4" cols="50" maxlength="140" name="message" placeholder="Enter Message"></textarea>
+        </div>
+        <div>
           <input type="hidden" name="_next" value="{{ redirectLink }}" />
-        </div> -->
+        </div>
         <button mat-raised-button color="accent" type="submit" value="Submit" [disabled]="!f.form.valid" class="btn">
           Submit
         </button>
