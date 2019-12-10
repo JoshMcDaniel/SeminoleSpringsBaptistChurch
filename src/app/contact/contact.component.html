@@ -37,7 +37,8 @@
         </div>
         <div>
           <label for="message"><b>Message</b></label>
-          <textarea rows="4" cols="50" maxlength="140" name="message" placeholder="Enter Message"></textarea>
+          <textarea #messageField rows="4" cols="50" maxlength="140" ngModel name="message"
+            placeholder="Enter Message"></textarea>
         </div>
         <div>
           <input type="hidden" name="_next" value="{{ redirectLink }}" />

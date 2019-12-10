@@ -53,6 +53,11 @@
   align-content: center;
 }
 
+.logo:focus {
+  outline: none;
+  border: 0;
+}
+
 .logo:hover {
   cursor: pointer;
 }
