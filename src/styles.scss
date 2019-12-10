@@ -114,6 +114,10 @@ h3 {
   -webkit-touch-callout: none; /* Disable Android and iOS callouts*/
 }
 
+.arrow:hover {
+  cursor: pointer;
+}
+
 .footer {
   background-color: mat-color($accent);
   height: fit-content !important;
