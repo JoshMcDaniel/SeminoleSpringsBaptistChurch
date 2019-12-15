@@ -24,6 +24,7 @@ import { StaffComponent } from './about/staff/staff.component';
 import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
 import { EventsComponent } from './events/events.component';
 import { EventsSummaryComponent } from './events-summary/events-summary.component';
+import { ContactSimpleComponent } from './contact-simple/contact-simple.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { EventsSummaryComponent } from './events-summary/events-summary.componen
     VideoViewComponent,
     EventsComponent,
     EventsSummaryComponent,
+    ContactSimpleComponent,
   ],
   entryComponents: [VideoViewComponent],
   imports: [
@@ -73,7 +75,7 @@ import { EventsSummaryComponent } from './events-summary/events-summary.componen
         path: 'events', component: EventsComponent
       },
       {
-        path: 'contact', component: ContactComponent
+        path: 'contact', component: ContactSimpleComponent
       },
       {
         path: 'events', component: EventsComponent

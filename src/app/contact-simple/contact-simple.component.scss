@@ -1,0 +1,59 @@
+.container {
+  display: grid;
+  gap: 2em;
+  justify-content: center;
+  text-align: center;
+}
+
+.intro {
+  margin: 8em 1em 0 1em;
+  max-width: 600px;
+}
+
+.material-icons {
+  font-size: 24em;
+  color: lightgray;
+  height: auto;
+  width: auto;
+}
+
+.info-container {
+  position: relative;
+}
+
+.link-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-container button {
+  width: 15em;
+  min-width: fit-content;
+  font-size: 1.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .material-icons {
+    font-size: 16em;
+  }
+
+  .link-container button {
+    width: 15em;
+    min-width: fit-content;
+    font-size: 1.2em;
+  }
+}
