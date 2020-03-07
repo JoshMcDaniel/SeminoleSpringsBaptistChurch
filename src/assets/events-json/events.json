@@ -1,5 +1,22 @@
 {
-  "events": [],
+  "events": [
+    {
+      "event_title": "Easter Egg Hunt",
+      "event_description": "Come join us for our annual Easter Egg Hunt! It's always a blast for the whole family. We will have music, food, fun, and of course... CANDY! Oh, and it's all FREE!",
+      "event_date": "Saturday, April 11, 2020",
+      "event_time": "Noon - 2pm",
+      "event_image": "easterEggHunt2020.jpg",
+      "image_description": "Easter Egg Hunt 2020"
+    },
+    {
+      "event_title": "Resurrection Sunday",
+      "event_description": "He is NOT here; HE IS RISEN! Celebrate with us the LORDs victory over the grave at our Resurrection Sunday service. This is going to be a powerful reminder of the price that was paid for us, and the empty grave that changed everything!",
+      "event_date": "Sunday, April 12, 2020",
+      "event_time": "10:30am",
+      "event_image": "easter2020.jpg",
+      "image_description": "Resurrection Sunday"
+    }
+  ],
   "services": [
     {
       "event_title": "Worship Service",
