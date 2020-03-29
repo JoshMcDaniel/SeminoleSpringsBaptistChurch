@@ -25,6 +25,8 @@ import { StickyHeaderComponent } from './sticky-header/sticky-header.component';
 import { EventsComponent } from './events/events.component';
 import { EventsSummaryComponent } from './events-summary/events-summary.component';
 import { ContactSimpleComponent } from './contact-simple/contact-simple.component';
+import { OnlineGivingComponent } from './online-giving/online-giving.component';
+import { OnlineGivingSummaryComponent } from './online-giving-summary/online-giving-summary.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { ContactSimpleComponent } from './contact-simple/contact-simple.componen
     EventsComponent,
     EventsSummaryComponent,
     ContactSimpleComponent,
+    OnlineGivingComponent,
+    OnlineGivingSummaryComponent,
   ],
   entryComponents: [VideoViewComponent],
   imports: [
@@ -79,6 +83,9 @@ import { ContactSimpleComponent } from './contact-simple/contact-simple.componen
       },
       {
         path: 'events', component: EventsComponent
+      },
+      {
+        path: 'online-giving', component: OnlineGivingComponent
       },
       {
         path: '**', component: NotFoundComponent

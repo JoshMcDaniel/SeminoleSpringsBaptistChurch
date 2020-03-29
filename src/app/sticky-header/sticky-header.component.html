@@ -1,4 +1,4 @@
-<mat-toolbar color="accent" class="container" *ngIf="navItems" [ngClass]="{'invisible' : !isVisible}">
+<mat-toolbar color="accent" class="container" *ngIf="navItems" [ngClass]="{'invisible' : !isVisible$.getValue()}">
   <div class="logo" routerLink="/home">
     <img src="../../assets/images/logo_no_bg.png" alt="Church logo">
     SSBC

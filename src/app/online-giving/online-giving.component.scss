@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 600px;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+.inner-container {
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 2em;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.online-giving-container {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.online-giving-button {
+  height: 4em;
+  width: 12em;
+}
+
+@media (max-height: 600px) {
+  .container {
+    height: auto;
+  }
+  .header {
+    margin-top: 2em;
+  }
+}

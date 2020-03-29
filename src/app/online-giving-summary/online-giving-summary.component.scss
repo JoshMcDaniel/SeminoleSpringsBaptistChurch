@@ -1,0 +1,30 @@
+.container {
+  position: relative;
+  text-align: center;
+  height: 100%;
+  background-image: url("src/assets/images/online-giving/online-giving.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.text-area {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  padding: 2em;
+  color: white;
+  text-align: center;
+  background: rgba(000, 000, 000, 0.5);
+}
+
+.text-area:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .text-area {
+    padding: 26px 1em 1em 1em;
+  }
+}

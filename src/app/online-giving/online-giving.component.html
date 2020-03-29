@@ -1,0 +1,25 @@
+<div class="container">
+  <span class="inner-container">
+    <h1 class="header centered-text">
+      Online Giving
+    </h1>
+    <p class="centered-text">
+      Thank you for supporting our church and its ministries!
+    </p>
+
+    <p class="centered-text">
+      Clicking the button below will take you to our dedicated Tithe.ly web page.
+      For more information about Tithe.ly, click <a href="{{ TITHELY_URL }}" target="_blank">here</a>.
+    </p>
+
+    <a href="{{ ONLINE_GIVING_URL }}" target="_blank" class="online-giving-container">
+      <button mat-raised-button color="accent" class="online-giving-button">Give Online</button>
+    </a>
+
+    <p class="centered-text">
+      Have a question?<br>
+      <a routerLink="/contact">Contact Us</a>
+    </p>
+  </span>
+</div>
+<app-footer></app-footer>

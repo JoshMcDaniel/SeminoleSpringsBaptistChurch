@@ -1,6 +1,6 @@
 import { NavItems } from './sticky-header.model';
 import { Component, AfterViewInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { fromEvent, BehaviorSubject, Subject } from 'rxjs';
 import {
   distinctUntilChanged,
   filter,
@@ -25,12 +25,14 @@ enum Direction {
 // https://stackblitz.com/github/zetsnotdead/ng-reactive-sticky-header?file=src%2Fapp%2Fapp.component.ts
 export class StickyHeaderComponent implements AfterViewInit {
 
-  isVisible = true;
+  isVisible$: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  unsubscribe = new Subject();
   navItems: NavItems[] = [
     { title: 'Home', icon: 'home', link: '/home' },
     { title: 'Sermons', icon: 'book', link: '/sermons' },
     { title: 'About Us', icon: 'help', link: '/about' },
     { title: 'Events', icon: 'calendar_today', link: '/events' },
+    { title: 'Give Online', icon: 'card_giftcard', link: '/online-giving' },
     { title: 'Contact Us', icon: 'question_answer', link: '/contact' }
   ];
 
@@ -43,7 +45,6 @@ export class StickyHeaderComponent implements AfterViewInit {
       distinctUntilChanged(),
       share()
     );
-
     const goingUp$ = scroll$.pipe(
       filter(direction => direction === Direction.Up)
     );
@@ -52,7 +53,7 @@ export class StickyHeaderComponent implements AfterViewInit {
       filter(direction => direction === Direction.Down)
     );
 
-    goingUp$.subscribe(() => (this.isVisible = true));
-    goingDown$.subscribe(() => (this.isVisible = false));
+    goingUp$.subscribe(() => (this.isVisible$.next(true)));
+    goingDown$.subscribe(() => (this.isVisible$.next(false)));
   }
 }
