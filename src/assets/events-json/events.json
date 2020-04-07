@@ -1,18 +1,10 @@
 {
   "events": [
     {
-      "event_title": "*CANCELED* Easter Egg Hunt",
-      "event_description": "Due to the new CDC recommendations, we will be canceling this year’s Spring Festival and Egg Hunt. We will do something else for the kids in the future when possible. Let us continue to pray for God to protect everyone and look for ways to minister to those in need. Please stay tuned for future updates.",
-      "event_date": "Saturday, April 11, 2020",
-      "event_time": "Noon - 2pm",
-      "event_image": "easterEggHunt2020.jpg",
-      "image_description": "Easter Egg Hunt 2020"
-    },
-    {
       "event_title": "Resurrection Sunday",
-      "event_description": "He is NOT here; HE IS RISEN! Celebrate with us the LORDs victory over the grave at our Resurrection Sunday service. This is going to be a powerful reminder of the price that was paid for us, and the empty grave that changed everything!",
+      "event_description": "He is NOT here; HE IS RISEN! Join our Resurrection Sunday Facebook Livestream and celebrate with us the LORDs victory over the grave. This is going to be a powerful reminder of the price that was paid for us, and the empty grave that changed everything!",
       "event_date": "Sunday, April 12, 2020",
-      "event_time": "10:30am",
+      "event_time": "11:00am",
       "event_image": "easter2020.jpg",
       "image_description": "Resurrection Sunday"
     }
