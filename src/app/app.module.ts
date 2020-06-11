@@ -1,3 +1,5 @@
+import { AngularFirestore } from '@angular/fire/firestore';
+import { environment } from './../environments/environment';
 import { VideoViewComponent } from './shared/video-view/video-view.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
@@ -27,6 +29,9 @@ import { EventsSummaryComponent } from './events-summary/events-summary.componen
 import { ContactSimpleComponent } from './contact-simple/contact-simple.component';
 import { OnlineGivingComponent } from './online-giving/online-giving.component';
 import { OnlineGivingSummaryComponent } from './online-giving-summary/online-giving-summary.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -60,6 +65,9 @@ import { OnlineGivingSummaryComponent } from './online-giving-summary/online-giv
     SharedModule,
     FlexLayoutModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot([
       {
         path: '', component: HomeComponent
@@ -92,7 +100,7 @@ import { OnlineGivingSummaryComponent } from './online-giving-summary/online-giv
       }
     ])
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

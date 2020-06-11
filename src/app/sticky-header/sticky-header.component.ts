@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { NavItems } from './sticky-header.model';
 import { Component, AfterViewInit } from '@angular/core';
 import { fromEvent, BehaviorSubject, Subject } from 'rxjs';
@@ -35,6 +36,8 @@ export class StickyHeaderComponent implements AfterViewInit {
     { title: 'Give Online', icon: 'card_giftcard', link: '/online-giving' },
     { title: 'Contact Us', icon: 'question_answer', link: '/contact' }
   ];
+
+  constructor(public auth: AuthService) {}
 
   ngAfterViewInit() {
     const scroll$ = fromEvent(window, 'scroll').pipe(

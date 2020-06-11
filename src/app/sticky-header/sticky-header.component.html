@@ -18,6 +18,22 @@
           </div>
         </a>
       </div>
+      <div *ngIf="auth.user$ | async as user; else login">
+        <a mat-button class="sidenav-items">
+          <div class="nav-item-container">
+            <mat-icon>face</mat-icon>
+            <span class="side-nav-title">Logout</span>
+          </div>
+        </a>
+      </div>
+      <ng-template #login>
+        <a mat-button class="sidenav-items">
+          <div class="nav-item-container">
+            <mat-icon>face</mat-icon>
+            <span class="side-nav-title">Login</span>
+          </div>
+        </a>
+      </ng-template>
     </mat-nav-list>
   </mat-menu>
 
@@ -31,5 +47,21 @@
         </span>
       </a>
     </span>
+    <div *ngIf="auth.user$ | async as user; else loginDesktop">
+      <a mat-button class="sidenav-items">
+        <div class="nav-item-container">
+          <mat-icon>face</mat-icon>
+          <span (click)="auth.googleSignOut()" class="side-nav-title">Sign Out</span>
+        </div>
+      </a>
+    </div>
+    <ng-template #loginDesktop>
+      <a mat-button class="sidenav-items">
+        <div class="nav-item-container">
+          <mat-icon>face</mat-icon>
+          <span (click)="auth.googleSignIn()" class="side-nav-title">Login</span>
+        </div>
+      </a>
+    </ng-template>
   </div>
 </mat-toolbar>
