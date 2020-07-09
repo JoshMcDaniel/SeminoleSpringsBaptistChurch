@@ -4,18 +4,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterModule } from '../footer/footer.module';
 import { SafePipe } from '../safe.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 
 @NgModule({
   declarations: [SafePipe, DecoderPipe],
   imports: [
-    CommonModule
+    CommonModule,
+    NgxMaterialTimepickerModule
   ],
   exports: [
     MaterialModule,
     FooterModule,
     SafePipe,
-    DecoderPipe
+    DecoderPipe,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaterialTimepickerModule
   ]
 })
 export class SharedModule { }

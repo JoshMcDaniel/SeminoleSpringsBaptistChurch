@@ -1,3 +1,4 @@
+import { ManageEventsDialogComponent } from './events/manage-events-dialog/manage-events-dialog.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from './../environments/environment';
 import { VideoViewComponent } from './shared/video-view/video-view.component';
@@ -32,6 +33,7 @@ import { OnlineGivingSummaryComponent } from './online-giving-summary/online-giv
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -55,8 +57,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     ContactSimpleComponent,
     OnlineGivingComponent,
     OnlineGivingSummaryComponent,
+    ManageEventsDialogComponent
   ],
-  entryComponents: [VideoViewComponent],
+  entryComponents: [VideoViewComponent, ManageEventsDialogComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -68,6 +71,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     RouterModule.forRoot([
       {
         path: '', component: HomeComponent

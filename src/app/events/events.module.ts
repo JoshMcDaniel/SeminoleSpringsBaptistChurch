@@ -1,3 +1,4 @@
+import { ManageEventsDialogModule } from './manage-events-dialog/manage-events-dialog.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
@@ -6,7 +7,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    ManageEventsDialogModule
   ]
 })
 export class EventsModule { }

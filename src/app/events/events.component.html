@@ -7,14 +7,21 @@
       We're a family here and we love to get together and worship the Lord every chance we get.
       Come join us for some fun and fellowship!
     </p>
-    <mat-icon color="accent" class="material-icons arrow" (click)="scrollToEvents(target)">
+    <mat-icon color="primary" class="material-icons arrow" (click)="scrollToEvents(target)">
       keyboard_arrow_down
     </mat-icon>
   </span>
 </div>
 
 <div class="events-container" #target>
-  <mat-card class="events-card mat-elevation-z1">
+  <div *ngIf="auth.user$ | async as user">
+    <button mat-fab color="accent" (click)="openDialog()">
+      <mat-icon color="primary" class="material-icons">
+        post_add
+      </mat-icon>
+    </button>
+  </div>
+  <mat-card *ngIf="events$ | async as events" class="events-card mat-elevation-z1">
     <h1 class="title">Upcoming Events</h1>
     <ng-container *ngIf="events.length > 0; else noEvents">
       <div [ngClass]="{'event-margin': !isLast}" *ngFor="let event of events; last as isLast;">
@@ -23,7 +30,7 @@
           <mat-card-subtitle>{{event.event_date}} at {{event.event_time}}</mat-card-subtitle>
         </mat-card-header>
         <div class="image-container">
-          <img mat-card-image src="{{imageURL + event.event_image}}" alt="{{event.image_description}}">
+          <img mat-card-image [src]="event.event_image" [alt]="event.image_description">
         </div>
         <mat-card-content>
           <p class="description">
@@ -36,8 +43,8 @@
   </mat-card>
 </div>
 
-<div *ngIf="services.length > 0" class="events-container">
-  <mat-card class="events-card mat-elevation-z1">
+<div *ngIf="services$ | async as services" class="events-container">
+  <mat-card *ngIf="services.length > 0" class="events-card mat-elevation-z1">
     <h1 class="title">Services</h1>
     <div [ngClass]="{'event-margin': !isLast}" *ngFor="let service of services; last as isLast;">
       <mat-card-header>
@@ -46,7 +53,7 @@
         </mat-card-subtitle>
       </mat-card-header>
       <div class="image-container">
-        <img mat-card-image src="{{imageURL + service.event_image}}" alt="{{service.image_description}}">
+        <img mat-card-image [src]="service.event_image" [alt]="image_description">
       </div>
       <mat-card-content>
         <p class="description">

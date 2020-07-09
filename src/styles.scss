@@ -49,7 +49,7 @@ html,
 body {
   padding: 0px;
   margin: 0px;
-  background-color: mat-color($primary);
+  background-color: #FAFAFA;
   font-family: "Alegreya Sans", sans-serif;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -158,6 +158,14 @@ p {
 
 .mat-menu-panel {
   width: 50vw;
+}
+
+.timepicker-overlay {
+  z-index: 1000 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 1000 !important;
 }
 
 @media (max-height: 600px) {

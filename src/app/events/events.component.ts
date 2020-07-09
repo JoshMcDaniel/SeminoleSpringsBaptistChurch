@@ -1,7 +1,10 @@
-import { Event, Events } from './events.model';
-import { take } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ManageEventsDialogComponent } from './manage-events-dialog/manage-events-dialog.component';
+import { Event } from './events.model';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-events',
@@ -10,19 +13,27 @@ import { DataService } from '../data.service';
 })
 export class EventsComponent implements OnInit {
 
-  readonly eventsURL = '../assets/events-json/events.json';
-  readonly imageURL = './assets/images/events/';
-  events: Event[] = [];
-  services: Event[] = [];
+  events$ = this.db.collection('/events').valueChanges();
+  services$ = this.oldDb.list('/services').valueChanges();
 
-  constructor(private data: DataService) { }
+  constructor(
+    public auth: AuthService,
+    private oldDb: AngularFireDatabase,
+    private db: AngularFirestore,
+    public dialog: MatDialog
+  ) { }
 
-  ngOnInit() {
-    this.data.getData(this.eventsURL).pipe(take(1))
-      .subscribe((events: Events) => {
-        this.events = events.events;
-        this.services = events.services;
-      });
+  ngOnInit() { }
+
+  openDialog(): void {
+    this.dialog.open(ManageEventsDialogComponent, {
+      maxHeight: '90%',
+      maxWidth: '90%'
+    });
+  }
+
+  addEvent(event: Event): void {
+    console.log(event)
   }
 
   /**
@@ -32,5 +43,4 @@ export class EventsComponent implements OnInit {
   scrollToEvents(element: HTMLElement) {
     element.scrollIntoView({ behavior: 'smooth' });
   }
-
 }

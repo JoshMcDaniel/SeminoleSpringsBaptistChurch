@@ -2,9 +2,9 @@ import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { auth } from 'firebase';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface User {
   uid: string;
@@ -22,7 +22,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
-    private router: Router
+    private snackBar: MatSnackBar
   ) {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -42,8 +42,9 @@ export class AuthService {
   }
 
   async signOut() {
-    await this.afAuth.auth.signOut();
-    return this.router.navigate(['/']);
+    await this.afAuth.auth.signOut()
+      .then(() => this.openSnackBar('Signed out'))
+      .catch(() => this.openSnackBar('Error signing out'));
   }
 
   private updateUserData({ uid, displayName, email }: User) {
@@ -53,6 +54,26 @@ export class AuthService {
       displayName,
       email
     };
-    return userReference.set(data, { merge: true });
+
+    this.afs.collection('users')
+      .doc(data.uid)
+      .ref
+      .get().then((doc) => {
+        if (doc.exists) {
+          this.openSnackBar(`Signed in as ${data.displayName}`);
+          return userReference.set(data, { merge: true });
+        } else {
+          this.openSnackBar('Invalid login');
+        }
+      }).catch((error) => {
+        this.openSnackBar('Error logging in');
+        console.log(error);
+      });
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, null, {
+      duration: 3000,
+    });
   }
 }
