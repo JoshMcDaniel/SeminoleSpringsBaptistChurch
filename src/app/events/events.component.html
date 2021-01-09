@@ -21,7 +21,7 @@
       </mat-icon>
     </button>
   </div>
-  <mat-card *ngIf="events$ | async as events" class="events-card mat-elevation-z1">
+  <mat-card class="events-card mat-elevation-z1">
     <h1 class="title">Upcoming Events</h1>
     <ng-container *ngIf="events.length > 0; else noEvents">
       <div [ngClass]="{'event-margin': !isLast}" *ngFor="let event of events; last as isLast;">
@@ -43,7 +43,7 @@
   </mat-card>
 </div>
 
-<div *ngIf="services$ | async as services" class="events-container">
+<!-- <div *ngIf="services$ | async as services" class="events-container">
   <mat-card *ngIf="services.length > 0" class="events-card mat-elevation-z1">
     <h1 class="title">Services</h1>
     <div [ngClass]="{'event-margin': !isLast}" *ngFor="let service of services; last as isLast;">
@@ -63,7 +63,7 @@
       <mat-divider *ngIf="!isLast"></mat-divider>
     </div>
   </mat-card>
-</div>
+</div> -->
 
 <ng-template #noEvents>
   <div class="no-events">

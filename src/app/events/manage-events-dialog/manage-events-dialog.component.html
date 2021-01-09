@@ -1,7 +1,7 @@
 <div class="form-container">
   <h2 mat-dialog-title class="event-title">Add Event</h2>
   <div mat-dialog-content>
-    <form [formGroup]="event" class="event-form">
+    <form [formGroup]="eventForm" class="event-form">
       <mat-form-field>
         <mat-label>Event Name</mat-label>
         <input matInput type="text" formControlName="event_title" maxlength="30">
@@ -29,6 +29,8 @@
   </div>
   <div mat-dialog-actions class="actions-container">
     <button mat-raised-button (click)="onCancel()">Cancel</button>
-    <button mat-raised-button (click)="addEvent()" [disabled]="!event.valid" color="primary">Add Event</button>
+    <button mat-raised-button (click)="addEvent()" [disabled]="!eventForm.valid" color="primary">
+      Add Event
+    </button>
   </div>
 </div>

@@ -1,3 +1,6 @@
+import { Event } from './../events.model';
+import { EVENTS_URL } from './../events.service';
+import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -40,7 +43,7 @@ export const DATE_FORMAT = {
 })
 export class ManageEventsDialogComponent {
 
-  event = new FormGroup({
+  eventForm = new FormGroup({
     event_date: new FormControl('', [
       Validators.required
     ]),
@@ -58,21 +61,22 @@ export class ManageEventsDialogComponent {
     ]),
   });
 
-  formBuilder: FormBuilder;
+  // formBuilder: FormBuilder;
 
   imageToUpload: File;
 
-  task: AngularFireUploadTask;
-  percentage: Observable<number>;
-  snapShot: Observable<any>;
-  downloadUrl: Observable<string>;
+  // task: AngularFireUploadTask;
+  // percentage: Observable<number>;
+  // snapShot: Observable<any>;
+  // downloadUrl: Observable<string>;
 
 
   constructor(
     public dialogRef: MatDialogRef<ManageEventsDialogComponent>,
-    private manageEventService: ManageEventsDialogService,
-    private storage: AngularFireStorage,
-    private db: AngularFirestore
+    private http: HttpClient
+    // private manageEventService: ManageEventsDialogService,
+    // private storage: AngularFireStorage,
+    // private db: AngularFirestore
   ) { }
 
   addImage(files) {
@@ -80,18 +84,28 @@ export class ManageEventsDialogComponent {
   }
 
   addEvent() {
-    const n = Date.now();
-    const filePath = `images/events/${n}/${this.imageToUpload.name}`;
-    // this.task = this.storage.upload(filePath, this.imageToUpload);
-    this.storage.upload(filePath, this.imageToUpload).then(() => {
-      this.storage.ref(filePath).getDownloadURL().pipe(take(1))
-        .subscribe(url => this.db.collection('/events').add({
-          ...this.event.value, event_image: url, event_date: moment(this.event_date.value).format('MMMM d, YYYY')
-        })
-          .then(() => {
-            this.manageEventService.openSnackBar('Event added');
-          }));
-    });
+    const event: Event = {
+      ...this.eventForm.value,
+      event_date: moment(this.event_date.value).utc().startOf('day')
+    };
+    this.http.post<{ message: string }>(EVENTS_URL, event)
+      .subscribe(response => {
+        console.log(response.message);
+      });
+
+
+    // const n = Date.now();
+    // const filePath = `images/events/${n}/${this.imageToUpload.name}`;
+    // // this.task = this.storage.upload(filePath, this.imageToUpload);
+    // this.storage.upload(filePath, this.imageToUpload).then(() => {
+    //   this.storage.ref(filePath).getDownloadURL().pipe(take(1))
+    //     .subscribe(url => this.db.collection('/events').add({
+    //       ...this.event.value, event_image: url, event_date: moment(this.event_date.value).format('MMMM d, YYYY')
+    //     })
+    //       .then(() => {
+    //         this.manageEventService.openSnackBar('Event added');
+    //       }));
+    // });
     // this.percentage = this.task.percentageChanges();
     // this.snapShot = this.task.snapshotChanges();
     // this.downloadUrl = this.storage.ref(filePath).getDownloadURL();
@@ -104,9 +118,9 @@ export class ManageEventsDialogComponent {
     //     }));
   }
 
-  isActive(snapshot) {
-    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
-  }
+  // isActive(snapshot) {
+  //   return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
+  // }
 
   // addEvent(): void {
   //   this.manageEventService.addEvent(file: File, {
@@ -123,14 +137,14 @@ export class ManageEventsDialogComponent {
   }
 
   get event_date(): AbstractControl {
-    return this.event.get('event_date');
+    return this.eventForm.get('event_date');
   }
 
   get event_image(): AbstractControl {
-    return this.event.get('event_image');
+    return this.eventForm.get('event_image');
   }
 
   get event_description(): AbstractControl {
-    return this.event.get('event_description');
+    return this.eventForm.get('event_description');
   }
 }

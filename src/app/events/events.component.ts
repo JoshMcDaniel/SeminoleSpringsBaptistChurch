@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { EventsService } from './events.service';
 
 @Component({
   selector: 'app-events',
@@ -13,17 +14,24 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class EventsComponent implements OnInit {
 
-  events$ = this.db.collection('/events').valueChanges();
-  services$ = this.oldDb.list('/services').valueChanges();
+  // events$ = this.db.collection('/events').valueChanges();
+  // services$ = this.oldDb.list('/services').valueChanges();
+  events = [];
 
   constructor(
     public auth: AuthService,
     private oldDb: AngularFireDatabase,
     private db: AngularFirestore,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private eventsService: EventsService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.eventsService.getEvents()
+      .subscribe(response => {
+        this.events = response.events;
+      });
+  }
 
   openDialog(): void {
     this.dialog.open(ManageEventsDialogComponent, {
