@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Event } from './../events.model';
+import { SSBCEvent } from './../events.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';

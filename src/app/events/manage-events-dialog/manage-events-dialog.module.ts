@@ -10,7 +10,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
   imports: [
     CommonModule,
     SharedModule,
-    AngularFireStorageModule
+    // AngularFireStorageModule
   ],
   exports: [ManageEventsDialogComponent]
 })

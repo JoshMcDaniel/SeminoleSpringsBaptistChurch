@@ -1,0 +1,14 @@
+  <mat-card-header>
+    <mat-card-title>{{event.event_title}}</mat-card-title>
+    <mat-card-subtitle>{{event.event_date | date:'fullDate'}}
+      <span *ngIf="event.event_time"><br>{{event.event_time}}</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <div class="image-container">
+    <img mat-card-image [src]="event.event_image_path" [alt]="event.event_title">
+  </div>
+  <mat-card-content>
+    <p class="description">
+      {{event.event_description}}
+    </p>
+  </mat-card-content>

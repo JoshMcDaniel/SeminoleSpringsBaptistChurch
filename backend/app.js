@@ -1,17 +1,18 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
-const Event = require('./models/events');
+const eventRoutes = require('./routes/events');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://JoshMcDaniel:0T1cBFMLchLcqOSh@cluster0.3a5v4.mongodb.net/ssbcDatabase?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://JoshMcDaniel:5cZSwo2YWs8pmKag@cluster0.3a5v4.mongodb.net/ssbcDatabase?retryWrites=true&w=majority')
   .then(() => console.log('Connected to the database.'))
   .catch(() => console.log('Error connecting to the database.'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/images', express.static(path.join('backend/images')));
 
 // Headers
 app.use((req, res, next) => {
@@ -27,28 +28,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/api/events', (req, res, next) => {
-  const event = new Event({
-    event_title: req.body.event_title,
-    event_description: req.body.event_description,
-    event_date: req.body.event_date,
-    event_time: req.body.event_time,
-    event_image: req.body.event_image,
-    image_description: req.body.image_description
-  });
-  event.save(event);
-  res.status(201).json({
-    message: 'Event was created successfully'
-  })
-});
-
-app.get('/api/events', (req, res, next) => {
-  Event.find()
-    .then(documents => {
-      res.status(200).json({
-        events: documents
-      });
-    });
-});
+app.use('/api/events', eventRoutes);
 
 module.exports = app;

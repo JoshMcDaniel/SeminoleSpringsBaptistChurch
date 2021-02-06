@@ -13,34 +13,33 @@
   </span>
 </div>
 
-<div class="events-container" #target>
-  <div *ngIf="auth.user$ | async as user">
-    <button mat-fab color="accent" (click)="openDialog()">
-      <mat-icon color="primary" class="material-icons">
-        post_add
-      </mat-icon>
-    </button>
-  </div>
-  <mat-card class="events-card mat-elevation-z1">
-    <h1 class="title">Upcoming Events</h1>
-    <ng-container *ngIf="events.length > 0; else noEvents">
-      <div [ngClass]="{'event-margin': !isLast}" *ngFor="let event of events; last as isLast;">
-        <mat-card-header>
-          <mat-card-title>{{event.event_title}}</mat-card-title>
-          <mat-card-subtitle>{{event.event_date}} at {{event.event_time}}</mat-card-subtitle>
-        </mat-card-header>
-        <div class="image-container">
-          <img mat-card-image [src]="event.event_image" [alt]="event.image_description">
+<div #target>
+  <div *ngIf="events$ | async as events" class="events-container">
+    <div *ngIf="auth.user$ | async as user">
+      <button mat-fab color="accent" (click)="addEvent()" [disabled]="requestPending$ | async">
+        <mat-icon color="primary" class="material-icons">
+          post_add
+        </mat-icon>
+      </button>
+    </div>
+    <mat-card class="events-card mat-elevation-z1">
+      <h1 class="title">Upcoming Events</h1>
+      <ng-container *ngIf="events.length > 0; else noEvents">
+        <div [ngClass]="{'event-margin': !isLast}" *ngFor="let event of events; last as isLast;">
+          <app-event-card [event]="event"></app-event-card>
+          <mat-card-actions>
+            <button mat-button (click)="editEvent(event)" [disabled]="requestPending$ | async">
+              EDIT
+            </button>
+            <button mat-button (click)="deleteEvent(event.id)" [disabled]="requestPending$ | async" color="warn">
+              DELETE
+            </button>
+          </mat-card-actions>
+          <mat-divider *ngIf="!isLast"></mat-divider>
         </div>
-        <mat-card-content>
-          <p class="description">
-            {{event.event_description}}
-          </p>
-        </mat-card-content>
-        <mat-divider *ngIf="!isLast"></mat-divider>
-      </div>
-    </ng-container>
-  </mat-card>
+      </ng-container>
+    </mat-card>
+  </div>
 </div>
 
 <!-- <div *ngIf="services$ | async as services" class="events-container">

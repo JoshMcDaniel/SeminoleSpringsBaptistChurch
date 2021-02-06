@@ -1,3 +1,4 @@
+import { EventCardComponent } from './events/event-card/event-card.component';
 import { ManageEventsDialogComponent } from './events/manage-events-dialog/manage-events-dialog.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from './../environments/environment';
@@ -57,7 +58,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     ContactSimpleComponent,
     OnlineGivingComponent,
     OnlineGivingSummaryComponent,
-    ManageEventsDialogComponent
+    ManageEventsDialogComponent,
+    EventCardComponent
   ],
   entryComponents: [VideoViewComponent, ManageEventsDialogComponent],
   imports: [

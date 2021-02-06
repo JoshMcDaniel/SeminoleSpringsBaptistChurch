@@ -2,9 +2,10 @@ import { ManageEventsDialogModule } from './manage-events-dialog/manage-events-d
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { EventCardComponent } from './event-card/event-card.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [EventCardComponent],
   imports: [
     CommonModule,
     SharedModule,

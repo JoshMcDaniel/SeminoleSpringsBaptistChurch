@@ -1,5 +1,56 @@
-<div class="form-container">
-  <h2 mat-dialog-title class="event-title">Add Event</h2>
+<div mat-dialog-content>
+  <mat-card>
+    <h2 mat-dialog-title class="event-title">{{data?.isEdit ? 'Edit Event' : 'Add Event'}}</h2>
+    <form [formGroup]="eventForm" class="event-form">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-form-field>
+            <mat-label>Event Name</mat-label>
+            <input matInput type="text" formControlName="event_title" maxlength="30">
+          </mat-form-field>
+        </mat-card-title>
+        <mat-card-subtitle class="date-time">
+          <mat-form-field>
+            <mat-label>Event Date</mat-label>
+            <input matInput [matDatepicker]="dp" formControlName="event_date">
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Event Time</mat-label>
+            <input matInput [ngxTimepicker]="picker" formControlName="event_time">
+            <ngx-material-timepicker #picker></ngx-material-timepicker>
+          </mat-form-field>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <input hidden #imgInput type="file" (change)="addImage($event)">
+      <div *ngIf="imagePreview !== '' && imagePreview" class="image-container">
+        <img [src]="imagePreview" [alt]="event_title.value">
+      </div>
+      <button type="button" mat-raised-button (click)="imgInput.click()">Choose Image</button>
+      <mat-card-content>
+        <mat-form-field class="description-input">
+          <mat-label>Event Description</mat-label>
+          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" formControlName="event_description" maxlength="100"></textarea>
+          <mat-hint>{{event_description.value.length}}/100</mat-hint>
+        </mat-form-field>
+      </mat-card-content>
+      <div mat-dialog-actions class="actions-container">
+        <button mat-raised-button (click)="onCancel()">Cancel</button>
+        <button mat-raised-button (click)="saveEvent()" [disabled]="!eventForm.valid || (requestPending$ | async)"
+          color="primary">
+          Ok
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>
+
+
+
+<!-- <div class="form-container">
+  <h2 mat-dialog-title class="event-title">{{data?.isEdit ? 'Edit Event' : 'Add Event'}}</h2>
   <div mat-dialog-content>
     <form [formGroup]="eventForm" class="event-form">
       <mat-form-field>
@@ -12,25 +63,31 @@
         <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
         <mat-datepicker #dp></mat-datepicker>
       </mat-form-field>
-      <mat-label>Event Time</mat-label>
-      <input [ngxTimepicker]="picker" formControlName="event_time">
-      <ngx-material-timepicker #picker></ngx-material-timepicker>
+      <mat-form-field>
+        <mat-label>Event Time</mat-label>
+        <input matInput [ngxTimepicker]="picker" formControlName="event_time">
+        <ngx-material-timepicker #picker></ngx-material-timepicker>
+      </mat-form-field>
       <mat-form-field>
         <mat-label>Event Description</mat-label>
         <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
           cdkAutosizeMaxRows="5" formControlName="event_description" maxlength="100"></textarea>
         <mat-hint>{{event_description.value.length}}/100</mat-hint>
       </mat-form-field>
-      <p>{{event_image.value ? 'Image: ' : null}}{{getImageName(event_image.value)}}</p>
+
       <button type="button" mat-raised-button (click)="imgInput.click()">Choose Image</button>
-      <input hidden formControlName="event_image" #imgInput type="file" (change)="addImage($event.target.files)"
-        accept="image/*" id="file">
+      <input hidden #imgInput type="file" (change)="addImage($event)">
+      <div *ngIf="imagePreview !== '' && imagePreview && event_image.valid" class="event-image-preview">
+        <img [src]="imagePreview" [alt]="event_title.value">
+      </div>
+
     </form>
-  </div>
-  <div mat-dialog-actions class="actions-container">
+  </div> -->
+<!-- <div mat-dialog-actions class="actions-container">
     <button mat-raised-button (click)="onCancel()">Cancel</button>
-    <button mat-raised-button (click)="addEvent()" [disabled]="!eventForm.valid" color="primary">
-      Add Event
+    <button mat-raised-button (click)="saveEvent()" [disabled]="!eventForm.valid || (requestPending$ | async)"
+      color="primary">
+      Ok
     </button>
-  </div>
-</div>
+  </div> -->
+<!-- </div> -->
