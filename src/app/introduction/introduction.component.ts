@@ -1,3 +1,4 @@
+import { WEBSITE_NAME_FULL } from './../app.component';
 import { take } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
@@ -13,7 +14,7 @@ export class IntroductionComponent implements OnInit {
 
   readonly carouselImagesURL = '../assets/carousel-json/carousel-images.json';
   images: object[];
-  title = 'Seminole Springs Baptist Church';
+  title = WEBSITE_NAME_FULL;
 
   constructor(private data: DataService) { }
 

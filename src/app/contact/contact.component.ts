@@ -1,5 +1,6 @@
 import { NgForm, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { WEBSITE_NAME } from '../app.component';
 // import { ContactService } from './../contact/contact.service';
 // import { take } from 'rxjs/operators';
 
@@ -17,6 +18,7 @@ export class ContactComponent implements OnInit {
   isFormSubmitted = false;
   submittedFirstName: string;
   email = new FormControl('', [Validators.required, Validators.email]);
+  readonly title = WEBSITE_NAME;
 
   constructor() { }
   // constructor(private contactService: ContactService) { }

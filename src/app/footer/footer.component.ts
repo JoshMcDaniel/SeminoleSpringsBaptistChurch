@@ -1,3 +1,4 @@
+import { WEBSITE_NAME_FULL } from './../app.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  readonly COPYWRITE = '2019 Seminole Springs Baptist Church';
+  readonly COPYWRITE = `2021 ${WEBSITE_NAME_FULL}`;
   readonly DEVELOPER = 'Website developed by Josh McDaniel';
   readonly DEVELOPER_LINK = 'https://github.com/JoshMcDaniel';
 

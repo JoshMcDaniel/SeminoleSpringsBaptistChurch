@@ -1,6 +1,7 @@
 import { ContactInformation } from './contact.model';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { WEBSITE_NAME } from '../app.component';
 
 @Component({
   selector: 'app-contact-simple',
@@ -10,6 +11,7 @@ import { DataService } from '../data.service';
 export class ContactSimpleComponent implements OnInit {
 
   readonly contactURL = '../assets/contact-json/contact.json';
+  readonly title = WEBSITE_NAME;
   churchEmail: string;
   churchPhone: string;
   churchPhoneRaw: number;

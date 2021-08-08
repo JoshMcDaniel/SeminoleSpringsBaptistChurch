@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
+export const WEBSITE_NAME = 'Real Impact';
+export const WEBSITE_NAME_FULL = `${WEBSITE_NAME} Church`;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'SeminoleSpringsBaptistChurch';
+  title = 'RealImpactChurch';
 
   constructor(private router: Router) { }
 

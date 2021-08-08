@@ -1,3 +1,4 @@
+import { WEBSITE_NAME_FULL } from './../app.component';
 import { Event, Events } from './events.model';
 import { take } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
@@ -10,6 +11,7 @@ import { DataService } from '../data.service';
 })
 export class EventsComponent implements OnInit {
 
+  readonly title = WEBSITE_NAME_FULL;
   readonly eventsURL = '../assets/events-json/events.json';
   readonly imageURL = './assets/images/events/';
   events: Event[] = [];
