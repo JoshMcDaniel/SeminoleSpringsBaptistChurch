@@ -52,41 +52,28 @@
   <p>{{redirectPath}}</p>
 </section> -->
 
-
-
-
 <section class="vbs-form-container">
-  <mat-horizontal-stepper [linear]="false" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Contact Info</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Child Info</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Address" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      You are now done.
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
+  <form #form [formGroup]="formGroup" [action]="testFormSparkLink" class="vbs-form">
+    <mat-form-field>
+      <mat-label>Your Email</mat-label>
+      <input matInput type="email" id="email" name="email" formControlName="email">
+      <mat-error *ngIf="email.hasError('required')">
+        Required
+      </mat-error>
+      <mat-error *ngIf="!email.hasError('required') && email.hasError('email')">
+        Invalid email
+      </mat-error>
+    </mat-form-field>
+
+    <div formArrayName="formArray">
+      <div *ngFor="let control of formControlls; let i = index">
+        <button mat-raised-button type="button" (click)="delInput(i)">
+          Delete
+        </button>
+        <app-vbs-sub-form [form]="formControlls[i]"></app-vbs-sub-form>
       </div>
-    </mat-step>
-  </mat-horizontal-stepper>
+    </div>
+    <button mat-raised-button type="button" (click)="addInput()">Add</button>
+    <button mat-raised-button type="submit" [disabled]="!formGroup.valid">Save</button>
+  </form>
 </section>

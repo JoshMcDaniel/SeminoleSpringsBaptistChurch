@@ -1,0 +1,16 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Child First Name</mat-label>
+    <input matInput type="text" id="childFirstName" name="childFirstName" formControlName="childFirstName">
+    <mat-error *ngIf="childFirstName.invalid">
+      Required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Child Last Name</mat-label>
+    <input matInput type="text" id="childLastName" name="childLastName" formControlName="childLastName">
+    <mat-error *ngIf="childLastName.invalid">
+      Required
+    </mat-error>
+  </mat-form-field>
+</form>

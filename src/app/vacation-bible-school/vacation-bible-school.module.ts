@@ -1,3 +1,4 @@
+import { VbsSubFormComponent } from './vbs-sub-form.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +12,10 @@ import { MatFormFieldModule } from '@angular/material';
 
 
 @NgModule({
-  declarations: [VacationBibleSchoolComponent],
+  declarations: [
+    VacationBibleSchoolComponent,
+    VbsSubFormComponent
+  ],
   imports: [
     CommonModule,
     VacationBibleSchoolRoutingModule,

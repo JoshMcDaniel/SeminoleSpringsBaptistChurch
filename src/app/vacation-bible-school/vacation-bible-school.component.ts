@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ArrayType } from '@angular/compiler';
+import { Component, OnInit, Input } from '@angular/core';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-vacation-bible-school',
@@ -10,22 +11,26 @@ export class VacationBibleSchoolComponent implements OnInit {
 
   readonly formSparkLink = 'https://submit-form.com/56FALOlJ';
   readonly testFormSparkLink = 'https://submit-form.com/echo';
-  // formGroup: FormGroup;
-
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  formGroup: FormGroup;
 
   constructor(
-    private _formBuilder: FormBuilder
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+    let newForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.maxLength(25)]],
+      formArray: this.formBuilder.array([])
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+
+    const arrayControl = <FormArray>newForm.controls['formArray'];
+    let newGroup = this.formBuilder.group({
+      childFirstName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(2)]],
+      childLastName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(2)]]
     });
+    arrayControl.push(newGroup);
+
+    this.formGroup = newForm;
 
 
 
@@ -40,6 +45,32 @@ export class VacationBibleSchoolComponent implements OnInit {
     // })
   }
 
+  addInput(): void {
+    const arrayControl = <FormArray>this.formGroup.controls['formArray'];
+    let newGroup = this.formBuilder.group({
+
+      /* Fill this in identically to the one in ngOnInit */
+      childFirstName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(2)]],
+      childLastName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(2)]]
+
+    });
+    arrayControl.push(newGroup);
+  }
+  delInput(index: number): void {
+    const arrayControl = <FormArray>this.formGroup.controls['formArray'];
+    arrayControl.removeAt(index);
+  }
+  onSubmit(): void {
+    console.log(this.formGroup.value);
+    // Your form value is outputted as a JavaScript object.
+    // Parse it as JSON or take the values necessary to use as you like
+  }
+
+  get formControlls() {
+    const formControlls = <FormArray>this.formGroup.controls['formArray']
+    return formControlls.controls
+  }
+
   get redirectPath(): string {
     return window.location.href.replace('/vbs', '');
   }
@@ -48,9 +79,9 @@ export class VacationBibleSchoolComponent implements OnInit {
   //   return this.formGroup.get('name');
   // }
 
-  // get email(): AbstractControl {
-  //   return this.formGroup.get('email');
-  // }
+  get email(): AbstractControl {
+    return this.formGroup.get('email');
+  }
 
   // get message(): AbstractControl {
   //   return this.formGroup.get('message');
