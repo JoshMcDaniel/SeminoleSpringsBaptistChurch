@@ -20,7 +20,8 @@
       <div [ngClass]="{'event-margin': !isLast}" *ngFor="let event of events; last as isLast;">
         <mat-card-header>
           <mat-card-title>{{event.event_title}}</mat-card-title>
-          <mat-card-subtitle>{{event.event_date}} at {{event.event_time}}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="!!event.event_date; else tbdDateTime">{{event.event_date}} at {{event.event_time}}
+          </mat-card-subtitle>
         </mat-card-header>
         <div class="image-container">
           <img mat-card-image src="{{imageURL + event.event_image}}" alt="{{event.image_description}}">
@@ -30,6 +31,12 @@
             {{event.event_description}}
           </p>
         </mat-card-content>
+        <mat-card-actions *ngIf="event.actions" class="event-actions">
+          <button mat-raised-button *ngIf="event.actions.routingAction" color="accent"
+            (click)="onRouterAction(event.actions.routingAction.routeTo)">
+            {{event.actions.routingAction.actionBtnText}}
+          </button>
+        </mat-card-actions>
         <mat-divider *ngIf="!isLast"></mat-divider>
       </div>
     </ng-container>
@@ -42,7 +49,8 @@
     <div [ngClass]="{'event-margin': !isLast}" *ngFor="let service of services; last as isLast;">
       <mat-card-header>
         <mat-card-title>{{service.event_title}}</mat-card-title>
-        <mat-card-subtitle *ngIf="service.event_date.length > 0">{{service.event_date}} at {{service.event_time}}
+        <mat-card-subtitle *ngIf="!!service.event_date; else tbdDateTime">{{service.event_date}} at
+          {{service.event_time}}
         </mat-card-subtitle>
       </mat-card-header>
       <div class="image-container">
@@ -68,3 +76,7 @@
 </ng-template>
 
 <app-footer></app-footer>
+
+<ng-template #tbdDateTime>
+  <mat-card-subtitle>Date: TBD</mat-card-subtitle>
+</ng-template>

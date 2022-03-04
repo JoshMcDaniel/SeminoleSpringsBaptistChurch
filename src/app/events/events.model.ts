@@ -10,4 +10,10 @@ export interface Event {
   event_time: string;
   event_image: string;
   image_description: string;
+  actions?: {
+    routingAction?: {
+      routeTo: string;
+      actionBtnText: string;
+    }
+  }
 }

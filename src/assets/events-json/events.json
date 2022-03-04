@@ -1,20 +1,18 @@
 {
   "events": [
     {
-      "event_title": "Jonah Series",
-      "event_description": "Join us each Sunday as we go through an exciting new series through the book of Jonah. Come and learn how the grace of God that pursued Jonah is available for everyone.",
-      "event_date": "Sundays",
-      "event_time": "10:30am",
-      "event_image": "jonah-series.jpg",
-      "image_description": "Jonah Series"
-    },
-    {
-      "event_title": "Welcome Home!",
-      "event_description": "We are excited to announce that we are going to resume our on-campus worship services! Come on out and join us as we fellowship and worship the Lord together!",
-      "event_date": "Sunday, May 31, 2020",
-      "event_time": "10:30am",
-      "event_image": "welcome-home.jpg",
-      "image_description": "Welcome Home"
+      "event_title": "Vacation Bible School (VBS)",
+      "event_description": "Vacation Bible School is back! Register now to join us for our annual VBS where the kids get to enjoy food, fun, and fellowship.",
+      "event_date": "",
+      "event_time": "",
+      "event_image": "vbs_2022.jpg",
+      "image_description": "Vacation Bible School",
+      "actions": {
+        "routingAction": {
+          "routeTo": "/vbs",
+          "actionBtnText": "Register Now!"
+        }
+      }
     }
   ],
   "services": [

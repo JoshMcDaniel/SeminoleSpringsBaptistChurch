@@ -1,0 +1,92 @@
+<!-- <section class="vbs-form-container">
+  <form #form [action]="testFormSparkLink" class="vbs-form">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Name" required="" />
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="Email" required="" />
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="Message" required=""></textarea>
+    <input type="hidden" name="_redirect" [value]="redirectPath" />
+    <button type="submit" (click)="form.submit()">Register</button>
+  </form>
+  <p>{{redirectPath}}</p>
+</section> -->
+
+<!--
+<section class="vbs-form-container">
+  <form #form [formGroup]="formGroup" [action]="testFormSparkLink" class="vbs-form">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput type="text" id="name" name="name" formControlName="name">
+      <mat-error *ngIf="name.invalid">
+        Required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" id="email" name="email" formControlName="email">
+      <mat-error *ngIf="email.hasError('required')">
+        Required
+      </mat-error>
+      <mat-error *ngIf="!email.hasError('required') && email.hasError('email')">
+        Invalid email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Message</mat-label>
+      <input matInput type="text" id="message" name="message" formControlName="message">
+      <mat-error *ngIf="message.invalid">
+        Required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Else</mat-label>
+      <input matInput type="text" id="elsed" name="elsed" formControlName="elsed">
+      <mat-error *ngIf="elsed.invalid">
+        Required
+      </mat-error>
+    </mat-form-field>
+    <input type="hidden" name="_redirect" [value]="redirectPath" />
+    <button mat-raised-button type="submit" (click)="form.submit()" [disabled]=" formGroup.invalid">Register</button>
+  </form>
+  <p>{{redirectPath}}</p>
+</section> -->
+
+
+
+
+<section class="vbs-form-container">
+  <mat-horizontal-stepper [linear]="false" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Contact Info</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Child Info</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</section>

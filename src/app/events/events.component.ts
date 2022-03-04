@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { WEBSITE_NAME_FULL } from './../app.component';
 import { Event, Events } from './events.model';
 import { take } from 'rxjs/operators';
@@ -17,7 +18,11 @@ export class EventsComponent implements OnInit {
   events: Event[] = [];
   services: Event[] = [];
 
-  constructor(private data: DataService) { }
+  constructor(
+    private data: DataService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.data.getData(this.eventsURL).pipe(take(1))
@@ -33,6 +38,10 @@ export class EventsComponent implements OnInit {
    */
   scrollToEvents(element: HTMLElement) {
     element.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  onRouterAction(route: string): void {
+    this.router.navigate([`/events/${route}`]);
   }
 
 }

@@ -60,6 +60,12 @@ mat-card img {
   position: relative;
 }
 
+.event-actions {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+}
+
 @media (max-width: 600px) {
   .events-container {
     padding: 2em 0;

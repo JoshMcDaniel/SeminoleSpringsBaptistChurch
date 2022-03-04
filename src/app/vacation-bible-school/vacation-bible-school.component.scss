@@ -1,0 +1,16 @@
+.vbs-form-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.vbs-form {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 0.5em;
+
+  button {
+    height: 2.5em;
+  }
+}
