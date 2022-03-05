@@ -1,16 +1,37 @@
-<form [formGroup]="form">
-  <mat-form-field>
-    <mat-label>Child First Name</mat-label>
-    <input matInput type="text" id="childFirstName" name="childFirstName" formControlName="childFirstName">
+<form [formGroup]="form" class="vertical-flow-container">
+  <mat-form-field appearance="fill">
+    <mat-label>First Name</mat-label>
+    <input matInput required type="text" id="childFirstName" name="childFirstName" formControlName="childFirstName">
     <mat-error *ngIf="childFirstName.invalid">
       Required
     </mat-error>
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Child Last Name</mat-label>
-    <input matInput type="text" id="childLastName" name="childLastName" formControlName="childLastName">
+  <mat-form-field appearance="fill">
+    <mat-label>Last Name</mat-label>
+    <input matInput required type="text" id="childLastName" name="childLastName" formControlName="childLastName">
     <mat-error *ngIf="childLastName.invalid">
       Required
     </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput required [matDatepicker]="picker" formControlName="childBirthDay" placeholder="Birth Day">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Last Grade Completed</mat-label>
+    <mat-select required formControlName="childLastGradeCompleted">
+      <mat-option *ngFor="let grade of grades" [value]="grade">
+        {{grade}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Medical Information</mat-label>
+    <textarea matInput #medInfo formControlName="childMedicalInformation" cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+    <mat-hint *ngIf="childMedicalInformation.valid">{{medInfo.value.length}} / 200</mat-hint>
+    <mat-error *ngIf="childMedicalInformation.invalid">{{medInfo.value.length}} / 200</mat-error>
   </mat-form-field>
 </form>
