@@ -157,33 +157,25 @@
         <ng-template matStepLabel>Parent / Guardian Info</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>First Name</mat-label>
-          <input matInput type="text" required id="parentOrGuardianFirstName" name="parentOrGuardianFirstName"
-            formControlName="parentOrGuardianFirstName">
+          <input matInput type="text" maxlength="20" required id="parentOrGuardianFirstName"
+            name="parentOrGuardianFirstName" formControlName="parentOrGuardianFirstName">
           <mat-error *ngIf="parentOrGuardianFirstName.hasError('required')">
             Required
-          </mat-error>
-          <mat-error
-            *ngIf="!parentOrGuardianFirstName.hasError('required') && parentOrGuardianFirstName.hasError('maxLength')">
-            Max characters: 20
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Last Name</mat-label>
-          <input matInput type="text" required id="parentOrGuardianLastName" name="parentOrGuardianLastName"
-            formControlName="parentOrGuardianLastName">
+          <input matInput type="text" maxlength="20" required id="parentOrGuardianLastName"
+            name="parentOrGuardianLastName" formControlName="parentOrGuardianLastName">
           <mat-error *ngIf="parentOrGuardianLastName.hasError('required')">
             Required
-          </mat-error>
-          <mat-error
-            *ngIf="!parentOrGuardianLastName.hasError('required') && parentOrGuardianLastName.hasError('maxLength')">
-            Max characters: 20
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput type="email" required id="email" name="email" formControlName="email">
+          <input matInput type="email" maxlength="50" required id="email" name="email" formControlName="email">
           <mat-error *ngIf="email.hasError('required')">
             Required
           </mat-error>
@@ -194,7 +186,8 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Phone</mat-label>
-          <input matInput type="tel" required id="phoneNumber" name="phoneNumber" formControlName="phoneNumber">
+          <input matInput type="tel" maxlength="10" required id="phoneNumber" name="phoneNumber"
+            formControlName="phoneNumber">
           <mat-error *ngIf="phoneNumber.hasError('required')">
             Required
           </mat-error>
@@ -205,7 +198,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Address</mat-label>
-          <input matInput type="text" required id="address" name="address" formControlName="address">
+          <input matInput type="text" maxlength="50" required id="address" name="address" formControlName="address">
           <mat-error *ngIf="address.hasError('required')">
             Required
           </mat-error>
@@ -216,12 +209,26 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Mailing Address</mat-label>
-          <input matInput type="mailingAddress" id="mailingAddress" name="mailingAddress"
+          <input matInput type="text" maxlength="50" id="mailingAddress" name="mailingAddress"
             formControlName="mailingAddress">
+          <mat-error *ngIf="mailingAddress.hasError('maxLength')">
+            Max characters: 50
+          </mat-error>
           <mat-hint>
             (If different)
           </mat-hint>
         </mat-form-field>
+
+        <div>
+          <p>
+            Do you attend church? If so, where?
+          </p>
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <input matInput type="text" maxlength="50" id="churchAttendance" name="churchAttendance"
+              formControlName="churchAttendance">
+          </mat-form-field>
+        </div>
+
         <button mat-raised-button type="button" color="accent" matStepperNext [style.margin-top]="'1em'"
           [disabled]="parentOrGuardianFormGroup.invalid">
           Next
@@ -230,13 +237,99 @@
     </mat-step>
 
     <!-- Step 2 -->
+    <mat-step [stepControl]="emergencyContactsFormGroup">
+      <form [formGroup]="emergencyContactsFormGroup" class="vbs-form">
+        <ng-template matStepLabel>Emergency Contacts</ng-template>
+        <div>
+          <p>
+            Emergency Contact 1
+          </p>
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" maxlength="20" required id="emergencyContact1FirstName"
+              name="emergencyContact1FirstName" formControlName="emergencyContact1FirstName">
+            <mat-error *ngIf="emergencyContact1FirstName.hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" maxlength="20" required id="emergencyContact1LastName"
+              name="emergencyContact1LastName" formControlName="emergencyContact1LastName">
+            <mat-error *ngIf="emergencyContact1LastName.hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Phone</mat-label>
+            <input matInput type="tel" maxlength="10" required id="emergencyContact1PhoneNumber"
+              name="emergencyContact1PhoneNumber" formControlName="emergencyContact1PhoneNumber">
+            <mat-error *ngIf="emergencyContact1PhoneNumber.hasError('required')">
+              Required
+            </mat-error>
+            <mat-error *ngIf="!emergencyContact1PhoneNumber.hasError('required') && email.hasError('pattern')">
+              Invalid phone number
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <p>
+            Emergency Contact 2
+          </p>
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" maxlength="20" required id="emergencyContact2FirstName"
+              name="emergencyContact2FirstName" formControlName="emergencyContact2FirstName">
+            <mat-error *ngIf="emergencyContact2FirstName.hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" maxlength="20" required id="emergencyContact2LastName"
+              name="emergencyContact2LastName" formControlName="emergencyContact2LastName">
+            <mat-error *ngIf="emergencyContact2LastName.hasError('required')">
+              Required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Phone</mat-label>
+            <input matInput type="tel" maxlength="10" required id="emergencyContact2PhoneNumber"
+              name="emergencyContact2PhoneNumber" formControlName="emergencyContact2PhoneNumber">
+            <mat-error *ngIf="emergencyContact2PhoneNumber.hasError('required')">
+              Required
+            </mat-error>
+            <mat-error *ngIf="!emergencyContact2PhoneNumber.hasError('required') && email.hasError('pattern')">
+              Invalid phone number
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="stepper-nav-button-container">
+          <button mat-raised-button matStepperPrevious type="button">
+            Back
+          </button>
+          <button mat-raised-button matStepperNext type="button" color="accent"
+            [disabled]="emergencyContactsFormGroup.invalid">
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 3 -->
     <mat-step [stepControl]="registrantFormGroup">
       <form [formGroup]="registrantFormGroup" class="vbs-form">
         <ng-template matStepLabel>Child Info</ng-template>
         <div formArrayName="formArray" [style.margin-top]="'1em'" class="vertical-flow-container">
           <div *ngFor="let control of formControlls; let i = index" class="vertical-flow-container">
             <div class="label-button-container">
-              <mat-label>Child {{i + 1}}</mat-label>
+              <span class="child-label">Child {{i + 1}}</span>
               <button mat-icon-button *ngIf="i > 0" type="button" (click)="delInput(i)" class="remove-registrant-btn">
                 <mat-icon>close</mat-icon>
               </button>
@@ -261,10 +354,12 @@
       </form>
     </mat-step>
 
-    <!-- Step 3 -->
+    <!-- Step 4 -->
     <mat-step>
       <ng-template matStepLabel>Register</ng-template>
-      Complete the registration by clicking <i>Register</i>
+      <p>
+        Complete the registration by clicking <i>Register</i>
+      </p>
       <div class="vertical-flow-container">
         <div class="stepper-nav-button-container">
           <button mat-raised-button type="button" matStepperPrevious>Back</button>

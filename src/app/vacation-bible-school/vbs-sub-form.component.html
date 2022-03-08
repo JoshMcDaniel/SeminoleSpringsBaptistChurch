@@ -1,24 +1,31 @@
 <form [formGroup]="form" class="vertical-flow-container">
+
   <mat-form-field appearance="fill">
     <mat-label>First Name</mat-label>
-    <input matInput required type="text" id="childFirstName" name="childFirstName" formControlName="childFirstName">
+    <input matInput maxlength="20" required type="text" id="childFirstName" name="childFirstName"
+      formControlName="childFirstName">
     <mat-error *ngIf="childFirstName.invalid">
       Required
     </mat-error>
   </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Last Name</mat-label>
-    <input matInput required type="text" id="childLastName" name="childLastName" formControlName="childLastName">
+    <input matInput maxlength="20" required type="text" id="childLastName" name="childLastName"
+      formControlName="childLastName">
     <mat-error *ngIf="childLastName.invalid">
       Required
     </mat-error>
   </mat-form-field>
+
   <mat-form-field>
-    <input matInput required [matDatepicker]="picker" formControlName="childBirthDay" placeholder="Birth Day">
+    <input matInput maxlength="8" required [matDatepicker]="picker" formControlName="childBirthDay"
+      placeholder="Birth Day">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
     <mat-hint>MM/DD/YYYY</mat-hint>
   </mat-form-field>
+
   <mat-form-field>
     <mat-label>Last Grade Completed</mat-label>
     <mat-select required formControlName="childLastGradeCompleted">
@@ -27,11 +34,50 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Medical Information</mat-label>
-    <textarea matInput #medInfo formControlName="childMedicalInformation" cdkTextareaAutosize
-      #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-    <mat-hint *ngIf="childMedicalInformation.valid">{{medInfo.value.length}} / 200</mat-hint>
-    <mat-error *ngIf="childMedicalInformation.invalid">{{medInfo.value.length}} / 200</mat-error>
-  </mat-form-field>
+
+  <div>
+    <p>
+      May we photograph your child for promotioal purposes?
+    </p>
+    <mat-form-field [style.width]="'100%'">
+      <mat-select required formControlName="childPhotographPermission">
+        <mat-option value="No">No</mat-option>
+        <mat-option value="Yes">Yes</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <p>
+      Medical or other information we need to know.
+      (Please include food or other alergies.)
+    </p>
+    <mat-form-field appearance="fill" [style.width]="'100%'">
+      <mat-label>Medical Information</mat-label>
+      <textarea matInput #medInfo [maxLength]="200" formControlName="childMedicalInformation" cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
+        [style.resize]="'vertical'"></textarea>
+      <mat-hint *ngIf="childMedicalInformation.valid">{{medInfo.value.length}} / 200</mat-hint>
+      <mat-error *ngIf="childMedicalInformation.invalid">{{medInfo.value.length}} / 200</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <p>Who may pick up your child at the end of each day?</p>
+    <mat-form-field appearance="fill" [style.width]="'100%'">
+      <mat-label>First Name</mat-label>
+      <input matInput maxlength="20" required type="text" id="pickupFirstName" name="pickupFirstName"
+        formControlName="pickupFirstName">
+      <mat-error *ngIf="pickupFirstName.invalid">
+        Required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" [style.width]="'100%'">
+      <mat-label>Last Name</mat-label>
+      <input matInput maxlength="20" required type="text" id="pickupLastName" name="pickupLastName"
+        formControlName="pickupLastName">
+      <mat-error *ngIf="pickupLastName.invalid">
+        Required
+      </mat-error>
+    </mat-form-field>
+  </div>
 </form>

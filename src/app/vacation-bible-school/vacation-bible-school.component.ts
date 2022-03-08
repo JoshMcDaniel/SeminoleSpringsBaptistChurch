@@ -13,6 +13,7 @@ export class VacationBibleSchoolComponent implements OnInit {
   readonly formSparkLink = 'https://submit-form.com/56FALOlJ';
   readonly testFormSparkLink = 'https://submit-form.com/echo';
   parentOrGuardianFormGroup: FormGroup;
+  emergencyContactsFormGroup: FormGroup;
   registrantFormGroup: FormGroup;
 
   readonly maxRegistrants = 5;
@@ -22,42 +23,62 @@ export class VacationBibleSchoolComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.parentOrGuardianFormGroup = this.formBuilder.group({
+    this.parentOrGuardianFormGroup = this.buildParentOrGuardianFormGroup();
+    this.emergencyContactsFormGroup = this.buildEmergencyContactsFormGroup();
+    this.initializeRegistrantGroup();
+  }
+
+  buildParentOrGuardianFormGroup(): FormGroup {
+    return this.formBuilder.group({
       parentOrGuardianFirstName: ['', [Validators.required, Validators.maxLength(20)]],
       parentOrGuardianLastName: ['', [Validators.required, Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required, Validators.maxLength(50)]],
       mailingAddress: ['', [Validators.maxLength(50)]],
       phoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]],
+      churchAttendance: ['', [Validators.maxLength(50)]]
     });
+  }
 
-    let registrantGroup = this.formBuilder.group({
-      formArray: this.formBuilder.array([])
-    })
+  buildEmergencyContactsFormGroup(): FormGroup {
+    return this.formBuilder.group({
+      emergencyContact1FirstName: ['', [Validators.required, Validators.maxLength(20)]],
+      emergencyContact1LastName: ['', [Validators.required, Validators.maxLength(20)]],
+      emergencyContact1PhoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]],
+      emergencyContact2FirstName: ['', [Validators.required, Validators.maxLength(20)]],
+      emergencyContact2LastName: ['', [Validators.required, Validators.maxLength(20)]],
+      emergencyContact2PhoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]],
+    });
+  }
 
-    const arrayControl = <FormArray>registrantGroup.controls['formArray'];
-    let newGroup = this.formBuilder.group({
+  buildRegistrantForm(): FormGroup {
+    return this.formBuilder.group({
       childFirstName: ['', [Validators.required, Validators.maxLength(20)]],
       childLastName: ['', [Validators.required, Validators.maxLength(20)]],
       childBirthDay: [new Date(), [Validators.required]],
       childLastGradeCompleted: ['', [Validators.required]],
       childMedicalInformation: ['', [Validators.maxLength(200)]],
+      childPhotographPermission: [null, [Validators.required]],
+      pickupFirstName: ['', [Validators.required, Validators.maxLength(20)]],
+      pickupLastName: ['', [Validators.required, Validators.maxLength(20)]],
     });
-    arrayControl.push(newGroup);
+  }
+
+  initializeRegistrantGroup(): void {
+    let registrantGroup = this.formBuilder.group({
+      formArray: this.formBuilder.array([])
+    });
+
+    const arrayControl = <FormArray>registrantGroup.controls['formArray'];
+    const initialRegistrantGroup = this.buildRegistrantForm();
+    arrayControl.push(initialRegistrantGroup);
 
     this.registrantFormGroup = registrantGroup;
   }
 
   addInput(): void {
     const arrayControl = <FormArray>this.registrantFormGroup.controls['formArray'];
-    let newGroup = this.formBuilder.group({
-      /* Fill this in identically to the one in ngOnInit */
-      childFirstName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(2)]],
-      childLastName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(2)]],
-      childBirthDay: [new Date(), [Validators.required]],
-      childLastGradeCompleted: ['', [Validators.required]],
-      childMedicalInformation: ['', [Validators.maxLength(200)]],
-    });
+    let newGroup = this.buildRegistrantForm();
     arrayControl.push(newGroup);
   }
 
@@ -104,5 +125,33 @@ export class VacationBibleSchoolComponent implements OnInit {
 
   get phoneNumber(): AbstractControl {
     return this.parentOrGuardianFormGroup.get('phoneNumber');
+  }
+
+  get churchAttendance(): AbstractControl {
+    return this.parentOrGuardianFormGroup.get('churchAttendance');
+  }
+
+  get emergencyContact1FirstName(): AbstractControl {
+    return this.emergencyContactsFormGroup.get('emergencyContact1FirstName');
+  }
+
+  get emergencyContact1LastName(): AbstractControl {
+    return this.emergencyContactsFormGroup.get('emergencyContact1LastName');
+  }
+
+  get emergencyContact1PhoneNumber(): AbstractControl {
+    return this.emergencyContactsFormGroup.get('emergencyContact1PhoneNumber');
+  }
+
+  get emergencyContact2FirstName(): AbstractControl {
+    return this.emergencyContactsFormGroup.get('emergencyContact2FirstName');
+  }
+
+  get emergencyContact2LastName(): AbstractControl {
+    return this.emergencyContactsFormGroup.get('emergencyContact2LastName');
+  }
+
+  get emergencyContact2PhoneNumber(): AbstractControl {
+    return this.emergencyContactsFormGroup.get('emergencyContact2PhoneNumber');
   }
 }
