@@ -150,10 +150,10 @@
 
 
 <section class="vbs-form-container">
-  <mat-vertical-stepper [linear]="true" #stepper class="mat-elevation-z1">
+  <mat-vertical-stepper [linear]="true" #stepper class="mat-elevation-z1 vbs-stepper">
     <!-- Step 1 -->
     <mat-step [stepControl]="parentOrGuardianFormGroup">
-      <form [formGroup]="parentOrGuardianFormGroup" class="vbs-form" [style.margin-top]="'1em'">
+      <form [formGroup]="parentOrGuardianFormGroup" class="vbs-form">
         <ng-template matStepLabel>Parent / Guardian Info</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>First Name</mat-label>
@@ -219,17 +219,7 @@
           </mat-hint>
         </mat-form-field>
 
-        <div>
-          <p>
-            Do you attend church? If so, where?
-          </p>
-          <mat-form-field appearance="fill" [style.width]="'100%'">
-            <input matInput type="text" maxlength="50" id="churchAttendance" name="churchAttendance"
-              formControlName="churchAttendance">
-          </mat-form-field>
-        </div>
-
-        <button mat-raised-button type="button" color="accent" matStepperNext [style.margin-top]="'1em'"
+        <button mat-raised-button type="button" color="primary" matStepperNext [style.margin-top]="'1em'"
           [disabled]="parentOrGuardianFormGroup.invalid">
           Next
         </button>
@@ -237,92 +227,6 @@
     </mat-step>
 
     <!-- Step 2 -->
-    <mat-step [stepControl]="emergencyContactsFormGroup">
-      <form [formGroup]="emergencyContactsFormGroup" class="vbs-form">
-        <ng-template matStepLabel>Emergency Contacts</ng-template>
-        <div>
-          <p>
-            Emergency Contact 1
-          </p>
-          <mat-form-field appearance="fill" [style.width]="'100%'">
-            <mat-label>First Name</mat-label>
-            <input matInput type="text" maxlength="20" required id="emergencyContact1FirstName"
-              name="emergencyContact1FirstName" formControlName="emergencyContact1FirstName">
-            <mat-error *ngIf="emergencyContact1FirstName.hasError('required')">
-              Required
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" [style.width]="'100%'">
-            <mat-label>Last Name</mat-label>
-            <input matInput type="text" maxlength="20" required id="emergencyContact1LastName"
-              name="emergencyContact1LastName" formControlName="emergencyContact1LastName">
-            <mat-error *ngIf="emergencyContact1LastName.hasError('required')">
-              Required
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" [style.width]="'100%'">
-            <mat-label>Phone</mat-label>
-            <input matInput type="tel" maxlength="10" required id="emergencyContact1PhoneNumber"
-              name="emergencyContact1PhoneNumber" formControlName="emergencyContact1PhoneNumber">
-            <mat-error *ngIf="emergencyContact1PhoneNumber.hasError('required')">
-              Required
-            </mat-error>
-            <mat-error *ngIf="!emergencyContact1PhoneNumber.hasError('required') && email.hasError('pattern')">
-              Invalid phone number
-            </mat-error>
-          </mat-form-field>
-        </div>
-
-        <div>
-          <p>
-            Emergency Contact 2
-          </p>
-          <mat-form-field appearance="fill" [style.width]="'100%'">
-            <mat-label>First Name</mat-label>
-            <input matInput type="text" maxlength="20" required id="emergencyContact2FirstName"
-              name="emergencyContact2FirstName" formControlName="emergencyContact2FirstName">
-            <mat-error *ngIf="emergencyContact2FirstName.hasError('required')">
-              Required
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" [style.width]="'100%'">
-            <mat-label>Last Name</mat-label>
-            <input matInput type="text" maxlength="20" required id="emergencyContact2LastName"
-              name="emergencyContact2LastName" formControlName="emergencyContact2LastName">
-            <mat-error *ngIf="emergencyContact2LastName.hasError('required')">
-              Required
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field appearance="fill" [style.width]="'100%'">
-            <mat-label>Phone</mat-label>
-            <input matInput type="tel" maxlength="10" required id="emergencyContact2PhoneNumber"
-              name="emergencyContact2PhoneNumber" formControlName="emergencyContact2PhoneNumber">
-            <mat-error *ngIf="emergencyContact2PhoneNumber.hasError('required')">
-              Required
-            </mat-error>
-            <mat-error *ngIf="!emergencyContact2PhoneNumber.hasError('required') && email.hasError('pattern')">
-              Invalid phone number
-            </mat-error>
-          </mat-form-field>
-        </div>
-
-        <div class="stepper-nav-button-container">
-          <button mat-raised-button matStepperPrevious type="button">
-            Back
-          </button>
-          <button mat-raised-button matStepperNext type="button" color="accent"
-            [disabled]="emergencyContactsFormGroup.invalid">
-            Next
-          </button>
-        </div>
-      </form>
-    </mat-step>
-
-    <!-- Step 3 -->
     <mat-step [stepControl]="registrantFormGroup">
       <form [formGroup]="registrantFormGroup" class="vbs-form">
         <ng-template matStepLabel>Child Info</ng-template>
@@ -346,7 +250,7 @@
           <button mat-raised-button matStepperPrevious type="button">
             Back
           </button>
-          <button mat-raised-button matStepperNext type="button" color="accent"
+          <button mat-raised-button matStepperNext type="button" color="primary"
             [disabled]="registrantFormGroup.invalid">
             Next
           </button>
@@ -354,23 +258,171 @@
       </form>
     </mat-step>
 
+    <!-- Step 3 -->
+    <mat-step [stepControl]="emergencyContactsFormGroup">
+      <form [formGroup]="emergencyContactsFormGroup" class="vbs-form">
+        <ng-template matStepLabel>Emergency Contacts</ng-template>
+        <div>
+          <p>
+            Emergency Contact 1
+          </p>
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" maxlength="20" id="emergencyContact1FirstName" name="emergencyContact1FirstName"
+              formControlName="emergencyContact1FirstName">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" maxlength="20" id="emergencyContact1LastName" name="emergencyContact1LastName"
+              formControlName="emergencyContact1LastName">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Phone</mat-label>
+            <input matInput type="tel" maxlength="10" id="emergencyContact1PhoneNumber"
+              name="emergencyContact1PhoneNumber" formControlName="emergencyContact1PhoneNumber">
+            <mat-error *ngIf="!emergencyContact1PhoneNumber.hasError('required') && email.hasError('pattern')">
+              Invalid phone number
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <p>
+            Emergency Contact 2
+          </p>
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" maxlength="20" id="emergencyContact2FirstName" name="emergencyContact2FirstName"
+              formControlName="emergencyContact2FirstName">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" maxlength="20" id="emergencyContact2LastName" name="emergencyContact2LastName"
+              formControlName="emergencyContact2LastName">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Phone</mat-label>
+            <input matInput type="tel" maxlength="10" id="emergencyContact2PhoneNumber"
+              name="emergencyContact2PhoneNumber" formControlName="emergencyContact2PhoneNumber">
+            <mat-error *ngIf="!emergencyContact2PhoneNumber.hasError('required') && email.hasError('pattern')">
+              Invalid phone number
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="stepper-nav-button-container">
+          <button mat-raised-button matStepperPrevious type="button">
+            Back
+          </button>
+          <button mat-raised-button matStepperNext type="button" color="primary"
+            [disabled]="emergencyContactsFormGroup.invalid">
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
     <!-- Step 4 -->
+    <mat-step [stepControl]="additionalInfoFormGroup">
+      <form [formGroup]="additionalInfoFormGroup" class="vbs-form" [style.margin-top]="'1em'">
+        <ng-template matStepLabel>Additional Info</ng-template>
+        <div>
+          <p>Who may pick up your {{formControlls.length > 1 ? 'children' : 'child'}} at the end of each day?
+            <small>(Optional) If no one else is allowed to pick up your
+              child, leave these fields blank.
+            </small>
+          </p>
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>First Name</mat-label>
+            <input matInput maxlength="20" type="text" id="pickupFirstName" name="pickupFirstName"
+              formControlName="pickupFirstName">
+          </mat-form-field>
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Last Name</mat-label>
+            <input matInput maxlength="20" type="text" id="pickupLastName" name="pickupLastName"
+              formControlName="pickupLastName">
+          </mat-form-field>
+        </div>
+        <p>
+          Do you attend church? If so, where?
+        </p>
+        <mat-form-field appearance="fill">
+          <mat-label>Church Name</mat-label>
+          <input matInput type="text" maxlength="50" id="churchAttendance" name="churchAttendance"
+            formControlName="churchAttendance">
+        </mat-form-field>
+
+        <div>
+          <p>
+            Please add any additional information we should know.
+          </p>
+          <mat-form-field appearance="fill" [style.width]="'100%'">
+            <mat-label>Comments</mat-label>
+            <textarea matInput #additionalInfo [maxLength]="200" formControlName="additionalComments"
+              cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"
+              [style.resize]="'vertical'"></textarea>
+            <mat-hint *ngIf="additionalComments.valid">{{additionalInfo.value.length}} / 200</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="stepper-nav-button-container">
+          <button mat-raised-button matStepperPrevious type="button">
+            Back
+          </button>
+          <button mat-raised-button matStepperNext type="button" color="primary"
+            [disabled]="additionalInfoFormGroup.invalid">
+            Next
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 5 -->
     <mat-step>
       <ng-template matStepLabel>Register</ng-template>
-      <p>
-        Complete the registration by clicking <i>Register</i>
-      </p>
       <div class="vertical-flow-container">
+
+        <div class="confirmation-container">
+          <h3>Parent / Guardian Info</h3>
+          <div class="confirmation-details">
+            <strong>Name:</strong><span>{{parentOrGuardianFirstName.value}} {{parentOrGuardianLastName.value}}</span>
+            <strong>Email:</strong><span>{{email.value}}</span>
+            <strong>Phone:</strong><span>{{phoneNumber.value}}</span>
+            <strong>Address:</strong><span>{{address.value}}</span>
+            <strong>Mailing Address:</strong><span>{{mailingAddress.value}}</span>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div class="confirmation-container">
+          <h3>{{formControlls.length > 1 ? 'Children' : 'Child'}} Info</h3>
+          <div class="confirmation-details">
+            <div *ngFor="let child of formControlls; let index = index" class="confirmation-container">
+              <div class="confirmation-details">
+                <h4>Child {{index + 1}}</h4>
+                <strong>Name:</strong><span>{{child.value.childFirstName}} {{child.value.childLastName}}</span>
+                <strong>Birth Date:</strong><span>{{child.value.childBirthDay | date}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p [style.margin-top]="'1em'">
+          Complete the registration by clicking <i>Register</i>
+        </p>
         <div class="stepper-nav-button-container">
           <button mat-raised-button type="button" matStepperPrevious>Back</button>
-          <button mat-raised-button type="button" color="warn" (click)="stepper.reset()">Reset</button>
+          <button mat-raised-button type="submit" color="primary" (click)="onSubmit()" [style.width]="'100%'"
+            [disabled]="parentOrGuardianFormGroup.invalid || registrantFormGroup.invalid">
+            Register
+          </button>
         </div>
-        <button mat-raised-button type="submit" color="accent" (click)="onSubmit()" [style.width]="'100%'"
-          [disabled]="parentOrGuardianFormGroup.invalid || registrantFormGroup.invalid">
-          Register
-        </button>
       </div>
-
     </mat-step>
   </mat-vertical-stepper>
 </section>

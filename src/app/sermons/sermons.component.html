@@ -7,7 +7,7 @@
       And remember, you are always welcome to join us every Sunday to get both
       a live message from the Word of God, and fellowship with a loving church family.
     </p>
-    <mat-icon color="accent" class="material-icons arrow" (click)="scrollToSermon(target)">
+    <mat-icon color="primary" class="material-icons arrow" (click)="scrollToSermon(target)">
       keyboard_arrow_down
     </mat-icon>
   </span>
@@ -15,7 +15,7 @@
 
 <div *ngIf="isFetchingVideos" class="loading-indicator">
   Retrieving sermons...
-  <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+  <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
 </div>
 
 <div #target>
@@ -73,7 +73,7 @@
         No worries, you can always find all of our sermons on our YouTube channel by clicking the button below.
       </p>
       <a href="{{youTubeChannelLink}}" target="_blank">
-        <button mat-raised-button class="link-button" color="accent">Go</button>
+        <button mat-raised-button class="link-button" color="primary">Go</button>
       </a>
     </div>
   </div>

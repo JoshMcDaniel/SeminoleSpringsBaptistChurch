@@ -15,6 +15,7 @@ export class VacationBibleSchoolComponent implements OnInit {
   parentOrGuardianFormGroup: FormGroup;
   emergencyContactsFormGroup: FormGroup;
   registrantFormGroup: FormGroup;
+  additionalInfoFormGroup: FormGroup;
 
   readonly maxRegistrants = 5;
 
@@ -26,6 +27,7 @@ export class VacationBibleSchoolComponent implements OnInit {
     this.parentOrGuardianFormGroup = this.buildParentOrGuardianFormGroup();
     this.emergencyContactsFormGroup = this.buildEmergencyContactsFormGroup();
     this.initializeRegistrantGroup();
+    this.additionalInfoFormGroup = this.buildAdditionalInfoForm();
   }
 
   buildParentOrGuardianFormGroup(): FormGroup {
@@ -35,19 +37,7 @@ export class VacationBibleSchoolComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       address: ['', [Validators.required, Validators.maxLength(50)]],
       mailingAddress: ['', [Validators.maxLength(50)]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]],
-      churchAttendance: ['', [Validators.maxLength(50)]]
-    });
-  }
-
-  buildEmergencyContactsFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      emergencyContact1FirstName: ['', [Validators.required, Validators.maxLength(20)]],
-      emergencyContact1LastName: ['', [Validators.required, Validators.maxLength(20)]],
-      emergencyContact1PhoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]],
-      emergencyContact2FirstName: ['', [Validators.required, Validators.maxLength(20)]],
-      emergencyContact2LastName: ['', [Validators.required, Validators.maxLength(20)]],
-      emergencyContact2PhoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]]
     });
   }
 
@@ -59,8 +49,26 @@ export class VacationBibleSchoolComponent implements OnInit {
       childLastGradeCompleted: ['', [Validators.required]],
       childMedicalInformation: ['', [Validators.maxLength(200)]],
       childPhotographPermission: [null, [Validators.required]],
-      pickupFirstName: ['', [Validators.required, Validators.maxLength(20)]],
-      pickupLastName: ['', [Validators.required, Validators.maxLength(20)]],
+    });
+  }
+
+  buildEmergencyContactsFormGroup(): FormGroup {
+    return this.formBuilder.group({
+      emergencyContact1FirstName: '',
+      emergencyContact1LastName: '',
+      emergencyContact1PhoneNumber: '',
+      emergencyContact2FirstName: '',
+      emergencyContact2LastName: '',
+      emergencyContact2PhoneNumber: '',
+    });
+  }
+
+  buildAdditionalInfoForm(): FormGroup {
+    return this.formBuilder.group({
+      pickupFirstName: '',
+      pickupLastName: '',
+      churchAttendance: '',
+      additionalComments: '',
     });
   }
 
@@ -127,10 +135,6 @@ export class VacationBibleSchoolComponent implements OnInit {
     return this.parentOrGuardianFormGroup.get('phoneNumber');
   }
 
-  get churchAttendance(): AbstractControl {
-    return this.parentOrGuardianFormGroup.get('churchAttendance');
-  }
-
   get emergencyContact1FirstName(): AbstractControl {
     return this.emergencyContactsFormGroup.get('emergencyContact1FirstName');
   }
@@ -153,5 +157,21 @@ export class VacationBibleSchoolComponent implements OnInit {
 
   get emergencyContact2PhoneNumber(): AbstractControl {
     return this.emergencyContactsFormGroup.get('emergencyContact2PhoneNumber');
+  }
+
+  get pickupFirstName(): AbstractControl {
+    return this.additionalInfoFormGroup.get('pickupFirstName');
+  }
+
+  get pickupLastName(): AbstractControl {
+    return this.additionalInfoFormGroup.get('pickupLastName');
+  }
+
+  get churchAttendance(): AbstractControl {
+    return this.additionalInfoFormGroup.get('churchAttendance');
+  }
+
+  get additionalComments(): AbstractControl {
+    return this.additionalInfoFormGroup.get('additionalComments');
   }
 }

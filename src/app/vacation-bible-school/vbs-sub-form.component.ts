@@ -37,12 +37,4 @@ export class VbsSubFormComponent {
     return this.form.get('childMedicalInformation');
   }
 
-  get pickupFirstName(): AbstractControl {
-    return this.form.get('pickupFirstName');
-  }
-
-  get pickupLastName(): AbstractControl {
-    return this.form.get('pickupLastName');
-  }
-
 }

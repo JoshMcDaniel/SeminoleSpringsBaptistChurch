@@ -49,7 +49,7 @@ html,
 body {
   padding: 0px;
   margin: 0px;
-  background-color: mat-color($primary);
+  background-color: mat-color($accent);
   font-family: "Alegreya Sans", sans-serif;
   color: rgba(0, 0, 0, 0.7);
 }
@@ -119,7 +119,7 @@ h3 {
 }
 
 .footer {
-  background-color: mat-color($accent);
+  background-color: mat-color($primary);
   height: fit-content !important;
   color: white;
   text-align: center;

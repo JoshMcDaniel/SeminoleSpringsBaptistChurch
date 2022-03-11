@@ -6,10 +6,15 @@
   padding: 5em 0;
 }
 
+.vbs-stepper {
+  max-width: 500px;
+}
+
 .vbs-form {
   display: grid;
   grid-auto-flow: row;
   gap: 1em;
+  margin-top: 1em;
 
   button {
     height: 2.5em;
@@ -54,4 +59,14 @@
 
 .child-label {
   font-size: x-large;
+}
+
+.confirmation-container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.confirmation-details {
+  display: grid;
+  padding-left: 1em;
 }

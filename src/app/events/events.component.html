@@ -7,7 +7,7 @@
       We're a family here and we love to get together and worship the Lord every chance we get.
       Come join us for some fun and fellowship!
     </p>
-    <mat-icon color="accent" class="material-icons arrow" (click)="scrollToEvents(target)">
+    <mat-icon color="primary" class="material-icons arrow" (click)="scrollToEvents(target)">
       keyboard_arrow_down
     </mat-icon>
   </span>
@@ -32,7 +32,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions *ngIf="event.actions" class="event-actions">
-          <button mat-raised-button *ngIf="event.actions.routingAction" color="accent"
+          <button mat-raised-button *ngIf="event.actions.routingAction" color="primary"
             (click)="onRouterAction(event.actions.routingAction.routeTo)">
             {{event.actions.routingAction.actionBtnText}}
           </button>

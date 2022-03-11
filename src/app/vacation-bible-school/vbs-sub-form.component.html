@@ -18,7 +18,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field [style.width]="'fit-content'">
     <input matInput maxlength="8" required [matDatepicker]="picker" formControlName="childBirthDay"
       placeholder="Birth Day">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -26,7 +26,7 @@
     <mat-hint>MM/DD/YYYY</mat-hint>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field [style.width]="'fit-content'">
     <mat-label>Last Grade Completed</mat-label>
     <mat-select required formControlName="childLastGradeCompleted">
       <mat-option *ngFor="let grade of grades" [value]="grade">
@@ -39,7 +39,7 @@
     <p>
       May we photograph your child for promotioal purposes?
     </p>
-    <mat-form-field [style.width]="'100%'">
+    <mat-form-field>
       <mat-select required formControlName="childPhotographPermission">
         <mat-option value="No">No</mat-option>
         <mat-option value="Yes">Yes</mat-option>
@@ -50,7 +50,7 @@
   <div>
     <p>
       Medical or other information we need to know.
-      (Please include food or other alergies.)
+      <small>(Please include food or other alergies)</small>
     </p>
     <mat-form-field appearance="fill" [style.width]="'100%'">
       <mat-label>Medical Information</mat-label>
@@ -59,25 +59,6 @@
         [style.resize]="'vertical'"></textarea>
       <mat-hint *ngIf="childMedicalInformation.valid">{{medInfo.value.length}} / 200</mat-hint>
       <mat-error *ngIf="childMedicalInformation.invalid">{{medInfo.value.length}} / 200</mat-error>
-    </mat-form-field>
-  </div>
-  <div>
-    <p>Who may pick up your child at the end of each day?</p>
-    <mat-form-field appearance="fill" [style.width]="'100%'">
-      <mat-label>First Name</mat-label>
-      <input matInput maxlength="20" required type="text" id="pickupFirstName" name="pickupFirstName"
-        formControlName="pickupFirstName">
-      <mat-error *ngIf="pickupFirstName.invalid">
-        Required
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="fill" [style.width]="'100%'">
-      <mat-label>Last Name</mat-label>
-      <input matInput maxlength="20" required type="text" id="pickupLastName" name="pickupLastName"
-        formControlName="pickupLastName">
-      <mat-error *ngIf="pickupLastName.invalid">
-        Required
-      </mat-error>
     </mat-form-field>
   </div>
 </form>
