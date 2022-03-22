@@ -384,44 +384,20 @@
     <!-- Step 5 -->
     <mat-step>
       <ng-template matStepLabel>Register</ng-template>
-      <div class="vertical-flow-container">
+      <app-vbs-form-summary [parentOrGuardian]="parentOrGuardianFormGroup"
+        [emergencyContacts]="emergencyContactsFormGroup" [registrant]="registrantFormGroup"
+        [additionalInfo]="additionalInfoFormGroup">
+      </app-vbs-form-summary>
 
-        <div class="confirmation-container">
-          <h3>Parent / Guardian Info</h3>
-          <div class="confirmation-details">
-            <strong>Name:</strong><span>{{parentOrGuardianFirstName.value}} {{parentOrGuardianLastName.value}}</span>
-            <strong>Email:</strong><span>{{email.value}}</span>
-            <strong>Phone:</strong><span>{{phoneNumber.value}}</span>
-            <strong>Address:</strong><span>{{address.value}}</span>
-            <strong>Mailing Address:</strong><span>{{mailingAddress.value}}</span>
-          </div>
-        </div>
-
-        <mat-divider></mat-divider>
-
-        <div class="confirmation-container">
-          <h3>{{formControlls.length > 1 ? 'Children' : 'Child'}} Info</h3>
-          <div class="confirmation-details">
-            <div *ngFor="let child of formControlls; let index = index" class="confirmation-container">
-              <div class="confirmation-details">
-                <h4>Child {{index + 1}}</h4>
-                <strong>Name:</strong><span>{{child.value.childFirstName}} {{child.value.childLastName}}</span>
-                <strong>Birth Date:</strong><span>{{child.value.childBirthDay | date}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p [style.margin-top]="'1em'">
-          Complete the registration by clicking <i>Register</i>
-        </p>
-        <div class="stepper-nav-button-container">
-          <button mat-raised-button type="button" matStepperPrevious>Back</button>
-          <button mat-raised-button type="submit" color="primary" (click)="onSubmit()" [style.width]="'100%'"
-            [disabled]="parentOrGuardianFormGroup.invalid || registrantFormGroup.invalid">
-            Register
-          </button>
-        </div>
+      <p [style.margin-top]="'1em'">
+        Complete the registration by clicking <i>Register</i>
+      </p>
+      <div class="stepper-nav-button-container">
+        <button mat-raised-button type="button" matStepperPrevious>Back</button>
+        <button mat-raised-button type="submit" color="primary" (click)="onSubmit()" [style.width]="'100%'"
+          [disabled]="parentOrGuardianFormGroup.invalid || registrantFormGroup.invalid">
+          Register
+        </button>
       </div>
     </mat-step>
   </mat-vertical-stepper>

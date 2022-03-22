@@ -1,0 +1,28 @@
+.vbs-form-summary-container {
+  padding: 1em 0;
+}
+
+.vertical-gap-container {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 1em;
+}
+
+.confirmation-container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.confirmation-details {
+  display: grid;
+  padding-left: 1em;
+}
+
+.vertical-flow-container {
+  display: grid;
+  grid-auto-flow: row;
+}
+
+.label {
+  margin: 0;
+}

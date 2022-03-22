@@ -1,0 +1,88 @@
+<div class="vbs-form-summary-container vertical-gap-container">
+
+  <div class="confirmation-container">
+    <h3>Parent / Guardian Info</h3>
+    <div class="confirmation-details">
+      <strong>Name:</strong>
+      <span>{{parentOrGuardianFirstName.value}} {{parentOrGuardianLastName.value}}</span>
+      <strong>Email:</strong>
+      <span>{{email.value}}</span>
+      <strong>Phone:</strong>
+      <span>{{phoneNumber.value}}</span>
+      <strong>Address:</strong>
+      <span>{{address.value}}</span>
+      <strong>Mailing Address:</strong>
+      <span>{{mailingAddress.value}}</span>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="confirmation-container">
+    <h3>{{formControlls.length > 1 ? 'Children' : 'Child'}} Info</h3>
+    <div class="confirmation-details vertical-gap-container">
+      <div *ngFor="let child of formControlls; let index = index" class="confirmation-container">
+        <div class="vertical-flow-container">
+          <h3 class="label">Child {{index + 1}}</h3>
+          <strong>Name:</strong>
+          <span>{{child.value.childFirstName}} {{child.value.childLastName}}</span>
+          <strong>Birth Date:</strong>
+          <span>{{child.value.childBirthDay | date}}</span>
+          <strong>Last Grade Completed:</strong>
+          <span>{{child.value.childLastGradeCompleted}}</span>
+          <strong>Medical Info:</strong>
+          <span>{{child.value.childMedicalInformation}}</span>
+          <strong>Permission to Photograph:</strong>
+          <span>{{child.value.childPhotographPermission}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="confirmation-container">
+    <h3>Emergency Contact Info</h3>
+    <div class="confirmation-details vertical-gap-container">
+      <div class="confirmation-container vertical-gap-container">
+        <div class="vertical-flow-container">
+          <h3 class="label">Emergency Contact 1</h3>
+          <strong>Name:</strong>
+          <span>{{emergencyContact1FirstName.value}} {{emergencyContact1LastName.value}}</span>
+          <strong>Phone Number:</strong>
+          <span>{{emergencyContact1PhoneNumber.value}}</span>
+        </div>
+        <div class="vertical-flow-container">
+          <h3 class="label">Emergency Contact 2</h3>
+          <strong>Name:</strong>
+          <span>{{emergencyContact2FirstName.value}} {{emergencyContact2LastName.value}}</span>
+          <strong>Phone Number:</strong>
+          <span>{{emergencyContact2PhoneNumber.value}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="confirmation-container">
+    <h3>Additional Info</h3>
+    <div class="confirmation-details vertical-gap-container">
+      <div class="confirmation-container vertical-gap-container">
+        <div class="vertical-flow-container">
+          <strong>Alternate Pickup:</strong>
+          <span>{{pickupFirstName.value}} {{pickupLastName.value}}</span>
+        </div>
+        <div class="vertical-flow-container">
+          <strong>Church Attendance:</strong>
+          <span>{{churchAttendance.value}}</span>
+        </div>
+        <div class="vertical-flow-container">
+          <strong>Additional Comments:</strong>
+          <span>{{additionalComments.value}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

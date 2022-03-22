@@ -14,13 +14,15 @@ import { CommonModule } from '@angular/common';
 import { VacationBibleSchoolComponent } from './vacation-bible-school.component';
 import { VacationBibleSchoolRoutingModule } from './vacation-bible-school-routing.module';
 import { MatFormFieldModule, MatOptionModule } from '@angular/material';
+import { VbsFormSummaryComponent } from './vbs-form-summary/vbs-form-summary.component';
 
 
 
 @NgModule({
   declarations: [
     VacationBibleSchoolComponent,
-    VbsSubFormComponent
+    VbsSubFormComponent,
+    VbsFormSummaryComponent
   ],
   imports: [
     CommonModule,

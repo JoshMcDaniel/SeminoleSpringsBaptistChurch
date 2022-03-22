@@ -32,43 +32,43 @@ export class VacationBibleSchoolComponent implements OnInit {
 
   buildParentOrGuardianFormGroup(): FormGroup {
     return this.formBuilder.group({
-      parentOrGuardianFirstName: ['', [Validators.required, Validators.maxLength(20)]],
-      parentOrGuardianLastName: ['', [Validators.required, Validators.maxLength(20)]],
-      email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, Validators.maxLength(50)]],
-      mailingAddress: ['', [Validators.maxLength(50)]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]]
+      parentOrGuardianFirstName: ['kmkm', [Validators.required, Validators.maxLength(20)]],
+      parentOrGuardianLastName: ['jnjn', [Validators.required, Validators.maxLength(20)]],
+      email: ['kmkm@kmkm.com', [Validators.required, Validators.email]],
+      address: ['mkm kmkm kmkmkm123', [Validators.required, Validators.maxLength(50)]],
+      mailingAddress: ['123km123km123', [Validators.maxLength(50)]],
+      phoneNumber: ['1231231234', [Validators.required, Validators.pattern(phoneNumberRegex)]]
     });
   }
 
   buildRegistrantForm(): FormGroup {
     return this.formBuilder.group({
-      childFirstName: ['', [Validators.required, Validators.maxLength(20)]],
-      childLastName: ['', [Validators.required, Validators.maxLength(20)]],
+      childFirstName: ['lmlm', [Validators.required, Validators.maxLength(20)]],
+      childLastName: ['mimikm', [Validators.required, Validators.maxLength(20)]],
       childBirthDay: [new Date(), [Validators.required]],
-      childLastGradeCompleted: ['', [Validators.required]],
-      childMedicalInformation: ['', [Validators.maxLength(200)]],
-      childPhotographPermission: [null, [Validators.required]],
+      childLastGradeCompleted: ['1st', [Validators.required]],
+      childMedicalInformation: ['kmkmlmlmkm', [Validators.maxLength(200)]],
+      childPhotographPermission: ['No', [Validators.required]],
     });
   }
 
   buildEmergencyContactsFormGroup(): FormGroup {
     return this.formBuilder.group({
-      emergencyContact1FirstName: '',
-      emergencyContact1LastName: '',
-      emergencyContact1PhoneNumber: '',
-      emergencyContact2FirstName: '',
-      emergencyContact2LastName: '',
-      emergencyContact2PhoneNumber: '',
+      emergencyContact1FirstName: 'sdvdv',
+      emergencyContact1LastName: 'sdvsdvdvsv',
+      emergencyContact1PhoneNumber: '1231232133',
+      emergencyContact2FirstName: 'sdvsdv',
+      emergencyContact2LastName: 'dcdsvsdvvdsv',
+      emergencyContact2PhoneNumber: '1231231234',
     });
   }
 
   buildAdditionalInfoForm(): FormGroup {
     return this.formBuilder.group({
-      pickupFirstName: '',
-      pickupLastName: '',
-      churchAttendance: '',
-      additionalComments: '',
+      pickupFirstName: 'sfbvsfbs',
+      pickupLastName: 'fbdbfdbdbdfbb',
+      churchAttendance: 'd dfdf ff',
+      additionalComments: 'sbfdbd bdfdfd dd fdd f',
     });
   }
 
