@@ -383,22 +383,39 @@
 
     <!-- Step 5 -->
     <mat-step>
-      <ng-template matStepLabel>Register</ng-template>
-      <app-vbs-form-summary [parentOrGuardian]="parentOrGuardianFormGroup"
-        [emergencyContacts]="emergencyContactsFormGroup" [registrant]="registrantFormGroup"
-        [additionalInfo]="additionalInfoFormGroup">
-      </app-vbs-form-summary>
+      <ng-template matStepLabel>Confirmation</ng-template>
 
-      <p [style.margin-top]="'1em'">
-        Complete the registration by clicking <i>Register</i>
-      </p>
-      <div class="stepper-nav-button-container">
-        <button mat-raised-button type="button" matStepperPrevious>Back</button>
-        <button mat-raised-button type="submit" color="primary" (click)="onSubmit()" [style.width]="'100%'"
-          [disabled]="parentOrGuardianFormGroup.invalid || registrantFormGroup.invalid">
-          Register
-        </button>
+      <div class="summary-container">
+
+        <app-vbs-form-summary [parentOrGuardian]="parentOrGuardianFormGroup"
+          [emergencyContacts]="emergencyContactsFormGroup" [registrant]="registrantFormGroup"
+          [additionalInfo]="additionalInfoFormGroup">
+        </app-vbs-form-summary>
+
+        <section class="confirmation-verification">
+          <p [style.margin-top]="'1em'">
+            If the above information is correct and complete,
+            submit the registration form by confirming below and clicking <strong><i>Register</i></strong>.
+          </p>
+          <p>
+            If not, please return to the appropriate section(s) and make the required changes.
+          </p>
+
+          <mat-checkbox #confirmation class="confirmation-text" color="primary">
+            The above information is correct
+          </mat-checkbox>
+        </section>
+
+        <div class="stepper-nav-button-container">
+          <button mat-raised-button type="button" matStepperPrevious>Back</button>
+          <button mat-raised-button type="submit" color="primary" (click)="onSubmit()" [style.width]="'100%'"
+            [disabled]="parentOrGuardianFormGroup.invalid || registrantFormGroup.invalid || !confirmation.checked">
+            Register
+          </button>
+        </div>
+
       </div>
+
     </mat-step>
   </mat-vertical-stepper>
 </section>

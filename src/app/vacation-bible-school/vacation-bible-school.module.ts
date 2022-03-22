@@ -1,3 +1,4 @@
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
@@ -39,7 +40,8 @@ import { VbsFormSummaryComponent } from './vbs-form-summary/vbs-form-summary.com
     MatDatepickerModule,
     MatSelectModule,
     MatOptionModule,
-    PipesModule
+    PipesModule,
+    MatCheckboxModule
   ]
 })
 export class VacationBibleSchoolModule { }
