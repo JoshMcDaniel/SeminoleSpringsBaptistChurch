@@ -160,6 +160,15 @@ p {
   width: 50vw;
 }
 
+.word-wrap {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.mat-checkbox-layout {
+  white-space: normal !important;
+}
+
 @media (max-height: 600px) {
   .sticky-section {
     position: relative;

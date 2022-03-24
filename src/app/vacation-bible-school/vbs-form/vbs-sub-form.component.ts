@@ -4,7 +4,7 @@ import { FormGroup, AbstractControl } from '@angular/forms';
 @Component({
   selector: 'app-vbs-sub-form',
   templateUrl: './vbs-sub-form.component.html',
-  styleUrls: ['./vacation-bible-school.component.scss']
+  styleUrls: ['./vbs-form.component.scss']
 })
 export class VbsSubFormComponent {
   // This component is passed a FormGroup from the base component template
