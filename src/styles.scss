@@ -169,6 +169,12 @@ p {
   white-space: normal !important;
 }
 
+.transparent .mat-dialog-container {
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0);
+  overflow: visible;
+}
+
 @media (max-height: 600px) {
   .sticky-section {
     position: relative;
