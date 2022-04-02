@@ -176,43 +176,47 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input matInput type="email" maxlength="50" required id="email" name="email" formControlName="email">
-          <mat-error *ngIf="email.hasError('required')">
+          <input matInput type="email" maxlength="50" required id="parentOrGuardianEmail" name="parentOrGuardianEmail"
+            formControlName="parentOrGuardianEmail">
+          <mat-error *ngIf="parentOrGuardianEmail.hasError('required')">
             Required
           </mat-error>
-          <mat-error *ngIf="!email.hasError('required') && email.hasError('email')">
+          <mat-error *ngIf="!parentOrGuardianEmail.hasError('required') && parentOrGuardianEmail.hasError('email')">
             Invalid email
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Phone</mat-label>
-          <input matInput type="tel" maxlength="10" required id="phoneNumber" name="phoneNumber"
-            formControlName="phoneNumber">
-          <mat-error *ngIf="phoneNumber.hasError('required')">
+          <input matInput type="tel" maxlength="10" required id="parentOrGuardianPhoneNumber"
+            name="parentOrGuardianPhoneNumber" formControlName="parentOrGuardianPhoneNumber">
+          <mat-error *ngIf="parentOrGuardianPhoneNumber.hasError('required')">
             Required
           </mat-error>
-          <mat-error *ngIf="!phoneNumber.hasError('required') && email.hasError('pattern')">
+          <mat-error
+            *ngIf="!parentOrGuardianPhoneNumber.hasError('required') && parentOrGuardianEmail.hasError('pattern')">
             Invalid phone number
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Address</mat-label>
-          <input matInput type="text" maxlength="50" required id="address" name="address" formControlName="address">
-          <mat-error *ngIf="address.hasError('required')">
+          <input matInput type="text" maxlength="50" required id="parentOrGuardianAddress"
+            name="parentOrGuardianAddress" formControlName="parentOrGuardianAddress">
+          <mat-error *ngIf="parentOrGuardianAddress.hasError('required')">
             Required
           </mat-error>
-          <mat-error *ngIf="!address.hasError('required') && address.hasError('maxLength')">
+          <mat-error
+            *ngIf="!parentOrGuardianAddress.hasError('required') && parentOrGuardianAddress.hasError('maxLength')">
             Max characters: 50
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Mailing Address</mat-label>
-          <input matInput type="text" maxlength="50" id="mailingAddress" name="mailingAddress"
-            formControlName="mailingAddress">
-          <mat-error *ngIf="mailingAddress.hasError('maxLength')">
+          <input matInput type="text" maxlength="50" id="parentOrGuardianMailingAddress"
+            name="parentOrGuardianMailingAddress" formControlName="parentOrGuardianMailingAddress">
+          <mat-error *ngIf="parentOrGuardianMailingAddress.hasError('maxLength')">
             Max characters: 50
           </mat-error>
           <mat-hint>
@@ -281,7 +285,8 @@
             <mat-label>Phone</mat-label>
             <input matInput type="tel" maxlength="10" id="emergencyContact1PhoneNumber"
               name="emergencyContact1PhoneNumber" formControlName="emergencyContact1PhoneNumber">
-            <mat-error *ngIf="!emergencyContact1PhoneNumber.hasError('required') && email.hasError('pattern')">
+            <mat-error
+              *ngIf="!emergencyContact1PhoneNumber.hasError('required') && emergencyContact1PhoneNumber.hasError('pattern')">
               Invalid phone number
             </mat-error>
           </mat-form-field>
@@ -307,7 +312,8 @@
             <mat-label>Phone</mat-label>
             <input matInput type="tel" maxlength="10" id="emergencyContact2PhoneNumber"
               name="emergencyContact2PhoneNumber" formControlName="emergencyContact2PhoneNumber">
-            <mat-error *ngIf="!emergencyContact2PhoneNumber.hasError('required') && email.hasError('pattern')">
+            <mat-error
+              *ngIf="!emergencyContact2PhoneNumber.hasError('required') && emergencyContact2PhoneNumber.hasError('pattern')">
               Invalid phone number
             </mat-error>
           </mat-form-field>

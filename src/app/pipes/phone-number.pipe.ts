@@ -6,14 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PhoneNumberPipe implements PipeTransform {
 
   transform(rawNum: string) {
-    rawNum = "+1" + rawNum;
+    const areaCodeStr = rawNum.slice(0, 3);
+    const midSectionStr = rawNum.slice(3, 6);
+    const lastSectionStr = rawNum.slice(6);
 
-    const countryCodeStr = rawNum.slice(0, 2);
-    const areaCodeStr = rawNum.slice(2, 5);
-    const midSectionStr = rawNum.slice(5, 8);
-    const lastSectionStr = rawNum.slice(8);
-
-    return `${countryCodeStr} (${areaCodeStr})${midSectionStr}-${lastSectionStr}`;
+    return `(${areaCodeStr})${midSectionStr}-${lastSectionStr}`;
   }
 
 }

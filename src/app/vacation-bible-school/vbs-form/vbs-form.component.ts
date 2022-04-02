@@ -12,6 +12,7 @@ export class VbsFormComponent implements OnInit {
 
   readonly formSparkLink = 'https://submit-form.com/56FALOlJ';
   readonly testFormSparkLink = 'https://submit-form.com/echo';
+  initDate = new Date();
   parentOrGuardianFormGroup: FormGroup;
   emergencyContactsFormGroup: FormGroup;
   registrantFormGroup: FormGroup;
@@ -35,43 +36,43 @@ export class VbsFormComponent implements OnInit {
 
   buildParentOrGuardianFormGroup(): FormGroup {
     return this.formBuilder.group({
-      parentOrGuardianFirstName: ['', [Validators.required, Validators.maxLength(20)]],
-      parentOrGuardianLastName: ['', [Validators.required, Validators.maxLength(20)]],
-      email: ['', [Validators.required, Validators.email]],
-      address: ['', [Validators.required, Validators.maxLength(50)]],
-      mailingAddress: ['', [Validators.maxLength(50)]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]]
+      parentOrGuardianFirstName: ['test', [Validators.required, Validators.maxLength(20)]],
+      parentOrGuardianLastName: ['test_last', [Validators.required, Validators.maxLength(20)]],
+      parentOrGuardianEmail: ['test@test.ccom', [Validators.required, Validators.email]],
+      parentOrGuardianAddress: ['test123', [Validators.required, Validators.maxLength(50)]],
+      parentOrGuardianMailingAddress: ['test321', [Validators.maxLength(50)]],
+      parentOrGuardianPhoneNumber: ['1231232134', [Validators.required, Validators.pattern(phoneNumberRegex)]]
     });
   }
 
   buildRegistrantForm(): FormGroup {
     return this.formBuilder.group({
-      childFirstName: ['', [Validators.required, Validators.maxLength(20)]],
-      childLastName: ['', [Validators.required, Validators.maxLength(20)]],
-      childBirthDay: [new Date(), [Validators.required]],
-      childLastGradeCompleted: ['', [Validators.required]],
-      childMedicalInformation: ['', [Validators.maxLength(200)]],
-      childPhotographPermission: ['', [Validators.required]],
+      childFirstName: ['test_c', [Validators.required, Validators.maxLength(20)]],
+      childLastName: ['test_cl', [Validators.required, Validators.maxLength(20)]],
+      childBirthDay: [this.initDate, [Validators.required]],
+      childLastGradeCompleted: ['1st', [Validators.required]],
+      childMedicalInformation: ['test test', [Validators.maxLength(200)]],
+      childPhotographPermission: ['No', [Validators.required]],
     });
   }
 
   buildEmergencyContactsFormGroup(): FormGroup {
     return this.formBuilder.group({
-      emergencyContact1FirstName: '',
-      emergencyContact1LastName: '',
-      emergencyContact1PhoneNumber: '',
-      emergencyContact2FirstName: '',
-      emergencyContact2LastName: '',
-      emergencyContact2PhoneNumber: '',
+      emergencyContact1FirstName: 'test_ef',
+      emergencyContact1LastName: 'test_el',
+      emergencyContact1PhoneNumber: '3213213211',
+      emergencyContact2FirstName: 'test_sdsd',
+      emergencyContact2LastName: 'test_l_sdsd',
+      emergencyContact2PhoneNumber: '3213214324',
     });
   }
 
   buildAdditionalInfoForm(): FormGroup {
     return this.formBuilder.group({
-      pickupFirstName: '',
-      pickupLastName: '',
-      churchAttendance: '',
-      additionalComments: '',
+      pickupFirstName: 'test_fsfs',
+      pickupLastName: 'test_l_dsd',
+      churchAttendance: 'test test test',
+      additionalComments: 'test test test test test test test test',
     });
   }
 
@@ -100,7 +101,7 @@ export class VbsFormComponent implements OnInit {
 
   onSubmit(): void {
     const form = this.getFormData();
-    this.vbsRequestService.submitForm(form);
+    this.vbsRequestService.submitForm(form).subscribe();
 
     // console.log('parent: ', this.parentOrGuardianFormGroup.value);
     // console.log('Children', this.registrantFormGroup.value);
@@ -111,10 +112,21 @@ export class VbsFormComponent implements OnInit {
   getFormData(): VbsRequest {
     return {
       ...this.parentOrGuardianFormGroup.value,
-      registrants: this.formControlls.map(c => c.value),
+      registrants: this.formControlls.map(c => {
+        return {
+          ...c.value,
+          childBirthDay: this.formatBirthday(c.value['childBirthDay'])
+        }
+      }),
       ...this.emergencyContactsFormGroup.value,
       ...this.additionalInfoFormGroup.value
     };
+  }
+
+  formatBirthday(date: Date): string {
+    return !!date
+      ? new Date(date).toLocaleDateString('en-Us')
+      : this.initDate.toLocaleDateString('en-Us');
   }
 
   get formControlls() {
@@ -134,20 +146,20 @@ export class VbsFormComponent implements OnInit {
     return this.parentOrGuardianFormGroup.get('parentOrGuardianLastName');
   }
 
-  get email(): AbstractControl {
-    return this.parentOrGuardianFormGroup.get('email');
+  get parentOrGuardianEmail(): AbstractControl {
+    return this.parentOrGuardianFormGroup.get('parentOrGuardianEmail');
   }
 
-  get address(): AbstractControl {
-    return this.parentOrGuardianFormGroup.get('address');
+  get parentOrGuardianAddress(): AbstractControl {
+    return this.parentOrGuardianFormGroup.get('parentOrGuardianAddress');
   }
 
-  get mailingAddress(): AbstractControl {
-    return this.parentOrGuardianFormGroup.get('mailingAddress');
+  get parentOrGuardianMailingAddress(): AbstractControl {
+    return this.parentOrGuardianFormGroup.get('parentOrGuardianMailingAddress');
   }
 
-  get phoneNumber(): AbstractControl {
-    return this.parentOrGuardianFormGroup.get('phoneNumber');
+  get parentOrGuardianPhoneNumber(): AbstractControl {
+    return this.parentOrGuardianFormGroup.get('parentOrGuardianPhoneNumber');
   }
 
   get emergencyContact1FirstName(): AbstractControl {

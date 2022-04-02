@@ -35,20 +35,20 @@ export class VbsFormSummaryComponent implements OnInit {
     return this.parentOrGuardian.get('parentOrGuardianLastName');
   }
 
-  get email(): AbstractControl {
-    return this.parentOrGuardian.get('email');
+  get parentOrGuardianEmail(): AbstractControl {
+    return this.parentOrGuardian.get('parentOrGuardianEmail');
   }
 
-  get address(): AbstractControl {
-    return this.parentOrGuardian.get('address');
+  get parentOrGuardianAddress(): AbstractControl {
+    return this.parentOrGuardian.get('parentOrGuardianAddress');
   }
 
-  get mailingAddress(): AbstractControl {
-    return this.parentOrGuardian.get('mailingAddress');
+  get parentOrGuardianMailingAddress(): AbstractControl {
+    return this.parentOrGuardian.get('parentOrGuardianMailingAddress');
   }
 
-  get phoneNumber(): AbstractControl {
-    return this.parentOrGuardian.get('phoneNumber');
+  get parentOrGuardianPhoneNumber(): AbstractControl {
+    return this.parentOrGuardian.get('parentOrGuardianPhoneNumber');
   }
 
   get emergencyContact1FirstName(): AbstractControl {

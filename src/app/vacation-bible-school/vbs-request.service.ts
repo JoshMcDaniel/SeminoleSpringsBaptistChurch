@@ -3,6 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 
+export interface Registrant {
+  childFirstName: string;
+  childLastName: string;
+  childBirthDay: string;
+  childAge?: number;
+  childLastGradeCompleted: string;
+  childMedicalInformation: string;
+  childPhotographPermission: string;
+}
+
 export interface VbsRequest {
   // Parent/Guardian info
   parentOrGuardianFirstName: string;
@@ -13,15 +23,7 @@ export interface VbsRequest {
   phoneNumber: string;
 
   // Registrant info
-  registrants: {
-    childFirstName: string;
-    childLastName: string;
-    childBirthDay: string;
-    childAge?: number;
-    childLastGradeCompleted: string;
-    childMedicalInformation: string;
-    childPhotographPermission: string;
-  }[];
+  registrants: Registrant[];
 
   // Emergency info
   emergencyContact1FirstName: string;
@@ -51,17 +53,17 @@ export class VbsRequestService {
   ) { }
 
   submitForm(form: VbsRequest) {
-    // const body = this.formatVbsRequest(form);
-    console.log(form)
-    // this.http.post(this.formSparkLink, form).pipe(
-    //   map(response => {
-    //     console.log(response)
-    //   }),
-    //   catchError(error => {
-    //     console.log(error)
-    //     return of()
-    //   })
-    // );
+    const body = this.formatVbsRequest(form);
+    console.log(body)
+    return this.http.post(this.testFormSparkLink, body).pipe(
+      map(response => {
+        console.log(response)
+      }),
+      catchError(error => {
+        console.log(error)
+        return of()
+      })
+    );
   }
 
   formatVbsRequest(form: VbsRequest) {
@@ -76,15 +78,29 @@ export class VbsRequestService {
         [`childLastGradeCompleted_${num}`]: registrant.childLastGradeCompleted,
         [`childMedicalInformation_${num}`]: registrant.childMedicalInformation,
         [`childPhotographPermission_${num}`]: registrant.childPhotographPermission
-      }
+      };
     });
 
-    const formattedForm = {
+    registrants.forEach((registrant, index) => {
+      const num = index + 1;
+
+      rest[`childFirstName_${num}`] = registrant.childFirstName;
+      rest[`childLastName_${num}`] = registrant.childLastName;
+      rest[`childBirthDay_${num}`] = registrant.childBirthDay;
+      rest[`childAge_${num}`] = this.getAge(registrant.childBirthDay);
+      rest[`childLastGradeCompleted_${num}`] = registrant.childLastGradeCompleted;
+      rest[`childMedicalInformation_${num}`] = registrant.childMedicalInformation;
+      rest[`childPhotographPermission_${num}`] = registrant.childPhotographPermission;
+    });
+
+    const formattedForm: Partial<VbsRequest> = {
       ...rest,
       ...formattedRegistrants
     };
 
-    return formattedForm;
+    console.log('regis: ', rest)
+
+    return rest;
   }
 
   getAge(dateString: string): number {

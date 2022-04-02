@@ -6,13 +6,13 @@
       <strong>Name:</strong>
       <span class="word-wrap">{{parentOrGuardianFirstName.value}} {{parentOrGuardianLastName.value}}</span>
       <strong>Email:</strong>
-      <span class="word-wrap">{{email.value}}</span>
+      <span class="word-wrap">{{parentOrGuardianEmail.value}}</span>
       <strong>Phone:</strong>
-      <span class="word-wrap">{{phoneNumber.value}}</span>
+      <span class="word-wrap">{{parentOrGuardianPhoneNumber.value | phoneNumber}}</span>
       <strong>Address:</strong>
-      <span class="word-wrap">{{address.value}}</span>
+      <span class="word-wrap">{{parentOrGuardianAddress.value}}</span>
       <strong>Mailing Address:</strong>
-      <span class="word-wrap">{{mailingAddress.value}}</span>
+      <span class="word-wrap">{{parentOrGuardianMailingAddress.value}}</span>
     </div>
   </div>
 
@@ -50,14 +50,14 @@
           <strong>Name:</strong>
           <span class="word-wrap">{{emergencyContact1FirstName.value}} {{emergencyContact1LastName.value}}</span>
           <strong>Phone Number:</strong>
-          <span class="word-wrap">{{emergencyContact1PhoneNumber.value}}</span>
+          <span class="word-wrap">{{emergencyContact1PhoneNumber.value | phoneNumber}}</span>
         </div>
         <div class="vertical-flow-container">
           <h3 class="label">Emergency Contact 2</h3>
           <strong>Name:</strong>
           <span class="word-wrap">{{emergencyContact2FirstName.value}} {{emergencyContact2LastName.value}}</span>
           <strong>Phone Number:</strong>
-          <span class="word-wrap">{{emergencyContact2PhoneNumber.value}}</span>
+          <span class="word-wrap">{{emergencyContact2PhoneNumber.value | phoneNumber}}</span>
         </div>
       </div>
     </div>
