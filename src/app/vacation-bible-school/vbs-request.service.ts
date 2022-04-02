@@ -1,7 +1,10 @@
-import { map, catchError } from 'rxjs/operators';
+import { BusySpinnerComponent } from './../busy-spinner/busy-spinner.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { map, catchError, finalize, takeUntil } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, BehaviorSubject, Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material';
 
 export interface Registrant {
   childFirstName: string;
@@ -48,38 +51,44 @@ export class VbsRequestService {
   readonly formSparkLink = 'https://submit-form.com/56FALOlJ';
   readonly testFormSparkLink = 'https://submit-form.com/echo';
 
+  requestPending$ = new BehaviorSubject<boolean>(false);
+  cancelRequest$ = new Subject();
+
+  dialogRef: MatDialogRef<BusySpinnerComponent>;
+
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private _snackBar: MatSnackBar,
+    private _requestPendingDialog: MatDialog
+  ) {
+    this.requestPending$.subscribe(isPending => this.handleDialogState(isPending));
+  }
 
   submitForm(form: VbsRequest) {
+    this.requestPending$.next(true);
+
     const body = this.formatVbsRequest(form);
-    console.log(body)
+
     return this.http.post(this.testFormSparkLink, body).pipe(
-      map(response => {
-        console.log(response)
+      takeUntil(this.cancelRequest$),
+      map((response) => {
+        const message = 'Registration submitted successfully!';
+        this.openSnackBar(message, 'Close');
+
+        return of(response);
       }),
       catchError(error => {
-        console.log(error)
-        return of()
-      })
+        const message = 'Unable to submit Registration. Please try again.';
+        this.openSnackBar(message, 'Close');
+
+        return of(error);
+      }),
+      finalize(() => this.requestPending$.next(false))
     );
   }
 
   formatVbsRequest(form: VbsRequest) {
     const { registrants, ...rest } = form;
-    const formattedRegistrants = registrants.map((registrant, index) => {
-      const num = index + 1;
-      return {
-        [`childFirstName_${num}`]: registrant.childFirstName,
-        [`childLastName_${num}`]: registrant.childLastName,
-        [`childBirthDay_${num}`]: registrant.childBirthDay,
-        [`childAge_${num}`]: this.getAge(registrant.childBirthDay),
-        [`childLastGradeCompleted_${num}`]: registrant.childLastGradeCompleted,
-        [`childMedicalInformation_${num}`]: registrant.childMedicalInformation,
-        [`childPhotographPermission_${num}`]: registrant.childPhotographPermission
-      };
-    });
 
     registrants.forEach((registrant, index) => {
       const num = index + 1;
@@ -93,13 +102,6 @@ export class VbsRequestService {
       rest[`childPhotographPermission_${num}`] = registrant.childPhotographPermission;
     });
 
-    const formattedForm: Partial<VbsRequest> = {
-      ...rest,
-      ...formattedRegistrants
-    };
-
-    console.log('regis: ', rest)
-
     return rest;
   }
 
@@ -112,5 +114,33 @@ export class VbsRequestService {
       age--;
     }
     return age;
+  }
+
+  handleDialogState(isPending: boolean): void {
+    if (isPending) {
+      this.dialogRef = this._requestPendingDialog.open(BusySpinnerComponent,
+        {
+          panelClass: 'transparent',
+          disableClose: true,
+          data: 'Submitting Registration...'
+        });
+
+      this.dialogRef.afterClosed().subscribe(() => {
+        this.cancelRequest$.next();
+        this.dialogRef = null;
+      });
+
+    } else {
+      if (this.dialogRef) {
+        this.dialogRef.close();
+        this.cancelRequest$.next();
+      }
+    }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 3_000
+    });
   }
 }

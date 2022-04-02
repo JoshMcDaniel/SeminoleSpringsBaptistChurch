@@ -1,14 +1,17 @@
 import { VbsRequest, VbsRequestService } from './../vbs-request.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { phoneNumberRegex } from 'src/app/common/regex';
+import { MatStepper } from '@angular/material';
 
 @Component({
   selector: 'app-vbs-form',
   templateUrl: './vbs-form.component.html',
   styleUrls: ['./vbs-form.component.scss']
 })
-export class VbsFormComponent implements OnInit {
+export class VbsFormComponent implements OnInit, OnDestroy {
+
+  @ViewChild('stepper', { static: false }) private stepper: MatStepper;
 
   readonly formSparkLink = 'https://submit-form.com/56FALOlJ';
   readonly testFormSparkLink = 'https://submit-form.com/echo';
@@ -32,6 +35,10 @@ export class VbsFormComponent implements OnInit {
     this.emergencyContactsFormGroup = this.buildEmergencyContactsFormGroup();
     this.initializeRegistrantGroup();
     this.additionalInfoFormGroup = this.buildAdditionalInfoForm();
+  }
+
+  ngOnDestroy(): void {
+    this.vbsRequestService.cancelRequest$.next();
   }
 
   buildParentOrGuardianFormGroup(): FormGroup {
@@ -100,13 +107,13 @@ export class VbsFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const form = this.getFormData();
-    this.vbsRequestService.submitForm(form).subscribe();
-
-    // console.log('parent: ', this.parentOrGuardianFormGroup.value);
-    // console.log('Children', this.registrantFormGroup.value);
-    // Your form value is outputted as a JavaScript object.
-    // Parse it as JSON or take the values necessary to use as you like
+    const isRequestPending = this.vbsRequestService.requestPending$.getValue();
+    if (!isRequestPending) {
+      const form = this.getFormData();
+      this.vbsRequestService.submitForm(form).subscribe({
+        next: () => this.stepper.reset()
+      })
+    }
   }
 
   getFormData(): VbsRequest {

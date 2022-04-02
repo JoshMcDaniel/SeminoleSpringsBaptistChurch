@@ -1,3 +1,5 @@
+import { BusySpinnerComponent } from './busy-spinner/busy-spinner.component';
+import { BusySpinnerModule } from './busy-spinner/busy-spinner.module';
 import { VideoViewComponent } from './shared/video-view/video-view.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
@@ -51,7 +53,10 @@ import { OnlineGivingSummaryComponent } from './online-giving-summary/online-giv
     OnlineGivingComponent,
     OnlineGivingSummaryComponent,
   ],
-  entryComponents: [VideoViewComponent],
+  entryComponents: [
+    VideoViewComponent,
+    BusySpinnerComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -60,6 +65,7 @@ import { OnlineGivingSummaryComponent } from './online-giving-summary/online-giv
     SharedModule,
     FlexLayoutModule,
     FormsModule,
+    BusySpinnerModule,
     RouterModule.forRoot([
       {
         path: '', component: HomeComponent
