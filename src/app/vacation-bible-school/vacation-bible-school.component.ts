@@ -10,8 +10,8 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
 })
 export class VacationBibleSchoolComponent implements OnInit {
 
-  readonly formSparkLink = 'https://submit-form.com/56FALOlJ';
-  readonly testFormSparkLink = 'https://submit-form.com/echo';
+  readonly imgSrc = 'https://drive.google.com/uc?export=view&id=1qkVygMQkt2BCJI1bxCenOqpejMlTl8ix';
+
   parentOrGuardianFormGroup: FormGroup;
   emergencyContactsFormGroup: FormGroup;
   registrantFormGroup: FormGroup;

@@ -43,43 +43,43 @@ export class VbsFormComponent implements OnInit, OnDestroy {
 
   buildParentOrGuardianFormGroup(): FormGroup {
     return this.formBuilder.group({
-      parentOrGuardianFirstName: ['test', [Validators.required, Validators.maxLength(20)]],
-      parentOrGuardianLastName: ['test_last', [Validators.required, Validators.maxLength(20)]],
-      parentOrGuardianEmail: ['test@test.ccom', [Validators.required, Validators.email]],
-      parentOrGuardianAddress: ['test123', [Validators.required, Validators.maxLength(50)]],
-      parentOrGuardianMailingAddress: ['test321', [Validators.maxLength(50)]],
-      parentOrGuardianPhoneNumber: ['1231232134', [Validators.required, Validators.pattern(phoneNumberRegex)]]
+      parentOrGuardianFirstName: ['', [Validators.required, Validators.maxLength(20)]],
+      parentOrGuardianLastName: ['', [Validators.required, Validators.maxLength(20)]],
+      parentOrGuardianEmail: ['', [Validators.required, Validators.email]],
+      parentOrGuardianAddress: ['', [Validators.required, Validators.maxLength(50)]],
+      parentOrGuardianMailingAddress: ['', [Validators.maxLength(50)]],
+      parentOrGuardianPhoneNumber: ['', [Validators.required, Validators.pattern(phoneNumberRegex)]]
     });
   }
 
   buildRegistrantForm(): FormGroup {
     return this.formBuilder.group({
-      childFirstName: ['test_c', [Validators.required, Validators.maxLength(20)]],
-      childLastName: ['test_cl', [Validators.required, Validators.maxLength(20)]],
+      childFirstName: ['', [Validators.required, Validators.maxLength(20)]],
+      childLastName: ['', [Validators.required, Validators.maxLength(20)]],
       childBirthDay: [this.initDate, [Validators.required]],
-      childLastGradeCompleted: ['1st', [Validators.required]],
-      childMedicalInformation: ['test test', [Validators.maxLength(200)]],
-      childPhotographPermission: ['No', [Validators.required]],
+      childLastGradeCompleted: ['', [Validators.required]],
+      childMedicalInformation: ['', [Validators.maxLength(200)]],
+      childPhotographPermission: ['', [Validators.required]],
     });
   }
 
   buildEmergencyContactsFormGroup(): FormGroup {
     return this.formBuilder.group({
-      emergencyContact1FirstName: 'test_ef',
-      emergencyContact1LastName: 'test_el',
-      emergencyContact1PhoneNumber: '3213213211',
-      emergencyContact2FirstName: 'test_sdsd',
-      emergencyContact2LastName: 'test_l_sdsd',
-      emergencyContact2PhoneNumber: '3213214324',
+      emergencyContact1FirstName: '',
+      emergencyContact1LastName: '',
+      emergencyContact1PhoneNumber: '',
+      emergencyContact2FirstName: '',
+      emergencyContact2LastName: '',
+      emergencyContact2PhoneNumber: '',
     });
   }
 
   buildAdditionalInfoForm(): FormGroup {
     return this.formBuilder.group({
-      pickupFirstName: 'test_fsfs',
-      pickupLastName: 'test_l_dsd',
-      churchAttendance: 'test test test',
-      additionalComments: 'test test test test test test test test',
+      pickupFirstName: '',
+      pickupLastName: '',
+      churchAttendance: '',
+      additionalComments: '',
     });
   }
 

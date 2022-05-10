@@ -1,0 +1,25 @@
+.vbs-container {
+  margin: 64px 0;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  row-gap: 2em;
+}
+
+.vbs-card-container {
+  justify-content: center;
+  width: 90%;
+  max-width: 800px;
+  padding: 0;
+}
+
+.mat-card-image {
+  margin: 0;
+}
+
+mat-card img {
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+  width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 100%;
+  margin: 0;
+}
