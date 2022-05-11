@@ -1,0 +1,10 @@
+{
+  "production": {
+    "route": "https://submit-form.com/",
+    "key": "gUKWyZ4e"
+  },
+  "development": {
+    "route": "https://submit-form.com/",
+    "key": "echo"
+  }
+}

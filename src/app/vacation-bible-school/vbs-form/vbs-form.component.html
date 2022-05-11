@@ -1,20 +1,5 @@
-<!--
 <section class="vbs-form-container">
-  <form #form [action]="formSparkLink" class="vbs-form">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Name" required="" />
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Email" required="" />
-    <label for="message">Message</label>
-    <textarea id="message" name="message" placeholder="Message" required=""></textarea>
-    <input type="hidden" name="_redirect" [value]="redirectPath" />
-    <input type="hidden" name="_append" value="false" />
-    <button type="submit" (click)="form.submit()">Register</button>
-  </form>
-  <p>{{redirectPath}}</p>
-</section> -->
-
-<section class="vbs-form-container">
+  <h2 style="text-align: center">Registration Form</h2>
   <mat-vertical-stepper [linear]="true" #stepper class="mat-elevation-z1 vbs-stepper">
     <mat-step [stepControl]="parentOrGuardianFormGroup">
       <form [formGroup]="parentOrGuardianFormGroup" class="vbs-form">

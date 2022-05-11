@@ -1,6 +1,30 @@
 <div class="vbs-container">
-  <mat-card class="vbs-card-container mat-elevation-z10">
-    <img mat-card-image src="{{imgSrc}}" alt="VBS invitational">
+  <mat-card class="vbs-intro-container mat-elevation-z10">
+    <img mat-card-image src="{{vbsImgURL}}" alt="VBS kids">
+    <div class="text-container">
+      <h1>VBS is back!</h1>
+      <p>
+        Join us this summer for Spark Studios Vacation Bible School!!
+        Kids will learn that God's creativity didn't stop in Genesis.
+        The Master Artist is working to redeem, reclaim, and transform us
+        -His creation- to the design He planned for us. Kids will see
+        the beautiful truth that they are God's workmanship as they learn
+        to use their talents to bring glory to Him.
+      </p>
+      <h3>Register NOW!</h3>
+      <mat-icon color="primary" class="material-icons arrow" (click)="scrollToEvents(target)">
+        keyboard_arrow_down
+      </mat-icon>
+    </div>
   </mat-card>
-  <app-vbs-form></app-vbs-form>
+
+  <mat-card class="vbs-card-container mat-elevation-z10">
+    <a [href]="imgSrc" download="Real Impact Church VBS 2022">
+      <img mat-card-image src="{{imgSrc}}" alt="VBS invitational">
+    </a>
+  </mat-card>
+
+  <span #target>
+    <app-vbs-form></app-vbs-form>
+  </span>
 </div>

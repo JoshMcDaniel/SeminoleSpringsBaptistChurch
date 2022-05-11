@@ -1,6 +1,5 @@
 import { phoneNumberRegex } from './../common/regex';
-import { ArrayType } from '@angular/compiler';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,6 +10,7 @@ import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '
 export class VacationBibleSchoolComponent implements OnInit {
 
   readonly imgSrc = 'https://drive.google.com/uc?export=view&id=1qkVygMQkt2BCJI1bxCenOqpejMlTl8ix';
+  readonly vbsImgURL = './assets/images/events/vbs_2022.jpg';
 
   parentOrGuardianFormGroup: FormGroup;
   emergencyContactsFormGroup: FormGroup;
@@ -28,6 +28,14 @@ export class VacationBibleSchoolComponent implements OnInit {
     this.emergencyContactsFormGroup = this.buildEmergencyContactsFormGroup();
     this.initializeRegistrantGroup();
     this.additionalInfoFormGroup = this.buildAdditionalInfoForm();
+  }
+
+  /**
+   * Scrolls to the target element.
+   * @param element The element to scroll to.
+   */
+  scrollToEvents(element: HTMLElement) {
+    element.scrollIntoView({ behavior: 'smooth' });
   }
 
   buildParentOrGuardianFormGroup(): FormGroup {

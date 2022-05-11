@@ -1,6 +1,7 @@
+import { DataService } from './../data.service';
 import { BusySpinnerComponent } from './../busy-spinner/busy-spinner.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { map, catchError, finalize, takeUntil } from 'rxjs/operators';
+import { map, catchError, finalize, takeUntil, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of, BehaviorSubject, Subject } from 'rxjs';
@@ -48,8 +49,8 @@ export interface VbsRequest {
 })
 export class VbsRequestService {
 
-  readonly formSparkLink = 'https://submit-form.com/56FALOlJ';
-  readonly testFormSparkLink = 'https://submit-form.com/echo';
+  readonly getSubmitFormData = '../assets/form-keys/formspark_vbs_2022.json';
+  submitFormURL = null;
 
   requestPending$ = new BehaviorSubject<boolean>(false);
   cancelRequest$ = new Subject();
@@ -57,11 +58,18 @@ export class VbsRequestService {
   dialogRef: MatDialogRef<BusySpinnerComponent>;
 
   constructor(
+    private data: DataService,
     private http: HttpClient,
     private _snackBar: MatSnackBar,
     private _requestPendingDialog: MatDialog
   ) {
     this.requestPending$.subscribe(isPending => this.handleDialogState(isPending));
+    this.data.getData(this.getSubmitFormData).pipe(
+      take(1),
+      map(config => config['production'])
+    ).subscribe((config) => {
+      this.submitFormURL = config.route + config.key;
+    });
   }
 
   submitForm(form: VbsRequest) {
@@ -69,7 +77,7 @@ export class VbsRequestService {
 
     const body = this.formatVbsRequest(form);
 
-    return this.http.post(this.testFormSparkLink, body).pipe(
+    return this.http.post(this.submitFormURL, body).pipe(
       takeUntil(this.cancelRequest$),
       map((response) => {
         const message = 'Registration submitted successfully!';

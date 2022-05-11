@@ -21,8 +21,6 @@ export class VbsFormComponent implements OnInit, OnDestroy {
   registrantFormGroup: FormGroup;
   additionalInfoFormGroup: FormGroup;
 
-  // https://submit-form.com/56FALOlJ?name=&email=&message=&_redirect=http://localhost:4200/events
-
   readonly maxRegistrants = 5;
 
   constructor(

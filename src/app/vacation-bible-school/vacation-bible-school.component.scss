@@ -1,9 +1,36 @@
 .vbs-container {
-  margin: 64px 0;
   display: grid;
   justify-content: center;
   justify-items: center;
-  row-gap: 2em;
+  row-gap: 4em;
+  margin-bottom: 4em;
+}
+
+.vbs-intro-container {
+  height: 100vh;
+  position: relative;
+  padding: 0;
+  img {
+    filter: blur(2px);
+  }
+}
+
+.text-container {
+  max-width: 800px;
+  padding: 2em;
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.6); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
 }
 
 .vbs-card-container {
