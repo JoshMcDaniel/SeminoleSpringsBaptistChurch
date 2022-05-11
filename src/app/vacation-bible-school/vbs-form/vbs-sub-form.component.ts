@@ -11,6 +11,8 @@ export class VbsSubFormComponent {
   @Input() form: FormGroup;
 
   readonly grades = [
+    'Pre-K',
+    'Kindergarten',
     '1st',
     '2nd',
     '3rd',
