@@ -8,11 +8,11 @@
       "description": "Pastor John McDaniel is the Senior Pastor of our church. With many years of preaching experience and a deep love for the Lord, Pastor John consistently teaches the Bible with a passion."
     },
     {
-      "img": "./assets/images/about/worship_leader.jpg",
-      "alt": "Worship Leader",
-      "name": "Chad Fernandes",
-      "position": "Worship Leader",
-      "description": "Our Praise and Worship leader, Chad, leads the congregation in songs of praise to the Lord."
+      "img": "./assets/images/about/lewis_martin_deacon.jpg",
+      "alt": "Deacon",
+      "name": "Lewis Martin",
+      "position": "Deacon",
+      "description": "Lewis is a deacon, runs the building and grounds team, serves on the finance team, leads various LifeGroups and makes sure sermons are recorded and posted each week!"
     },
     {
       "img": "./assets/images/about/debbie.jpg",
